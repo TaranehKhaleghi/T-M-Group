@@ -1,5 +1,5 @@
-var Review = {
-    TKinsert: function (options) {
+var Register = {
+    insert: function (options) {
         function successTransaction() {
             console.info("Success: Transaction successful");
         }
@@ -11,7 +11,8 @@ var Review = {
 
         function txFunction(tx) {
             var sql = "";
-            sql = "INSERT INTO students(studentNum, candidateId, studentEmail, voteDate) VALUES(?,?,?,?);";
+            sql = "INSERT INTO users(firstName, lastName, countryCode,phoneNumber"
+                + "userEmail, city, country, addressDetails, password) VALUES(?,?,?,?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
         }
 
@@ -19,7 +20,7 @@ var Review = {
 
     },
 
-    TKselectAll: function (callback) {
+    selectAll: function (callback) {
         var options = [];
 
         function successTransaction() {
@@ -28,7 +29,7 @@ var Review = {
 
         function txFunction(tx) {
             console.info("Selecting all records.  ");
-            var sql = "SELECT * FROM students;";
+            var sql = "SELECT * FROM users;";
             tx.executeSql(sql, options, callback, errorHandler);
         }
 
@@ -37,8 +38,8 @@ var Review = {
 
 };
 
-var Type = {
-    TKselectAll: function (options, callback) {
+/* var Type = {
+    selectAll: function (options, callback) {
         var options = [];
 
         function successTransaction() {
@@ -54,6 +55,6 @@ var Type = {
         db.transaction(txFunction, errorHandler, successTransaction);
     }
 };
-
+ */
 
 

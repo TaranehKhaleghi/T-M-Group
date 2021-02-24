@@ -141,7 +141,7 @@
 						<label class="col-md-3 col-form-label">Phone</label>
 						<div class="col-9">
 							<div class="input-group">
-								<select class="custom-select" style="max-width: 120px;">
+								<select class="custom-select" style="max-width: 120px;" id="countryCode">
 									<option selected="">CA +1</option>
 									<option value="1">US +1</option>
 									<option value="2">GB +44</option>
@@ -166,7 +166,7 @@
 							<input type="text" class="form-control" placeholder="City" id="city">
 						</div>
 						<div class="col">
-							<select class="custom-select form-control">
+							<select class="custom-select form-control" id="country">
 								<!--option>Country</option-->
 								<option>Canada</option>
 								<option>United states</option>
@@ -206,11 +206,9 @@
 
 					<div class="form-row mb-2">
 						<div class="col-sm-9 offset-sm-3">
-							<button type="submit" class="btn btn-primary" disabled="disabled"
-								id="submitBtn">Register</button>
+							<button type="submit" class="btn btn-primary" id="submitBtn">Register</button>
 						</div>
 					</div>
-
 				</form>
 			</article> <!-- card-body end .// -->
 			<div class="card-footer text-center">Have an account? <a href="page-user-login.html">Log In</a></div>
