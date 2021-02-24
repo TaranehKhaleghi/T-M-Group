@@ -45,6 +45,7 @@
 
 
 	<header class="section-header">
+
 		<section class="header-main border-bottom">
 			<div class="container">
 				<div class="row align-items-center">
@@ -68,12 +69,13 @@
 					<div class="col-lg-4 col-sm-6 col-12">
 						<div class="widgets-wrap float-md-right">
 							<div class="widget-header  mr-3">
-								<a href="#" class="icon icon-sm rounded-circle border"><i
+								<a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
 										class="fa fa-shopping-cart"></i></a>
 								<span class="badge badge-pill badge-danger notify">0</span>
 							</div>
 							<div class="widget-header icontext">
-								<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+								<a href="page-profile-main.html" class="icon icon-sm rounded-circle border"><i
+										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
 									<div>
@@ -91,14 +93,78 @@
 	</header> <!-- section-header.// -->
 
 
+	<nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
+		<div class="container">
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+				aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="main_nav">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="index.html">HOME</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SHOP BY CATEGORY</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="page-categories.html">Categories List</a>
+							<a class="dropdown-item" href="page-category-grid.html">Category 1</a>
+							<a class="dropdown-item" href="#">Category 2</a>
+							<a class="dropdown-item" href="#">Category 3</a>
+							<a class="dropdown-item" href="#">Category 4</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Sub Category 1</a>
+							<a class="dropdown-item" href="#">Sub Category 2</a>
+							<a class="dropdown-item" href="#">Sub Category 3</a>
+							<a class="dropdown-item" href="#">Sub Category 4</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SHOP BY MANUFACTURER</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="page-manufacturers.html">Manufacturers List</a>
+							<a class="dropdown-item" href="page-manufacturer-grid.html">Manufacturer 1</a>
+							<a class="dropdown-item" href="#">Manufacturer 2</a>
+							<a class="dropdown-item" href="#">Manufacturer 3</a>
+							<a class="dropdown-item" href="#">Manufacturer 4</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="page-pricing.html">PRICING</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="page-about.html">ABOUT US</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="page-contact.html">CONTACT US</a>
+					</li>
+					<!--li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> More</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">Foods and Drink</a>
+							<a class="dropdown-item" href="#">Home interior</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Category 1</a>
+							<a class="dropdown-item" href="#">Category 2</a>
+							<a class="dropdown-item" href="#">Category 3</a>
+						</div>
+					</li-->
+				</ul>
+			</div> <!-- collapse .// -->
+		</div> <!-- container .// -->
+	</nav>
+
+	</header> <!-- section-header.// -->
 
 	<!-- ========================= SECTION PAGETOP ========================= -->
-	<section class="section-pagetop bg">
+	<section class="section-pagetop bg-gray">
 		<div class="container">
 			<h2 class="title-page">My account</h2>
 		</div> <!-- container //  -->
 	</section>
-	<!-- ========================= SECTION INTRO END// ========================= -->
+	<!-- ========================= SECTION PAGETOP END// ========================= -->
 
 	<!-- ========================= SECTION CONTENT ========================= -->
 	<section class="section-content padding-y">
@@ -106,15 +172,16 @@
 
 			<div class="row">
 				<aside class="col-md-3">
-					<ul class="list-group">
-						<a class="list-group-item active" href="#"> Account overview </a>
-						<a class="list-group-item" href="#"> My Orders </a>
-						<a class="list-group-item" href="#"> My wishlist </a>
-						<a class="list-group-item" href="#"> Return and refunds </a>
-						<a class="list-group-item" href="#">Settings </a>
-						<a class="list-group-item" href="#"> My Selling Items </a>
-						<a class="list-group-item" href="#"> Received orders </a>
-					</ul>
+					<nav class="list-group">
+						<a class="list-group-item active" href="page-profile-main.html"> Account overview </a>
+						<a class="list-group-item" href="page-profile-address.html"> My Address </a>
+						<a class="list-group-item" href="page-profile-orders.html"> My Orders </a>
+						<a class="list-group-item" href="page-profile-wishlist.html"> My wishlist </a>
+						<a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
+						<a class="list-group-item" href="page-product-info.html"> Add Items </a>
+						<a class="list-group-item" href="page-profile-setting.html"> Settings </a>
+						<a class="list-group-item" href="index.html"> Log out </a>
+					</nav>
 				</aside> <!-- col.// -->
 				<main class="col-md-9">
 
@@ -127,8 +194,8 @@
 								</div>
 								<div class="text">
 									<strong> Mr. Jackson Someone </strong> <br>
-									myloginname@gmail.com <br>
-									<a href="#">Edit</a>
+									<p class="mb-2"> myloginname@gmail.com </p>
+									<a href="#" class="btn btn-light btn-sm">Edit</a>
 								</div>
 							</figure>
 							<hr>
@@ -141,28 +208,28 @@
 
 
 
-							<article class="card-group">
+							<article class="card-group card-stat">
 								<figure class="card bg">
 									<div class="p-3">
-										<h5 class="card-title">38</h5>
+										<h4 class="title">38</h4>
 										<span>Orders</span>
 									</div>
 								</figure>
 								<figure class="card bg">
 									<div class="p-3">
-										<h5 class="card-title">5</h5>
+										<h4 class="title">5</h4>
 										<span>Wishlists</span>
 									</div>
 								</figure>
 								<figure class="card bg">
 									<div class="p-3">
-										<h5 class="card-title">12</h5>
+										<h4 class="title">12</h4>
 										<span>Awaiting delivery</span>
 									</div>
 								</figure>
 								<figure class="card bg">
 									<div class="p-3">
-										<h5 class="card-title">50</h5>
+										<h4 class="title">50</h4>
 										<span>Delivered items</span>
 									</div>
 								</figure>
@@ -183,8 +250,8 @@
 										<figcaption class="info">
 											<time class="text-muted"><i class="fa fa-calendar-alt"></i>
 												12.09.2019</time>
-											<p>Great item name goes here </p>
-											<span class="text-warning">Pending</span>
+											<p>Great book name goes here </p>
+											<span class="text-success">Order confirmed </span>
 										</figcaption>
 									</figure>
 								</div> <!-- col.// -->
@@ -194,7 +261,7 @@
 										<figcaption class="info">
 											<time class="text-muted"><i class="fa fa-calendar-alt"></i>
 												12.09.2019</time>
-											<p>Machine for kitchen to blend </p>
+											<p>How to be rich</p>
 											<span class="text-success">Departured</span>
 										</figcaption>
 									</figure>
@@ -205,14 +272,15 @@
 										<figcaption class="info">
 											<time class="text-muted"><i class="fa fa-calendar-alt"></i>
 												12.09.2019</time>
-											<p>Ladies bag original leather </p>
+											<p>Harry Potter book </p>
 											<span class="text-success">Shipped </span>
 										</figcaption>
 									</figure>
 								</div> <!-- col.// -->
 							</div> <!-- row.// -->
 
-							<a href="#" class="btn btn-outline-primary"> See all orders </a>
+							<a href="#" class="btn btn-outline-primary btn-block"> See all orders <i
+									class="fa fa-chevron-down"></i> </a>
 						</div> <!-- card-body .// -->
 					</article> <!-- card.// -->
 
@@ -222,6 +290,8 @@
 		</div> <!-- container .//  -->
 	</section>
 	<!-- ========================= SECTION CONTENT END// ========================= -->
+
+
 
 
 	<!-- ========================= FOOTER ========================= -->
@@ -236,7 +306,6 @@
 		</div><!-- //container -->
 	</footer>
 	<!-- ========================= FOOTER END // ========================= -->
-
 
 
 </body>
