@@ -3,39 +3,39 @@ function btnRegister_click() {
     RegisterUser();
 }
 
-function TKbtnSaveDef_click() {
+/* function TKbtnSaveDef_click() {
      SaveDefaultEmail();
 }
-
-function TKAddFeedbackPage_show() {
+ */
+/* function TKAddFeedbackPage_show() {
      TKshowAddFeedback();
 }
+ */
 
-
-function TKinit() {
+function init() {
     console.info("DOM is ready");
 
-    $('#customCheck1').click(function() {
+   /*  $('#customCheck1').click(function() {
         if ($('#submitBtn').is(':disabled')) {
             $('#submitBtn').removeAttr('disabled');
         } else {
             $('#submitBtn').attr('disabled', 'disabled');
         }
-    });
+    }); */
 
     $("#submitBtn").on("click", btnRegister_click);
 
-  $("#TKbtnSaveDef").on("click", TKbtnSaveDef_click);
+    //$("#TKbtnSaveDef").on("click", TKbtnSaveDef_click);
 
-     $("#TKAddFeedbackPage").on("pageshow",TKAddFeedbackPage_show);
+    //$("#TKAddFeedbackPage").on("pageshow",TKAddFeedbackPage_show);
 
 }
-function TKinitDB(){
+function initDB(){
     try{
-        DB.TKcreateDatabase();
+        DB.createDatabase();
         if (db) {
             console.info("Creating tables...");
-            DB.TKcreateTables();
+            DB.createTables();
         }
         else{
             console.error("Error: Cannot create tables: database does not exist");
@@ -46,6 +46,6 @@ function TKinitDB(){
     }
 }
 $(document).ready(function () {
-    TKinit();
-    TKinitDB();
+    init();
+    initDB();
 });

@@ -3,10 +3,6 @@ function DoValidate_frmAdd(){
     var form = $("#RegisterForm");
     form.validate({
         rules:{
-           /* TKTypeAdd:{
-                required: true
-                // candidateCheck: true
-            },*/
             firstName:{
                 required: true,
                 rangelength:[2, 10]
@@ -41,10 +37,6 @@ function DoValidate_frmAdd(){
             }
         },
         messages:{
-            /*TKTypeAdd:{
-                required: "You should choose a candidate"
-                // candidateCheck: ""
-            },*/
             firstName:{
                 required: "first name is required",
                 rangelength:"Length must be at least 2 letters"
@@ -89,12 +81,12 @@ jQuery.validator.addMethod("emailAddCheck",
     },
     "Email Add Checker");
 
-    jQuery.validator.addMethod("phoneAddCheck",
+jQuery.validator.addMethod("phoneAddCheck",
     function validatePhone(phoneNumber){
         var phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
         return phoneNumberPattern.test(phoneNumber); 
      },
-     "Phone Add Checker");
+     "Phone Add Checker"); 
 
 // jQuery.validator.addMethod("candidateCheck",
 //     function(value, element)
