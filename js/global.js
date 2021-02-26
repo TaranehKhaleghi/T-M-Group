@@ -1,8 +1,13 @@
 
 function btnRegister_click() {
-    if(RegisterUser()){
-        window.location.replace("page-user-login.html");
-    }; 
+    if (RegisterUser()) {
+        submitBtn.addEventListener("click", function (evt) {
+            //evt.preventDefault();
+            var URL = "..//page-user-login.html";
+            window.location.replace(URL);
+            return false;
+        });
+    };
 }
 
 /* function TKbtnSaveDef_click() {
