@@ -48,9 +48,9 @@
         Type.TKselectAll(options, callback);
 } */
 
-function RegisterUser(){
-        if(DoValidate_frmAdd())
-        {
+function RegisterUser() {
+        console.info("entering RegisterUser");
+        if (DoValidate_frmAdd()) {
                 console.info("User Registration Form Validation is successful.");
                 var firstName = $("#firstName").val();
                 var lastName = $("#lastName").val();
@@ -62,25 +62,25 @@ function RegisterUser(){
                 var addressDetails = $("#addressDetails").val();
                 var password = $("#password").val();
 
-                console.info("finish validation");
                 var options = [];
-                function callback(tx, results) {
-                        console.info("enterying callback");
-                         var eligible = true;
-                         var length = results.rows.length;
-                        if(length===0){
-                                 options =[firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                options = [firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                /*function callback(tx, results) {
+                        console.info("entering callback");
+                        var eligible = true;
+                        var length = results.rows.length;
+                        if (length === 0) {
+                                options = [firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
                                 Register.UserInsert(options);
                         }
-                        else{
+                        else {
                                 for (var i = 0; i < length; i++) {
                                         var row = results.rows[i];
                                         if (userEmail === row['userEmail']) {
-                                                 eligible = false
+                                                eligible = false
                                         }
                                 }
-                                if(eligible === true){
-                                         options =[firstName,lastName,countryCode,phoneNumber,
+                                if (eligible === true) {
+                                        options = [firstName, lastName, countryCode, phoneNumber,
                                                 userEmail, city, country, addressDetails, password];
                                         Register.UserInsert(options);
                                 }
@@ -88,10 +88,10 @@ function RegisterUser(){
                                         window.alert("The email is already exist!");
                                 }
                         }
-                }
-               Register.SelectAll(callback);
+                }*/
+                Register.UserInsert(options);
         }
-        else{
+        else {
                 console.error("Registration form Validation failed.");
         }
 }

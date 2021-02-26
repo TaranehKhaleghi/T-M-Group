@@ -1,93 +1,136 @@
 
-function DoValidate_frmAdd(){
+function DoValidate_frmAdd() {
     var form = $("#RegisterForm");
     form.validate({
-        rules:{
-            firstName:{
+        rules: {
+            firstName: {
                 required: true,
-                rangelength:[2, 10]
+                rangelength: [2, 10]
             },
-            lastName:{
+            lastName: {
                 required: true,
+<<<<<<< HEAD
                 rangelength:[2, 10]
             },
             phoneNumber:{
-                required: true,
-                phoneAddCheck:true,
+=======
+                rangelength: [2, 10]
             },
-            userEmail:{
+            phoneNumber: {
+>>>>>>> 071acf74c14b893df12bbc1d9d9fc7dd4511d508
                 required: true,
-                emailAddCheck:true
+                phoneAddCheck: true,
             },
-            city:{
+            userEmail: {
                 required: true,
-                rangelength:[1, 20]
+                emailAddCheck: true
             },
-            addressDetails:{
+            city: {
+                required: true,
+                rangelength: [1, 20]
+            },
+            addressDetails: {
                 required: true
             },
-            password:{
+            password: {
                 required: true
             },
-            confirmPassword:{
+            confirmPassword: {
+                required: true,
                 equalTo: "#password"
             },
+<<<<<<< HEAD
             customCheck1:{
                 required:true
             }
         }, 
         messages:{
             firstName:{
+=======
+            customCheck1: {
+                required: true
+            }
+        },
+        messages: {
+            firstName: {
+>>>>>>> 071acf74c14b893df12bbc1d9d9fc7dd4511d508
                 required: "first name is required",
-                rangelength:"Length must be at least 2 letters"
+                rangelength: "Length must be between 2 and 10 letters"
             },
+<<<<<<< HEAD
             lastName:{
                 required: "first name is required",
                 rangelength:"Length must be at least 2 letters"
             },
             phoneNumber:{
+=======
+            lastName: {
+                required: "last name is required",
+                rangelength: "Length must be between 2 and 10 letters"
+            },
+            phoneNumber: {
+>>>>>>> 071acf74c14b893df12bbc1d9d9fc7dd4511d508
                 required: "phone number is required",
-                rangelength:"Length must be at least 2 letters"
+                rangelength: "Please enter a valid phone number"
             },
-            userEmail:{
+            userEmail: {
                 required: "Email is required",
-                emailAddCheck:"Please enter a valid email address"
+                emailAddCheck: "Please enter a valid email address"
             },
-            city:{
+            city: {
                 required: "city is required"
             },
-            addressDetails:{
+            addressDetails: {
                 required: "address is required"
             },
-            password:{
+            password: {
                 required: "Enter password"
             },
-            confirmPassword:{
+            confirmPassword: {
+                required: "Confirm password",
                 equalTo: "Password is not match"
             },
+<<<<<<< HEAD
             customeCheck1:{
                 required:"is required"
+=======
+            customeCheck1: {
+                required: "is required"
+>>>>>>> 071acf74c14b893df12bbc1d9d9fc7dd4511d508
             }
         }
     });
     return form.valid();
 }
 
+<<<<<<< HEAD
  jQuery.validator.addMethod("emailAddCheck",
     function(value, element)
     {
+=======
+jQuery.validator.addMethod("emailAddCheck",
+    function (value, element) {
+>>>>>>> 071acf74c14b893df12bbc1d9d9fc7dd4511d508
         var regex = /^[^@]+@[^@]+\.[^@]+$/;
         return this.optional(element) || regex.test(value);
     },
-    "Email Add Checker");
+    "Email is not valid");
 
 jQuery.validator.addMethod("phoneAddCheck",
+<<<<<<< HEAD
     function(value, element)
     {
         var regex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
         return this.optional(element) || regex.test(value);
      },
      "Phone Add Checker");  
+=======
+    function validatePhone(phoneNumber) {
+        var phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+        return phoneNumberPattern.test(phoneNumber);
+    },
+    "Phone is not valid");
+>>>>>>> 071acf74c14b893df12bbc1d9d9fc7dd4511d508
 
 // jQuery.validator.addMethod("candidateCheck",
 //     function(value, element)
