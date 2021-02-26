@@ -15,13 +15,13 @@ function btnRegister_click() {
 function init() {
     console.info("DOM is ready");
 
-   /*  $('#customCheck1').click(function() {
+     $('#customCheck1').click(function() {
         if ($('#submitBtn').is(':disabled')) {
             $('#submitBtn').removeAttr('disabled');
         } else {
             $('#submitBtn').attr('disabled', 'disabled');
         }
-    }); */
+    }); 
 
     $("#submitBtn").on("click", btnRegister_click);
 
