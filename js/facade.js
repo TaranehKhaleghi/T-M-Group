@@ -90,7 +90,7 @@ function RegisterUser() {
                                 }
                         }
                 }*/
-                Register.UserInsert(options);
+                Register.UserInsert(options);                  
         }
         else {
                 console.error("Registration form Validation failed.");

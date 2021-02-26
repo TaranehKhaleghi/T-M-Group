@@ -6,6 +6,7 @@ var Register = {
 
         function successInsert() {
             console.info("Success: Insert successful");
+            window.location.replace("page-user-login.html");
             alert("Registration has been successful");
         }
 
@@ -15,8 +16,7 @@ var Register = {
             tx.executeSql(sql, options, successInsert, errorHandler);
         }
 
-        db.transaction(txFunction, errorHandler, successTransaction);
-
+        db.transaction(txFunction, errorHandler, successTransaction);       
     },
 
     SelectAll: function (callback) {

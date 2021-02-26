@@ -1,13 +1,12 @@
 
 function btnRegister_click() {
-    if (RegisterUser()) {
-        submitBtn.addEventListener("click", function (evt) {
+    RegisterUser();
+        /* submitBtn.addEventListener("click", function (evt) {
             //evt.preventDefault();
             var URL = "..//page-user-login.html";
             window.location.replace(URL);
             return false;
-        });
-    };
+        });*/
 }
 
 /* function TKbtnSaveDef_click() {
