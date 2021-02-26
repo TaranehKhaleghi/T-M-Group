@@ -1414,8 +1414,4 @@ a[class*=card]:hover .title {
   margin-right: 5px;
   display: block;
 }
-label.error{
-  color: #F00;
-  font-weight: bold;
-}
 /*# sourceMappingURL=ui.css.map */

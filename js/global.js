@@ -15,13 +15,13 @@ function btnRegister_click() {
 function init() {
     console.info("DOM is ready");
 
-     $('#customCheck1').click(function() {
+    $('#customCheck1').click(function () {
         if ($('#submitBtn').is(':disabled')) {
             $('#submitBtn').removeAttr('disabled');
         } else {
             $('#submitBtn').attr('disabled', 'disabled');
         }
-    }); 
+    });
 
     $("#submitBtn").on("click", btnRegister_click);
 
@@ -30,18 +30,19 @@ function init() {
     //$("#TKAddFeedbackPage").on("pageshow",TKAddFeedbackPage_show);
 
 }
-function initDB(){
-    try{
+
+function initDB() {
+    try {
         DB.createDatabase();
         if (db) {
             console.info("Creating tables...");
             DB.createTables();
         }
-        else{
+        else {
             console.error("Error: Cannot create tables: database does not exist");
         }
     }
-    catch(e){
+    catch (e) {
         console.error("Error: (Fatal) error in initDB(). Can not proceed.");
     }
 }
