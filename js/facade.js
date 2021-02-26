@@ -62,9 +62,9 @@ function RegisterUser() {
                 var addressDetails = $("#addressDetails").val();
                 var password = $("#password").val();
 
-                console.info("finish validation");
                 var options = [];
-                function callback(tx, results) {
+                options = [firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                /*function callback(tx, results) {
                         console.info("entering callback");
                         var eligible = true;
                         var length = results.rows.length;
@@ -88,8 +88,8 @@ function RegisterUser() {
                                         window.alert("The email is already exist!");
                                 }
                         }
-                }
-                Register.SelectAll(callback);
+                }*/
+                Register.UserInsert(options);
         }
         else {
                 console.error("Registration form Validation failed.");
