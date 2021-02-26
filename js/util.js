@@ -43,8 +43,8 @@ function DoValidate_frmAdd() {
                 rangelength: "Length must be between 2 and 10 letters"
             },
             lastName:{
-                required: "first name is required",
-                rangelength:"Length must be at least 2 letters"
+                required: "last name is required",
+                rangelength:"Length must be between 2 and 10 letters"
             },
             phoneNumber:{
                 required: "phone number is required",
@@ -67,7 +67,7 @@ function DoValidate_frmAdd() {
                 required: "Confirm password",
                 equalTo: "Password is not match"
             },
-            customeCheck1:{
+            customCheck1:{
                 required:"is required"
             }
         }
@@ -89,7 +89,7 @@ jQuery.validator.addMethod("phoneAddCheck",
         var regex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
         return this.optional(element) || regex.test(value);
      },
-     "Phone Add Checker");  
+     "Phone is not valid");  
 
 // jQuery.validator.addMethod("candidateCheck",
 //     function(value, element)
