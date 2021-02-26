@@ -54,24 +54,23 @@ function RegisterUser(){
                 console.info("User Registration Form Validation is successful.");
                 var firstName = $("#firstName").val();
                 var lastName = $("#lastName").val();
-                var countryCode = $("#countryCode option:selected").text();
+                var countryCode = $("#countryCode option:selected").val();
                 var phoneNumber = $("#phoneNumber").val();
                 var userEmail = $("#userEmail").val();
                 var city = $("#city").val();
-                var country = $("#country option:selected").text();
-                var addressDetails = $("#addressDetails").value();
-                var password = $("#password").value();
-                
+                var country = $("#country").val();
+                var addressDetails = $("#addressDetails").val();
+                var password = $("#password").val();
 
-                /*var options =[studentNum,candidateId,studentEmail,voteDate];
-                Review.TKinsert(options);*/
-                function callback(tx,results) {
+                console.info("finish validation");
+                var options = [];
+                function callback(tx, results) {
+                        console.info("enterying callback");
                          var eligible = true;
                          var length = results.rows.length;
                         if(length===0){
-                                var options =[firstName,lastName,countryCode,phoneNumber,
-                                              userEmail, city, country, addressDetails, password];
-                                Register.insert(options);
+                                 options =[firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                                Register.UserInsert(options);
                         }
                         else{
                                 for (var i = 0; i < length; i++) {
@@ -81,19 +80,16 @@ function RegisterUser(){
                                         }
                                 }
                                 if(eligible === true){
-                                        var options =[firstName,lastName,countryCode,phoneNumber,
+                                         options =[firstName,lastName,countryCode,phoneNumber,
                                                 userEmail, city, country, addressDetails, password];
-                                        Register.insert(options);
+                                        Register.UserInsert(options);
                                 }
                                 else {
                                         window.alert("The email is already exist!");
                                 }
                         }
-
-
                 }
-                Register.selectAll(callback);
-
+               Register.SelectAll(callback);
         }
         else{
                 console.error("Registration form Validation failed.");

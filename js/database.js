@@ -68,7 +68,7 @@ var DB = {
             }*/
 
             console.info("Creating user Tables:");
-//phoneNumber" "userEmail, city, country, addressDetails, password
+         //phoneNumber" "userEmail, city, country, addressDetails, password
             var sqlCreateUser = "CREATE TABLE IF NOT EXISTS users(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "firstName VARCHAR(20) NOT NULL," +

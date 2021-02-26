@@ -10,8 +10,8 @@ function DoValidate_frmAdd(){
             lastName:{
                 required: true,
                 rangelength:[2, 10]
-            },
-            phoneNumber:{
+            }
+           /*  phoneNumber:{
                 required: true,
                 phoneAddCheck:true,
             },
@@ -34,8 +34,8 @@ function DoValidate_frmAdd(){
             },
             customCheck1:{
                 required:true
-            }
-        },
+            }*/
+        }, 
         messages:{
             firstName:{
                 required: "first name is required",
@@ -44,7 +44,7 @@ function DoValidate_frmAdd(){
             lastName:{
                 required: "first name is required",
                 rangelength:"Length must be at least 2 letters"
-            },
+            }/* ,
             phoneNumber:{
                 required: "phone number is required",
                 rangelength:"Length must be at least 2 letters"
@@ -67,13 +67,13 @@ function DoValidate_frmAdd(){
             },
             customeCheck1:{
                 required:"is required"
-            }
+            } */
         }
     });
     return form.valid();
 }
 
-jQuery.validator.addMethod("emailAddCheck",
+/* jQuery.validator.addMethod("emailAddCheck",
     function(value, element)
     {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;
@@ -86,7 +86,7 @@ jQuery.validator.addMethod("phoneAddCheck",
         var phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
         return phoneNumberPattern.test(phoneNumber); 
      },
-     "Phone Add Checker"); 
+     "Phone Add Checker");  */
 
 // jQuery.validator.addMethod("candidateCheck",
 //     function(value, element)
