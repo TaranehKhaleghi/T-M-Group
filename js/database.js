@@ -71,6 +71,7 @@ var DB = {
          //phoneNumber" "userEmail, city, country, addressDetails, password
             var sqlCreateUser = "CREATE TABLE IF NOT EXISTS users(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "accountType VARCHAR(20) NOT NULL," +
                 "firstName VARCHAR(20) NOT NULL," +
                 "lastName VARCHAR(20) NOT NULL," +
                 "countryCode VARCHAR(3) NOT NULL," +

@@ -1,6 +1,8 @@
 
 function btnRegister_click() {
-    RegisterUser();
+    if(RegisterUser()){
+        window.location.replace("page-user-login.html");
+    }; 
 }
 
 /* function TKbtnSaveDef_click() {

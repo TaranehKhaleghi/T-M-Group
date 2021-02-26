@@ -52,6 +52,7 @@ function RegisterUser() {
         console.info("entering RegisterUser");
         if (DoValidate_frmAdd()) {
                 console.info("User Registration Form Validation is successful.");
+                var accountType = $("input[name='accountType']:checked").val();
                 var firstName = $("#firstName").val();
                 var lastName = $("#lastName").val();
                 var countryCode = $("#countryCode option:selected").val();
@@ -63,7 +64,7 @@ function RegisterUser() {
                 var password = $("#password").val();
 
                 var options = [];
-                options = [firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
                 /*function callback(tx, results) {
                         console.info("entering callback");
                         var eligible = true;

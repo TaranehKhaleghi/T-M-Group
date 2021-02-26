@@ -6,12 +6,12 @@ var Register = {
 
         function successInsert() {
             console.info("Success: Insert successful");
-            alert("Your vote Added");
+            alert("Registration has been successful");
         }
 
         function txFunction(tx) {
             var sql = "";
-            sql = "INSERT INTO users(firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password) VALUES(?,?,?,?,?,?,?,?,?);";
+            sql = "INSERT INTO users(accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password) VALUES(?,?,?,?,?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
         }
 
