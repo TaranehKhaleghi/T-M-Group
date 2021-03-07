@@ -65,7 +65,9 @@ function RegisterUser() {
 
                 var options = [];
                 options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
-                /*function callback(tx, results) {
+
+
+                function callback(tx, results) {
                         console.info("entering callback");
                         var eligible = true;
                         var length = results.rows.length;
@@ -74,6 +76,7 @@ function RegisterUser() {
                                 Register.UserInsert(options);
                         }
                         else {
+                                console.info("going through the array");
                                 for (var i = 0; i < length; i++) {
                                         var row = results.rows[i];
                                         if (userEmail === row['userEmail']) {
@@ -83,14 +86,16 @@ function RegisterUser() {
                                 if (eligible === true) {
                                         options = [firstName, lastName, countryCode, phoneNumber,
                                                 userEmail, city, country, addressDetails, password];
+                                        console.info("calling insert in registration");
                                         Register.UserInsert(options);
                                 }
                                 else {
                                         window.alert("The email is already exist!");
                                 }
                         }
-                }*/
-                Register.UserInsert(options);                  
+                }
+
+                Register.SelectAll(callback);                  
         }
         else {
                 console.error("Registration form Validation failed.");

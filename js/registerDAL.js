@@ -1,17 +1,18 @@
 var Register = {
     UserInsert: function (options) {
         function successTransaction() {
-            console.info("Success: Transaction successful");
+            console.info("Success: insert Transaction successful");
         }
 
         function successInsert() {
             console.info("Success: Insert successful");
-            window.location.replace("page-user-login.html");
             alert("Registration has been successful");
+            window.location.replace("page-user-login.html");           
         }
 
         function txFunction(tx) {
             var sql = "";
+            console.info("insert into sql");
             sql = "INSERT INTO users(accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password) VALUES(?,?,?,?,?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
         }
@@ -23,7 +24,7 @@ var Register = {
         var options = [];
 
         function successTransaction() {
-            console.info("Success: Transaction successful");
+            console.info("Success: select all Transaction successful");
         }
 
         function txFunction(tx) {
