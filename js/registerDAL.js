@@ -1,6 +1,7 @@
 var Register = {
+    
     UserInsert: function (options) {
-        function successTransaction() {
+        function successInsertTransaction() {
             console.info("Success: insert Transaction successful");
         }
 
@@ -16,8 +17,8 @@ var Register = {
             sql = "INSERT INTO users(accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password) VALUES(?,?,?,?,?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
         }
-
-        db.transaction(txFunction, errorHandler, successTransaction);       
+        console.info("entering insert");
+        db.transaction(txFunction, errorHandler, successInsertTransaction);       
     },
 
     SelectAll: function (callback) {
