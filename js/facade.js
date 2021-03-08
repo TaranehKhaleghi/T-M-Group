@@ -72,7 +72,7 @@ function RegisterUser() {
                         var eligible = true;
                         var length = results.rows.length;
                         if (length === 0) {
-                                options = [firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                                //options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
                                 Register.UserInsert(options);
                         }
                         else {
@@ -84,18 +84,17 @@ function RegisterUser() {
                                         }
                                 }
                                 if (eligible === true) {
-                                        options = [firstName, lastName, countryCode, phoneNumber,
-                                                userEmail, city, country, addressDetails, password];
+                                        //options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
                                         console.info("calling insert in registration");
                                         Register.UserInsert(options);
                                 }
                                 else {
-                                        window.alert("The email is already exist!");
+                                        window.alert("This account with the same email is already exist!");
                                 }
                         }
                 }
 
-                Register.SelectAll(callback);                  
+                Register.SelectAll(callback);
         }
         else {
                 console.error("Registration form Validation failed.");
