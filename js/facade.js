@@ -49,7 +49,7 @@
 } */
 
 function RegisterUser() {
-        console.info("entering RegisterUser");
+        console.info("Entering RegisterUser");
         if (DoValidate_frmAdd()) {
                 console.info("User Registration Form Validation is successful.");
                 var accountType = $("input[name='accountType']:checked").val();
@@ -63,38 +63,38 @@ function RegisterUser() {
                 var addressDetails = $("#addressDetails").val();
                 var password = $("#password").val();
 
-                var options = [];
-                options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
-
-
+                //var options = [];
+                //options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                
                 function callback(tx, results) {
-                        console.info("entering callback");
-                        var eligible = true;
-                        var length = results.rows.length;
-                        if (length === 0) {
-                                //options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
-                                Register.UserInsert(options);
+                        var options = [];
+                        console.info("Entering to callback");
+                        var isExist = false;
+                        var thisLength = results.rows.length;
+                        if (thisLength === 0) {
+                                console.info("Length is zero");
+                                isExist = false;
                         }
                         else {
-                                console.info("going through the array");
-                                for (var i = 0; i < length; i++) {
+                                console.info("Length is not zero");
+                                for (var i = 0; i < thisLength; i++) {
                                         var row = results.rows[i];
-                                        if (userEmail === row['userEmail']) {
-                                                eligible = false
+                                        if (row['userEmail'] === userEmail) {
+                                                isExist = true;
                                         }
                                 }
-                                if (eligible === true) {
-                                        //options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
-                                        console.info("calling insert in registration");
-                                        Register.UserInsert(options);
-                                }
-                                else {
-                                        window.alert("This account with the same email is already exist!");
-                                }
                         }
+                        if (isExist === false) {
+                                console.info("calling insert in registration");
+                                options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
+                                Register.userInsert(options);
+                        }
+                        else {
+                                window.alert("This account with the same email is already exist!");
+                        } 
                 }
-
-                Register.SelectAll(callback);
+                
+                Register.selectAll(callback);    
         }
         else {
                 console.error("Registration form Validation failed.");

@@ -1,8 +1,8 @@
 var Register = {
     
-    UserInsert: function (options) {
+    userInsert: function (options) {
         function successInsertTransaction() {
-            console.info("Success: insert Transaction successful");
+            console.info("Success: Insert Transaction successful");
         }
 
         function successInsert() {
@@ -13,23 +13,24 @@ var Register = {
 
         function txFunction(tx) {
             var sql = "";
-            console.info("insert into sql");
+            console.info("Start inserting into table");
             sql = "INSERT INTO users(accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password) VALUES(?,?,?,?,?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
+            console.info("Data added");
         }
-        console.info("entering insert");
+        
         db.transaction(txFunction, errorHandler, successInsertTransaction);       
     },
 
-    SelectAll: function (callback) {
+    selectAll: function (callback) {
         var options = [];
 
         function successTransaction() {
-            console.info("Success: select all Transaction successful");
+            console.info("Success: Select all Transaction successful");
         }
 
         function txFunction(tx) {
-            console.info("Selecting all records.  ");
+            console.info("Selecting all records...");
             var sql = "SELECT * FROM users;";
             tx.executeSql(sql, options, callback, errorHandler);
         }
