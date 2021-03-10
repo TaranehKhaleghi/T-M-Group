@@ -40,23 +40,4 @@ var Register = {
 
 };
 
-/* var Type = {
-    selectAll: function (options, callback) {
-        var options = [];
-
-        function successTransaction() {
-            console.info("Success: Transaction successful");
-        }
-
-        function txFunction(tx) {
-            console.info("Selecting all records.  ");
-            var sql = "SELECT * FROM candidates;";
-            tx.executeSql(sql, options, callback, errorHandler);
-        }
-
-        db.transaction(txFunction, errorHandler, successTransaction);
-    }
-};
- */
-
 
