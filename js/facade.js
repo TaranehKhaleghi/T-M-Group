@@ -98,7 +98,7 @@ function RegisterUser() {
                         Register.selectAll(callback);
                         return isEligible;
                 }
-
+                
                 if (checkDatabase) {
                         Register.userInsert(options);
                 }
