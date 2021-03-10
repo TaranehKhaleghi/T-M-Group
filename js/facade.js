@@ -65,42 +65,43 @@ function RegisterUser() {
 
                 var options = [];
                 options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
-                //var isAdded = true;
-
-                function callback(tx, results) {                    
+                
+                function checkDatabase() {
                         var isExist = 0;
-                        console.info("Entering to callback");
-                        if (results.rows.length === 0) {
-                                console.info("Length is zero");
-                                isExist = 0;
-                        }
-                        else {
-                                console.info("Length is not zero");
-                                for (var i = 0; i < results.rows.length; i++) {
-                                        var row = results.rows[i];
-                                        if (row['userEmail'] === userEmail) {
-                                                console.info("There is a same email ...");
-                                                isExist++;
+                        var isEligible = true;
+                        function callback(tx, results) {
+                                console.info("Entering to callback");
+                                if (results.rows.length === 0) {
+                                        console.info("Length is zero");
+                                        isExist = 0;
+                                        isEligible = true;
+                                }
+                                else {
+                                        console.info("Length is not zero");
+                                        for (var i = 0; i < results.rows.length; i++) {
+                                                var row = results.rows[i];
+                                                if (row['userEmail'] === userEmail) {
+                                                        console.info("There is a same email ...");
+                                                        isExist++;
+                                                        isEligible = false;
+                                                }
                                         }
+                                }
+                                if (isExist === 0) {
+                                        console.info("Calling insert in registration");
+                                }
+                                else {
+                                        window.alert("This account with the same email is already exist!");
                                 }
                         }
 
-                        if (isExist === 0) {
-                                //isAdded = true;
-                                console.info("Calling insert in registration");
-                                Register.userInsert(options);              
-                        }
-                        else {
-                                //isAdded = false;
-                                window.alert("This account with the same email is already exist!");
-                        }
+                        Register.selectAll(callback);
+                        return isEligible;
                 }
 
-                /* if (isAdded) {
+                if (checkDatabase) {
                         Register.userInsert(options);
-                } */
-
-                Register.selectAll(callback);        
+                }
         }
         else {
                 console.error("Registration form Validation failed.");
