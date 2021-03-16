@@ -18,7 +18,7 @@ function init() {
         }
     });
 
-    $("#submitRegBtn").on("click", btnRegister_click);
+    $("#submitBtn").on("click", btnRegister_click);
 
     $("#logInBtn").on("click", btnLogIn_click);
 }
