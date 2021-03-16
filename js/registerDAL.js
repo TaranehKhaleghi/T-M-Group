@@ -8,7 +8,12 @@ var Register = {
         function successInsert() {
             console.info("Success: Insert successful");
             alert("Registration has been successful");
-            window.location.replace("page-user-login.html");           
+            if ($("input[name='accountType']:checked").val() === "supplier"){
+                window.location.replace("page-user-login.html");
+            }
+            else{
+                window.location.replace("page-user-business-info.html");
+            }            
         }
 
         function txFunction(tx) {
