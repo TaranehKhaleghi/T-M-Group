@@ -42,13 +42,24 @@ var DB = {
             var options = [];
             //repeat for other tables
             //=======================
+            console.info("Creating Table: products...");
+            var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS products(" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "name VARCHAR(20) NOT NULL," +
+                "price INT NOT NULL," +
+                "description VARCHAR(50) NOT NULL," +
+                "image VARBINARY NOT NULL);";
+               // "FOREIGN KEY(manufacturer_id) REFERENCES manufacturers(id));"+
+               // "FOREIGN KEY(category_id) REFERENCES category(id));";
+               tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
+
 
             //don't want to drop any table now. only if necessary.
             //=====================================================
             //console.info("Dropping Table users if exists...");
             //var sqlDropUser = "DROP TABLE IF EXISTS users;";
 
-            //tx.executeSql(sqlDropUser, options, successDrop, errorHandler);
+          
             //=====================================================
             //uncomment if necessary
 
@@ -65,7 +76,6 @@ var DB = {
                 "country VARCHAR(20) NOT NULL," +
                 "addressDetails VARCHAR(50) NOT NULL," +
                 "password VARCHAR(50) NOT NULL);";
-            //  "FOREIGN KEY(userEmail) REFERENCES users(id));";
             tx.executeSql(sqlCreateUser, options, successCreate, errorHandler);
         }
 
