@@ -84,6 +84,7 @@ function LogInUser(){
                                         for (var i = 0; i < results.rows.length; i++) {
                                                 var row = results.rows[i];
                                                 if (row['userName'] === userName && row['loginPassword'] === loginPassword) {
+                                                        window.alert("You are logged in successfully");
                                                         isEligible = true;                                                                                                       
                                                 }
                                         }
@@ -102,6 +103,6 @@ function LogInUser(){
                 }
         }
         else {
-                console.error("Registration form Validation failed.");
+                console.error("Log in form Validation failed.");
         }
 }
