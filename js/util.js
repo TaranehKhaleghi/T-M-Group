@@ -1,4 +1,6 @@
 
+//validate register form
+//=======================
 function DoValidate_frmAdd() {
     var form = $("#RegisterForm");
     form.validate({
@@ -9,9 +11,9 @@ function DoValidate_frmAdd() {
             },
             lastName: {
                 required: true,
-                rangelength:[2, 10]
+                rangelength: [2, 10]
             },
-            phoneNumber:{
+            phoneNumber: {
                 required: true,
                 phoneAddCheck: true,
             },
@@ -33,20 +35,20 @@ function DoValidate_frmAdd() {
                 required: true,
                 equalTo: "#password"
             },
-            customCheck1:{
-                required:true
+            customCheck1: {
+                required: true
             }
-        }, 
-        messages:{
-            firstName:{
+        },
+        messages: {
+            firstName: {
                 required: "first name is required",
                 rangelength: "Length must be between 2 and 10 letters"
             },
-            lastName:{
+            lastName: {
                 required: "last name is required",
-                rangelength:"Length must be between 2 and 10 letters"
+                rangelength: "Length must be between 2 and 10 letters"
             },
-            phoneNumber:{
+            phoneNumber: {
                 required: "phone number is required",
                 rangelength: "Please enter a valid phone number"
             },
@@ -67,63 +69,52 @@ function DoValidate_frmAdd() {
                 required: "Confirm password",
                 equalTo: "Password is not match"
             },
-            customCheck1:{
-                required:"is required"
+            customCheck1: {
+                required: "is required"
             }
         }
     });
     return form.valid();
 }
 
- jQuery.validator.addMethod("emailAddCheck",
-    function(value, element)
-    {
+//validate sign in form
+//=======================
+function DoValidate_frmLogIn() {
+    var form = $("#LogInForm");
+    form.validate({
+        rules: {
+            userName: {
+                required: true,
+                emailAddCheck: true
+            },
+            loginPassword: {
+                required: true
+            }
+        },
+        messages: {
+            userName: {
+                required: "Email is required",
+                emailAddCheck: "Please enter a valid email address"
+            },
+            loginPassword: {
+                required: "Enter password"
+            }
+        }
+    });
+    return form.valid();
+}
+
+jQuery.validator.addMethod("emailAddCheck",
+    function (value, element) {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;
         return this.optional(element) || regex.test(value);
     },
     "Email is not valid");
 
 jQuery.validator.addMethod("phoneAddCheck",
-    function(value, element)
-    {
-        var regex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;  
-        return this.optional(element) || regex.test(value);
-     },
-     "Phone is not valid");  
-
-    //validate login form
-    //=======================
-
-function DoValidate_frmLogIn(){
-var form = $("#LogInForm");
-form.validate({
-    rules: {
-        userName: {
-            required: true,
-            emailCheck: true
-        },
-        loginPassword: {
-            required: true
-        }
-    }, 
-    messages:{
-        userName: {
-            required: "Email is required",
-            emailCheck: "Please enter a valid email address"
-        },
-        loginPassword: {
-            required: "Enter password"
-        }
-    }
-});
-    return form.valid();
-}
-
-    jQuery.validator.addMethod("emailCheck",
-    function(value, element)
-    {
-        var regex = /^[^@]+@[^@]+\.[^@]+$/;
+    function (value, element) {
+        var regex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
         return this.optional(element) || regex.test(value);
     },
-    "Email is not valid");
+    "Phone is not valid");
 
