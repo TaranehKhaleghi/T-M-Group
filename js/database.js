@@ -19,7 +19,6 @@ var DB = {
             console.info("Success: Database creation successful.");
         }
     },
-
     createTables: function () {
 
         function successDrop() {
@@ -42,27 +41,22 @@ var DB = {
             var options = [];
             //repeat for other tables
             //=======================
-            console.info("Creating Table: products...");
-            var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS products(" +
-                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                "name VARCHAR(20) NOT NULL," +
-                "price INT NOT NULL," +
-                "description VARCHAR(50) NOT NULL," +
-                "image VARBINARY NOT NULL);";
-               // "FOREIGN KEY(manufacturer_id) REFERENCES manufacturers(id));"+
-               // "FOREIGN KEY(category_id) REFERENCES category(id));";
-               tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
-
 
             //don't want to drop any table now. only if necessary.
             //=====================================================
             //console.info("Dropping Table users if exists...");
             //var sqlDropUser = "DROP TABLE IF EXISTS users;";
 
-          
+            //tx.executeSql(sqlDropUser, options, successDrop, errorHandler);
+
+            //console.info("Dropping Table products if exists...");
+            //var sqlDropProduct = "DROP TABLE IF EXISTS products;";
+
+            //tx.executeSql(sqlDropProduct, options, successDrop, errorHandler);
             //=====================================================
             //uncomment if necessary
 
+            // Create table users
             console.info("Creating Table: users...");
             var sqlCreateUser = "CREATE TABLE IF NOT EXISTS users(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
@@ -77,11 +71,22 @@ var DB = {
                 "addressDetails VARCHAR(50) NOT NULL," +
                 "password VARCHAR(50) NOT NULL);";
             tx.executeSql(sqlCreateUser, options, successCreate, errorHandler);
+
+            // Create table products
+            console.info("Creating Table: products...");
+            var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS products(" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "name VARCHAR(20) NOT NULL," +
+                "price INT NOT NULL," +
+                "description VARCHAR(50) NOT NULL," +
+                "image VARBINARY NOT NULL);";
+            // "FOREIGN KEY(manufacturer_id) REFERENCES manufacturers(id));"+
+            // "FOREIGN KEY(category_id) REFERENCES category(id));";
+            tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
         }
 
         db.transaction(txFunction, errorHandler, successTransaction);
     },
-
     dropTables: function () {
         function successDrop() {
             console.info("Success: Dropping Table successful. ");
@@ -100,11 +105,10 @@ var DB = {
 
             tx.executeSql(sqlUser, options, successDrop, errorHandler);
             //=====================================================
-            //console.info("Dropping Table: users");
-            //var sqlReview = "DROP TABLE IF EXISTS users;";
+            console.info("Dropping Table: products");
+            var sqlProduct = "DROP TABLE IF EXISTS products;";
 
-            //tx.executeSql(sqlReview, options, successDrop, errorHandler);
-
+            tx.executeSql(sqlProduct, options, successDrop, errorHandler);
         }
 
         db.transaction(txFunction, errorHandler, successTransaction);

@@ -2,10 +2,10 @@
 function btnRegister_click() {
     RegisterUser();
 }
-function btnLogIn_click(){
+
+function btnLogIn_click() {
     LogInUser();
 }
-
 
 function init() {
     console.info("DOM is ready");
