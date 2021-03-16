@@ -119,11 +119,11 @@ form.validate({
     return form.valid();
 }
 
-   /*  jQuery.validator.addMethod("emailCheck",
+    jQuery.validator.addMethod("emailCheck",
     function(value, element)
     {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;
         return this.optional(element) || regex.test(value);
     },
-    "Email is not valid"); */
+    "Email is not valid");
 
