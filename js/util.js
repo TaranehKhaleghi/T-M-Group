@@ -91,9 +91,39 @@ jQuery.validator.addMethod("phoneAddCheck",
      },
      "Phone is not valid");  
 
-// jQuery.validator.addMethod("candidateCheck",
-//     function(value, element)
-//     {
-//         return this.optional(element) && value !== "";
-//     },
-//     "Candidate Checker");
+    //validate login form
+    //=======================
+
+function DoValidate_frmLogIn(){
+var form = $("#LogInForm");
+form.validate({
+    rules: {
+        userName: {
+            required: true,
+            emailCheck: true
+        },
+        loginPassword: {
+            required: true
+        }
+    }, 
+    messages:{
+        userName: {
+            required: "Email is required",
+            //emailAddCheck: "Please enter a valid email address"
+        },
+        loginPassword: {
+            required: "Enter password"
+        }
+    }
+});
+    return form.valid();
+}
+
+   /*  jQuery.validator.addMethod("emailCheck",
+    function(value, element)
+    {
+        var regex = /^[^@]+@[^@]+\.[^@]+$/;
+        return this.optional(element) || regex.test(value);
+    },
+    "Email is not valid"); */
+

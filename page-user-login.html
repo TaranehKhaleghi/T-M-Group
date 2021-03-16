@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
@@ -14,6 +14,9 @@
 	<!-- jQuery -->
 	<script src="js/lib/jquery-2.0.0.min.js" type="text/javascript"></script>
 
+	<!--jQuery Validation-->
+	<script src="js/lib/jquery.validate.js" type="text/javascript"></script>
+
 	<!-- Bootstrap4 files-->
 	<script src="js/lib/bootstrap.bundle.min.js" type="text/javascript"></script>
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -25,8 +28,17 @@
 	<link href="css/ui.css" rel="stylesheet" type="text/css" />
 	<link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
 
+	<link href="css/myStyle.css" rel="stylesheet" type="text/css" />
+
 	<!-- custom javascript -->
 	<script src="js/lib/script.js" type="text/javascript"></script>
+
+	<script src="js/database.js" type="text/javascript"></script>
+	<script src="js/dropshippingDAL.js" type="text/javascript"></script>
+	<script src="js/global.js" type="text/javascript"></script>
+	<script src="js/facade.js" type="text/javascript"></script>
+	<script src="js/util.js" type="text/javascript"></script>
+
 
 	<script type="text/javascript">
 		/// some script
@@ -99,16 +111,16 @@
 		<div class="card mx-auto" style="max-width: 380px; margin-top:100px;">
 			<div class="card-body">
 				<h4 class="card-title mb-4">Sign in</h4>
-				<form>
+				<form id="LogInForm">
 					<a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp Sign in
 						with Facebook</a>
 					<a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp Sign in with
 						Google</a>
 					<div class="form-group">
-						<input name="" class="form-control" placeholder="Username" type="text">
+						<input name="" class="form-control" placeholder="Username" type="text" id="userName">
 					</div> <!-- form-group// -->
 					<div class="form-group">
-						<input name="" class="form-control" placeholder="Password" type="password">
+						<input name="" class="form-control" placeholder="Password" type="password" id="loginPassword">
 					</div> <!-- form-group// -->
 
 					<div class="form-group">
@@ -119,7 +131,7 @@
 						</label>
 					</div> <!-- form-group form-check .// -->
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-block"> Login </button>
+						<button type="submit" class="btn btn-primary btn-block" id="logInBtn"> Login </button>
 					</div> <!-- form-group// -->
 				</form>
 			</div> <!-- card-body.// -->

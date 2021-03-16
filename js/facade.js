@@ -57,3 +57,51 @@ function RegisterUser() {
                 console.error("Registration form Validation failed.");
         }
 }
+
+function LogInUser(){
+        console.info("Entering LogInUser");
+        if (DoValidate_frmLogIn()) {
+                console.info("User Login Form Validation is successful.");               
+                var userName = $("#userName").val();
+                var loginPassword = $("#loginPassword").val();
+
+                var options = [];
+                var isEligible = true;
+                options = [userName, loginPassword];
+                
+                function checkDatabase() {
+                        var isExist = 0;                        
+                        function callback(tx, results) {
+                                console.info("Entering to callback");
+                                if (results.rows.length === 0) {
+                                        window.alert("You didn't sign up before");
+                                        console.info("Length is zero");
+                                        isExist = 0;
+                                        isEligible = false;
+                                }
+                                else {
+                                        console.info("Length is not zero");
+                                        for (var i = 0; i < results.rows.length; i++) {
+                                                var row = results.rows[i];
+                                                if (row['userName'] === userName && row['loginPassword'] === loginPassword) {
+                                                        isEligible = true;                                                                                                       
+                                                }
+                                        }
+                                }
+                               
+                        }
+
+                        Register.selectAll(callback);
+                        return isEligible;
+                }
+                
+                if (checkDatabase) {
+                       if(isEligible){
+                        window.location.replace("index.html");
+                       }                       
+                }
+        }
+        else {
+                console.error("Registration form Validation failed.");
+        }
+}

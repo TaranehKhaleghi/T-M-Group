@@ -1,22 +1,11 @@
 
 function btnRegister_click() {
     RegisterUser();
-        /* submitBtn.addEventListener("click", function (evt) {
-            //evt.preventDefault();
-            var URL = "..//page-user-login.html";
-            window.location.replace(URL);
-            return false;
-        });*/
+}
+function btnLogIn_click(){
+    LogInUser();
 }
 
-/* function TKbtnSaveDef_click() {
-     SaveDefaultEmail();
-}
- */
-/* function TKAddFeedbackPage_show() {
-     TKshowAddFeedback();
-}
- */
 
 function init() {
     console.info("DOM is ready");
@@ -29,12 +18,9 @@ function init() {
         }
     });
 
-    $("#submitBtn").on("click", btnRegister_click);
+    $("#submitRegBtn").on("click", btnRegister_click);
 
-    //$("#TKbtnSaveDef").on("click", TKbtnSaveDef_click);
-
-    //$("#TKAddFeedbackPage").on("pageshow",TKAddFeedbackPage_show);
-
+    $("#logInBtn").on("click", btnLogIn_click);
 }
 
 function initDB() {
