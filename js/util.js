@@ -109,7 +109,7 @@ form.validate({
     messages:{
         userName: {
             required: "Email is required",
-            //emailAddCheck: "Please enter a valid email address"
+            emailCheck: "Please enter a valid email address"
         },
         loginPassword: {
             required: "Enter password"
