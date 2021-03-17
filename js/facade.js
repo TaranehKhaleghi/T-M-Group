@@ -81,7 +81,7 @@ function LogInUser() {
                 var userName = $("#userName").val().trim();
                 var loginPassword = $("#loginPassword").val().trim();
 
-                var notRegistered = 0;
+                var registered = 0;
 
                 function callback(tx, results) {
                         console.info("Entering to callback");
@@ -95,14 +95,12 @@ function LogInUser() {
                                 for (var i = 0; i < results.rows.length; i++) {
                                         var row = results.rows[i];
 
-                                        if (row['userEmail'].trim() !== userName) {
-                                                notRegistered++;
+                                        if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {
+                                                registered++;
                                         }
-                                        //else if (row['password'].trim() !== loginPassword) {
-                                                //notRegistered++;
-                                        //}
+                                    
                                 }
-                                if (notRegistered !== 0) {
+                                if (registered === 0) {
                                         window.alert("You have not registered yet!");
                                 }
                         }
