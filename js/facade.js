@@ -15,7 +15,7 @@ function RegisterUser() {
 
                 var options = [];
                 options = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password];
-                
+
                 function checkDatabase() {
                         var isExist = 0;
                         var isEligible = true;
@@ -48,7 +48,7 @@ function RegisterUser() {
                         Register.selectAll(callback);
                         return isEligible;
                 }
-                
+
                 if (checkDatabase) {
                         Register.userInsert(options);
                 }
@@ -58,49 +58,56 @@ function RegisterUser() {
         }
 }
 
-function LogInUser(){
-        console.info("Entering LogInUser");
-        if (DoValidate_frmLogIn()) {
-                console.info("User Login Form Validation is successful.");               
-                var userName = $("#userName").val();
-                var loginPassword = $("#loginPassword").val();
-
-                var options = [];
-                var isEligible = true;
-                options = [userName, loginPassword];
-                
-                function checkDatabase() {
-                        var isExist = 0;                        
-                        function callback(tx, results) {
-                                console.info("Entering to callback");
-                                if (results.rows.length === 0) {
-                                        window.alert("You didn't sign up before");
-                                        console.info("Length is zero");
-                                        isExist = 0;
-                                        isEligible = false;
-                                }
-                                else {
-                                        console.info("Length is not zero");
-                                        for (var i = 0; i < results.rows.length; i++) {
-                                                var row = results.rows[i];
-                                                if (row['userName'] === userName && row['loginPassword'] === loginPassword) {
-                                                        window.alert("You are logged in successfully");
-                                                        isEligible = true;                                                                                                       
-                                                }
-                                        }
-                                }
-                               
+function CheckDatabase(id) {
+        function callback(tx, results) {
+                for (var i = 0; i < results.rows.length; i++) {
+                        var row = results.rows[i];
+                        if (row['id'] == id) {
+                                return true;
                         }
+                        else {
+                                return false;
+                        }
+                }
+        }
+        SignIn.selectAll(callback);
+}
 
-                        Register.selectAll(callback);
-                        return isEligible;
+function LogInUser() {
+        console.info("Entering LogInUser");
+
+        if (DoValidate_frmLogIn()) {
+                console.info("User Login Form Validation is successful.");
+                var userName = $("#userName").val().trim();
+                var loginPassword = $("#loginPassword").val().trim();
+
+                var notRegistered = 0;
+
+                function callback(tx, results) {
+                        console.info("Entering to callback");
+
+                        if (results.rows.length === 0) {
+                                window.alert("You have not registered yet!");
+                                console.info("Length is zero");
+                        }
+                        else {
+                                console.info("Length is not zero");
+                                for (var i = 0; i < results.rows.length; i++) {
+                                        var row = results.rows[i];
+
+                                        if (row['userEmail'].trim() !== userName) {
+                                                notRegistered++;
+                                        }
+                                        //else if (row['password'].trim() !== loginPassword) {
+                                                //notRegistered++;
+                                        //}
+                                }
+                                if (notRegistered !== 0) {
+                                        window.alert("You have not registered yet!");
+                                }
+                        }
                 }
-                
-                if (checkDatabase) {
-                       if(isEligible){
-                        window.location.replace("index.html");
-                       }                       
-                }
+                SignIn.selectAll(callback);
         }
         else {
                 console.error("Log in form Validation failed.");
