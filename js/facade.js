@@ -58,19 +58,21 @@ function RegisterUser() {
         }
 }
 
-function CheckDatabase(id) {
+function CacheDatabase(id) {
+        var isExist = 0;
         function callback(tx, results) {
                 for (var i = 0; i < results.rows.length; i++) {
                         var row = results.rows[i];
                         if (row['id'] == id) {
-                                return true;
+                                isExist++;
                         }
                         else {
-                                return false;
+                                isExist = 0;
                         }
                 }
         }
-        SignIn.selectAll(callback);
+        Register.selectAll(callback);
+        return isExist;
 }
 
 function LogInUser() {
@@ -98,7 +100,6 @@ function LogInUser() {
                                         if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {
                                                 registered++;
                                         }
-                                    
                                 }
                                 if (registered === 0) {
                                         window.alert("You have not registered yet!");
