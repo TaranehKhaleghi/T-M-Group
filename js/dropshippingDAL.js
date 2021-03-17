@@ -11,6 +11,7 @@ var Register = {
 
             if ($("input[name='accountType']:checked").val() === "supplier") {
                 window.location.replace("page-user-login.html");
+
             }
             else {
                 window.location.replace("page-user-business-info.html");
@@ -80,9 +81,9 @@ var SignIn = {
         function successTransaction() {
             console.info("Success: Select all Transaction successful");
             alert("Registered user!");
-
-            window.location.replace("index.html");
             window.alert("You logged in successfully");
+             
+            window.location.replace("index.html");              
         }
 
         function txFunction(tx) {
