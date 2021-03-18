@@ -30,18 +30,23 @@
 
 	<script type="text/javascript">
 		// some script
-
+		function clearLocalStorage() {
+			localStorage.removeItem("myProfile");
+		}
+		
 		// jquery ready start
 		$(document).ready(function () {
 			// jQuery code
-			if(localStorage.getItem("myProfile") !== null){
+			if (localStorage.getItem("myProfile") !== null) {
 				$(".userProfile").text(localStorage.getItem("myProfile"));
-				$("#hide").hide();
+				$("#login").hide();
+				$("#logout").show();
 			}
-			else{
+			else {
 				$(".userProfile").text("Visitor");
-				$("#hide").show();
-			}	
+				$("#login").show();
+				$("#logout").hide();
+			}
 		});
 		// jquery end
 	</script>
@@ -83,10 +88,13 @@
 										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
-									<span class="userProfile"></span>															
-									<div id="hide">
+									<span class="userProfile"></span>
+									<div id="login">
 										<a href="page-user-login.html">Sign in</a> |
 										<a href="page-user-register.html"> Register</a>
+									</div>
+									<div id="logout">
+										<a href="index.html" onclick="clearLocalStorage();">Log out</a>
 									</div>
 								</div>
 							</div>
