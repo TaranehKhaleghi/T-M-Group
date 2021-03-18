@@ -28,19 +28,20 @@
 	<!-- custom javascript -->
 	<script src="js/lib/script.js" type="text/javascript"></script>
 
-	<script src="js/database.js" type="text/javascript"></script>
-	<script src="js/facade.js" type="text/javascript"></script>
-	<script src="js/dropshippingDAL.js" type="text/javascript"></script>
-	<!--script src="js/util.js" type="text/javascript"></script-->
-	<script src="js/global.js" type="text/javascript"></script>
-
 	<script type="text/javascript">
-		/// some script
+		// some script
 
 		// jquery ready start
 		$(document).ready(function () {
 			// jQuery code
-
+			if(localStorage.getItem("myProfile") !== null){
+				$(".userProfile").text(localStorage.getItem("myProfile"));
+				$("#hide").hide();
+			}
+			else{
+				$(".userProfile").text("Visitor");
+				$("#hide").show();
+			}	
 		});
 		// jquery end
 	</script>
@@ -82,8 +83,8 @@
 										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
-									<span id="majidProfile">Empty</span>															
-									<div>
+									<span class="userProfile"></span>															
+									<div id="hide">
 										<a href="page-user-login.html">Sign in</a> |
 										<a href="page-user-register.html"> Register</a>
 									</div>

@@ -83,12 +83,9 @@ function LogInUser() {
                 var userName = $("#userName").val().trim();
                 var loginPassword = $("#loginPassword").val().trim();
                 var registered = 0;
-                var mp = $("#majidProfile span").text();
-                console.info(mp);
+
                 function callback(tx, results) {
                         console.info("Entering to callback");
-                        var htmlCode = "";
-                        var row = "";
 
                         if (results.rows.length === 0) {
                                 window.alert("You have not registered yet!");
@@ -97,25 +94,20 @@ function LogInUser() {
                         else {
                                 console.info("Length is not zero");
                                 for (var i = 0; i < results.rows.length; i++) {
-                                            row = results.rows[i];                                     
-                                        if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {                                                                                                                                                
-                                                registered++;                                                                                                            
-                                        }                                    
+                                        var row = results.rows[i];
+                                        if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {
+                                                registered++;
+                                                var firstName = row['firstName'];
+                                                console.info(firstName);
+                                                localStorage.setItem("myProfile", firstName);
+                                        }
                                 }
                                 if (registered === 0) {
                                         window.alert("You have not registered yet!");
                                 }
-                                else{
-                                        var htmlCode = row['firstName'];   
-                                        console.info(htmlCode);
-                                       /*  var mp = $("#majidProfile").val();
-                                        console.info(mp); */
-                                        $("#majidProfile").html(htmlCode);                                        
-                                }
                         }
-                        
                 }
-                SignIn.selectAll(callback);                
+                SignIn.selectAll(callback);
         }
         else {
                 console.error("Log in form Validation failed.");
