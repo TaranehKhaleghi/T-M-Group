@@ -9,7 +9,7 @@ var Register = {
             console.info("Success: Insert successful");
             alert("Registration has been successful");
 
-            if ($("input[name='accountType']:checked").val() === "supplier") {
+            if ($("input[name='accountType']:checked").val() === "Supplier") {
                 window.location.replace("page-user-login.html");
 
             }

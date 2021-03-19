@@ -31,19 +31,19 @@
 	<script type="text/javascript">
 		// some script
 		function clearLocalStorage() {
-			localStorage.removeItem("myProfile");
+			localStorage.clear();
 		}
 		
 		// jquery ready start
 		$(document).ready(function () {
 			// jQuery code
-			if (localStorage.getItem("myProfile") !== null) {
-				$(".userProfile").text(localStorage.getItem("myProfile"));
+			if (localStorage.getItem("firstName") !== null) {
+				$(".userProfile").text(localStorage.getItem("firstName"));
 				$("#login").hide();
 				$("#logout").show();
 			}
 			else {
-				$(".userProfile").text("Visitor");
+				$(".userProfile").text("");
 				$("#login").show();
 				$("#logout").hide();
 			}

@@ -30,11 +30,28 @@
 
 	<script type="text/javascript">
 		/// some script
-
+		function clearLocalStorage() {
+			localStorage.clear();
+		}
+		
 		// jquery ready start
 		$(document).ready(function () {
 			// jQuery code
-
+			if (localStorage.getItem("firstName") !== null) {
+				$(".userProfile").text(localStorage.getItem("firstName"));
+				$("#title").text(localStorage.getItem("firstName") + "'s" + " Account" + " as " + localStorage.getItem("accountType"));
+				$("#name").text(localStorage.getItem("firstName") + " " + localStorage.getItem("lastName"));
+				$("#email").text(localStorage.getItem("userEmail"));
+				$("#phone").text(localStorage.getItem("countryCode") + " - " + localStorage.getItem("phoneNumber"));
+				$("#address").text(localStorage.getItem("addressDetails") + ", " + localStorage.getItem("city") + ", " + localStorage.getItem("country"));
+				$("#login").hide();
+				$("#logout").show();
+			}
+			else {
+				$(".userProfile").text("");
+				$("#login").show();
+				$("#logout").hide();
+			}
 		});
 		// jquery end
 	</script>
@@ -76,9 +93,13 @@
 										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
-									<div>
+									<span class="userProfile"></span>
+									<div id="login">
 										<a href="page-user-login.html">Sign in</a> |
 										<a href="page-user-register.html"> Register</a>
+									</div>
+									<div id="logout">
+										<a href="index.html" onclick="clearLocalStorage();">Log out</a>
 									</div>
 								</div>
 							</div>
@@ -158,7 +179,7 @@
 	<!-- ========================= SECTION PAGETOP ========================= -->
 	<section class="section-pagetop bg">
 		<div class="container">
-			<h2 class="title-page">My account</h2>
+			<h2 class="title-page" id="title">My account</h2>
 		</div> <!-- container //  -->
 	</section>
 	<!-- ========================= SECTION PAGETOP END// ========================= -->
@@ -177,7 +198,7 @@
 						<a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
 						<a class="list-group-item" href="page-product-info.html"> Add Items </a>
 						<a class="list-group-item" href="page-profile-setting.html"> Settings </a>
-						<a class="list-group-item" href="index.html"> Log out </a>
+						<a class="list-group-item" href="index.html" onclick="clearLocalStorage();"> Log out </a>
 					</nav>
 				</aside> <!-- col.// -->
 				<main class="col-md-9">
@@ -190,20 +211,19 @@
 									<img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg">
 								</div>
 								<div class="text">
-									<strong> Mr. Jackson Someone </strong> <br>
-									<p class="mb-2"> myloginname@gmail.com </p>
+									<strong id="name"> name </strong> <br>
+									<p class="mb-2" id="email"> email </p> 
+									<p class="mb-2" id="phone"> phone </p>
 									<a href="#" class="btn btn-light btn-sm">Edit</a>
 								</div>
 							</figure>
 							<hr>
 							<p>
-								<i class="fa fa-map-marker text-muted"></i> &nbsp; My address:
+								My address:&nbsp;
+								<i class="fa fa-map-marker text-muted" id="address"></i>  
 								<br>
-								Tashkent city, Street name, Building 123, House 321 &nbsp
-								<a href="#" class="btn-link"> Edit</a>
+								<a href="#" class="btn btn-light btn-sm"> Edit</a>
 							</p>
-
-
 
 							<article class="card-group card-stat">
 								<figure class="card bg">

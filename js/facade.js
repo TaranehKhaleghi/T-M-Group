@@ -97,9 +97,16 @@ function LogInUser() {
                                         var row = results.rows[i];
                                         if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {
                                                 registered++;
-                                                var firstName = row['firstName'];
-                                                console.info(firstName);
-                                                localStorage.setItem("myProfile", firstName);
+
+                                                localStorage.setItem("accountType", row['accountType']);
+                                                localStorage.setItem("firstName", row['firstName']);
+                                                localStorage.setItem("lastName", row['lastName']);
+                                                localStorage.setItem("countryCode", row['countryCode']);
+                                                localStorage.setItem("phoneNumber", row['phoneNumber']);
+                                                localStorage.setItem("userEmail", row['userEmail']);
+                                                localStorage.setItem("city", row['city']);
+                                                localStorage.setItem("country", row['country']);
+                                                localStorage.setItem("addressDetails", row['addressDetails']);
                                         }
                                 }
                                 if (registered === 0) {
