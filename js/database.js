@@ -111,16 +111,6 @@ var DB = {
                 "paymentType VARCHAR(10) NOT NULL);";
             tx.executeSql(sqlPayment, options, successCreate, errorHandler);
 
-            // Create table order
-            console.info("Creating Table: order...");
-            var sqlOrder = "CREATE TABLE IF NOT EXISTS order(" +
-                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                "orderDate DATE NOT NULL," +
-                "shipDate DATE," +
-                "FOREIGN KEY(id) REFERENCES users(id)," +
-                "FOREIGN KEY(id) REFERENCES payment(id));";
-            tx.executeSql(sqlOrder, options, successCreate, errorHandler);
-
             // Create table orderDetails
             console.info("Creating Table: orderDetails...");
             var sqlOrderDetails = "CREATE TABLE IF NOT EXISTS orderDetails(" +
@@ -134,8 +124,18 @@ var DB = {
                 "color VARCHAR(20)," +
                 "shipDate DATE," +
                 "FOREIGN KEY(id) REFERENCES product(id)," +
-                "FOREIGN KEY(id) REFERENCES order(id));";
+                "FOREIGN KEY(id) REFERENCES orders(id));";
             tx.executeSql(sqlOrderDetails, options, successCreate, errorHandler);
+
+            // Create table order
+            console.info("Creating Table: orders...");
+            var sqlOrder = "CREATE TABLE IF NOT EXISTS orders(" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "orderDate DATE NOT NULL," +
+                "shipDate DATE," +
+                "FOREIGN KEY(id) REFERENCES users(id)," +
+                "FOREIGN KEY(id) REFERENCES payment(id));";
+            tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
             // Create table category
             console.info("Creating Table: category...");
