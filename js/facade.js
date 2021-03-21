@@ -97,7 +97,10 @@ function LogInUser() {
                                         var row = results.rows[i];
                                         if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {
                                                 registered++;
-
+                                                if (row['accountType'] == "Manufacturer") {
+                                                        console.info("type is m");
+                                                        SetBusinessInfo();
+                                                }
                                                 localStorage.setItem("accountType", row['accountType']);
                                                 localStorage.setItem("firstName", row['firstName']);
                                                 localStorage.setItem("lastName", row['lastName']);
@@ -106,20 +109,7 @@ function LogInUser() {
                                                 localStorage.setItem("userEmail", row['userEmail']);
                                                 localStorage.setItem("city", row['city']);
                                                 localStorage.setItem("country", row['country']);
-                                                localStorage.setItem("addressDetails", row['addressDetails']);
-
-                                                if ($("input[name='accountType']:checked").val() !== "Supplier") {
-                                                        localStorage.setItem("companyName", row['companyName']);
-                                                        localStorage.setItem("companyUrl", row['companyUrl']);
-                                                        localStorage.setItem("bnNumber", row['bnNumber']);
-                                                        localStorage.setItem("contactTitle", row['contactTitle']);
-                                                        localStorage.setItem("contactFName", row['contactFName']);
-                                                        localStorage.setItem("contactLName", row['contactLName']);
-                                                        localStorage.setItem("userEmail", row['userEmail']);
-                                                        localStorage.setItem("city", row['city']);
-                                                        localStorage.setItem("country", row['country']);
-                                                        localStorage.setItem("addressDetails", row['addressDetails']);
-                                                }
+                                                localStorage.setItem("addressDetails", row['addressDetails']);                                                
                                         }
                                 }
                                 if (registered === 0) {
@@ -132,6 +122,40 @@ function LogInUser() {
         else {
                 console.error("Log in form Validation failed.");
         }
+}
+
+function SetBusinessInfo() {
+        console.info("set business function");
+        function callback(tx, results) {
+                console.info("Entering to business callback");
+
+                if (results.rows.length === 0) {
+                        window.alert("You have not registered business yet!");
+                        console.info("Business Length is zero");
+                }
+                else {
+                        console.info("Business Length is not zero");
+                        for (var i = 0; i < results.rows.length; i++) {
+                                var row = results.rows[i];
+
+                                localStorage.setItem("companyName", row['companyName']);
+                                localStorage.setItem("companyUrl", row['companyUrl']);
+                                localStorage.setItem("bnNumber", row['bnNumber']);
+                                localStorage.setItem("contactTitle", row['contactTitle']);
+                                localStorage.setItem("contactFName", row['contactFName']);
+                                localStorage.setItem("contactLName", row['contactLName']);
+                                localStorage.setItem("cCountryCode", row['cCountryCode']);
+                                localStorage.setItem("cPhoneNumber", row['cPhoneNumber']);
+                                localStorage.setItem("cFaxNumber", row['cFaxNumber']);
+                                localStorage.setItem("contactEmail", row['contactEmail']);
+                                localStorage.setItem("contactCity", row['contactCity']);
+                                localStorage.setItem("contactCountry", row['contactCountry']);
+                                localStorage.setItem("cAddressDetails", row['cAddressDetails']);
+                                localStorage.setItem("cPostalCode", row['cPostalCode']);
+                        }
+                }
+        }
+        BusinessInfo.selectAll(callback);
 }
 
 function RegisterBusiness() {
@@ -158,7 +182,6 @@ function RegisterBusiness() {
                 var options = [];
                 options = [companyName, companyUrl, bnNumber, contactTitle, contactFName, contactLName, cCountryCode, cPhoneNumber, cFaxNumber, contactEmail, contactCity, contactCountry, cAddressDetails, cPostalCode];
                 BusinessInfo.businessInsert(options);
-
         }
         else {
                 console.error("Registration form Validation failed.");

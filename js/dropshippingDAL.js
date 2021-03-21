@@ -81,11 +81,11 @@ var BusinessInfo = {
         var options = [];
 
         function successTransaction() {
-            console.info("Success: Select all Transaction successful");
+            console.info("Success: Select all business Transaction successful");
         }
 
         function txFunction(tx) {
-            console.info("Selecting all records...");
+            console.info("Selecting all business records...");
 
             var sql = "SELECT * FROM manufacturers;";
             tx.executeSql(sql, options, callback, errorHandler);
