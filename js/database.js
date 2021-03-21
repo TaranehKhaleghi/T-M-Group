@@ -89,6 +89,7 @@ var DB = {
             var sqlManufacturer = "CREATE TABLE IF NOT EXISTS manufacturer(" +
                 "manufacturer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "companyName VARCHAR(30) NOT NULL," +
+                "bnNumber VARCHAR(30) NOT NULL," +                
                 "contactFName VARCHAR(30) NOT NULL," +
                 "contactLName VARCHAR(30) NOT NULL," +
                 "contactTitle VARCHAR(30) NOT NULL," +
