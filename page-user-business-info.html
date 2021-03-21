@@ -129,7 +129,7 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Company name</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Company name" id="companyName">
+							<input type="text" class="form-control" placeholder="Company name" id="companyName" name="companyName">
 						</div>
 					</div>
 
@@ -137,14 +137,14 @@
 						<label class="col-md-3 col-form-label">URL</label>
 						<div class="col">
 							<input type="text" class="form-control" placeholder="https://yourcompanywebsite.com"
-								id="companyUrl">
+								id="companyUrl" name="companyUrl">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">BN #</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="BN number" id="bnNumber">
+							<input type="text" class="form-control" placeholder="BN number" id="bnNumber" name="bnNumber">
 						</div>
 					</div>
 
@@ -157,17 +157,17 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact name</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Contact first name" id="cFirstName">
+							<input type="text" class="form-control" placeholder="Contact first name" id="cFirstName" name="cFirstName">
 						</div>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Contact last name" id="cLastName">
+							<input type="text" class="form-control" placeholder="Contact last name" id="cLastName" name="cLastName">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact title</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Contact title" id="contactTitle">
+							<input type="text" class="form-control" placeholder="Contact title" id="contactTitle" name="contactTitle">
 						</div>
 					</div>
 
@@ -175,34 +175,32 @@
 						<label class="col-md-3 col-form-label">Contact phone</label>
 						<div class="col-9">
 							<div class="input-group">
-								<select class="custom-select" style="max-width: 120px;" id="cCountryCode">
+								<select class="custom-select" style="max-width: 120px;" id="cCountryCode" name="cCountryCode">
 									<option selected="">CA +1</option>
 									<option value="1">US +1</option>
 									<option value="2">GB +44</option>
 									<option value="3">DE +49</option>
 								</select>
-								<input name="" class="form-control" placeholder="Phone number" id="cPhoneNumber"
-									type="text">
-								<input name="" class="form-control" placeholder="Fax number" id="cFaxNumber"
-									type="text">
+								<input type="text" class="form-control" placeholder="Phone number" id="cPhoneNumber" name="cPhoneNumber">
+								<input type="text" class="form-control" placeholder="Fax number" id="cFaxNumber" name="cFaxNumber">
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label" id="contactEmail">Contact email</label>
+						<label class="col-md-3 col-form-label">Contact email</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" placeholder="Ex. john@gmail.com">
+							<input type="email" class="form-control" placeholder="Ex. john@gmail.com" id="contactEmail" name="contactEmail">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact city</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="City" id="contactCity">
+							<input type="text" class="form-control" placeholder="City" id="contactCity" name="contactCity">
 						</div>
 						<div class="col">
-							<select class="custom-select form-control" id="contactCountry">
+							<select class="custom-select form-control" id="contactCountry" name="contactCountry">
 								<!--option>Country</option-->
 								<option>Canada</option>
 								<option>United states</option>
@@ -215,24 +213,14 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact address</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Street, Building" id="cAddressDetails">
+							<input type="text" class="form-control" placeholder="Street, Building" id="cAddressDetails" name="cAddressDetails">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Postal/Zip code</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Postal/Zip code" id="cPostalCode">
-						</div>
-					</div>
-
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Password</label>
-						<div class="col-6">
-							<input type="password" class="form-control mb-3" placeholder="Create password"
-								id="cPassword">
-							<input type="password" class="form-control" placeholder="Repeat password"
-								id="cConfirmPassword">
+							<input type="text" class="form-control" placeholder="Postal/Zip code" id="cPostalCode" name="cPostalCode">
 						</div>
 					</div>
 
