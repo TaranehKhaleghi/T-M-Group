@@ -15,7 +15,7 @@ function DoValidate_frmAdd() {
             },
             phoneNumber: {
                 required: true,
-                phoneAddCheck: true,
+                phoneAddCheck: true
             },
             userEmail: {
                 required: true,
@@ -50,7 +50,7 @@ function DoValidate_frmAdd() {
             },
             phoneNumber: {
                 required: "phone number is required",
-                rangelength: "Please enter a valid phone number"
+                phoneAddCheck: "Please enter a valid phone number"
             },
             userEmail: {
                 required: "Email is required",
@@ -104,6 +104,92 @@ function DoValidate_frmLogIn() {
     return form.valid();
 }
 
+    //validate business info form
+//=======================
+function DoValidate_frmBusiness() {
+    var form = $("#BusinessForm");
+    form.validate({
+        rules: {
+            companyName: {
+                required: true,    
+                rangelength: [2, 20]           
+            },
+            companyUrl: {
+                url: true
+            },
+            bnNumber:{
+                required:true
+            },
+            cFirstName: {
+                required: true,    
+                rangelength: [2, 20]           
+            },
+            cLastName: {
+                required: true,    
+                rangelength: [2, 20]           
+            },
+            cPhoneNumber:{
+                required: true,
+                phoneAddCheck: true
+            },
+            contactEmail:{
+                required: true,
+                emailAddCheck: true
+            },
+            contactCity:{
+                required: true
+            },
+            contactCountry:{
+                required: true
+            },
+            cAddressDetails:{
+                required:true
+            },
+            cPostalCode:{
+                required: true
+            }
+        },
+        messages: {
+            companyName: {
+                required: "company name is required"              
+            },
+            companyUrl: {
+                url: "Please enter a valid url"
+            },
+            bnNumber:{
+                required: "Business number is required"
+            },
+            cFirstName: {
+                required: "contact first name is required"
+            },
+            cLastName: {
+                required: "contact first name is required"
+            },
+            cPhoneNumber:{
+                required: "phone number is required",
+                phoneAddCheck: "Please enter a valid phone number"
+            },
+            contactEmail: {
+                required: "Email is required",
+                emailAddCheck: "Please enter a valid email address"
+            },
+            contactCity:{
+                required: "city is required"               
+            },
+            contactCountry:{
+                required: "country is required" 
+            },
+            cAddressDetails:{
+                required: "address is required"
+            },
+            cPostalCode:{
+                required: "postal/zip code is required"
+            }
+        }
+    });
+    return form.valid();
+}
+
 jQuery.validator.addMethod("emailAddCheck",
     function (value, element) {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;
@@ -117,4 +203,7 @@ jQuery.validator.addMethod("phoneAddCheck",
         return this.optional(element) || regex.test(value);
     },
     "Phone is not valid");
+
+
+
 

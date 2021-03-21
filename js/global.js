@@ -7,6 +7,10 @@ function btnLogIn_click() {
     LogInUser();
 }
 
+function btnRegisterBusiness_click(){
+    RegisterBusiness();
+}
+
 function init() {
     console.info("DOM is ready");
 
@@ -18,9 +22,19 @@ function init() {
         }
     });
 
+    $('#customCheck2').click(function () {
+        if ($('#saveBtn').is(':disabled')) {
+            $('#saveBtn').removeAttr('disabled');
+        } else {
+            $('#saveBtn').attr('disabled', 'disabled');
+        }
+    });
+
     $("#submitBtn").on("click", btnRegister_click);
 
     $("#logInBtn").on("click", btnLogIn_click);
+
+    $("#saveBtn").on("click", btnRegisterBusiness_click);
 }
 
 function initDB() {

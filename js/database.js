@@ -86,22 +86,22 @@ var DB = {
 
             // Create table manufacturer
             console.info("Creating Table: manufacturer...");
-            var sqlManufacturer = "CREATE TABLE IF NOT EXISTS manufacturer(" +
+            var sqlManufacturer = "CREATE TABLE IF NOT EXISTS manufacturers(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "companyName VARCHAR(30) NOT NULL," +
+                "companyUrl VARCHAR(20)," +
                 "bnNumber VARCHAR(30) NOT NULL," +
+                "contactTitle VARCHAR(30)," +
                 "contactFName VARCHAR(30) NOT NULL," +
-                "contactLName VARCHAR(30) NOT NULL," +
-                "contactTitle VARCHAR(30) NOT NULL," +
+                "contactLName VARCHAR(30) NOT NULL," +   
+                "cCountryCode VARCHAR(3) NOT NULL," +
+                "cPhoneNumber VARCHAR(20) NOT NULL," +
+                "cFaxNumber VARCHAR(20)," +    
+                "contactEmail VARCHAR(20) NOT NULL," +         
                 "contactCity VARCHAR(20) NOT NULL," +
                 "contactCountry VARCHAR(20) NOT NULL," +
                 "cAddressDetails VARCHAR(30) NOT NULL," +
-                "cPostalCode VARCHAR(10) NOT NULL," +
-                "cCountryCode VARCHAR(3) NOT NULL," +
-                "cPhoneNumber VARCHAR(20) NOT NULL," +
-                "cFaxNumber VARCHAR(20)," +
-                "contactEmail VARCHAR(20) NOT NULL," +
-                "companyUrl VARCHAR(20));";
+                "cPostalCode VARCHAR(10) NOT NULL);";
             tx.executeSql(sqlManufacturer, options, successCreate, errorHandler);
 
             // Create table payment
