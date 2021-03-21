@@ -59,7 +59,7 @@ var DB = {
             // Create table users
             console.info("Creating Table: users...");
             var sqlCreateUser = "CREATE TABLE IF NOT EXISTS users(" +
-                "user_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "accountType VARCHAR(20) NOT NULL," +
                 "firstName VARCHAR(30) NOT NULL," +
                 "lastName VARCHAR(30) NOT NULL," +
@@ -75,74 +75,74 @@ var DB = {
             // Create table product
             console.info("Creating Table: product...");
             var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS product(" +
-                "product_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "name VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
                 "description VARCHAR(50) NOT NULL," +
-                "image VARBINARY NOT NULL),"+
-                "FOREIGN KEY(manufacturer_id) REFERENCES manufacturer(id));";
-                "FOREIGN KEY(category_id) REFERENCES category(id));";
+                "image VARBINARY NOT NULL," +
+                "FOREIGN KEY(id) REFERENCES manufacturer(id)," +
+                "FOREIGN KEY(id) REFERENCES category(id));";
             tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
 
             // Create table manufacturer
             console.info("Creating Table: manufacturer...");
             var sqlManufacturer = "CREATE TABLE IF NOT EXISTS manufacturer(" +
-                "manufacturer_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "companyName VARCHAR(30) NOT NULL," +
-                "bnNumber VARCHAR(30) NOT NULL," +                
+                "bnNumber VARCHAR(30) NOT NULL," +
                 "contactFName VARCHAR(30) NOT NULL," +
                 "contactLName VARCHAR(30) NOT NULL," +
                 "contactTitle VARCHAR(30) NOT NULL," +
-                "city VARCHAR(20) NOT NULL," +
-                "addressDetails VARCHAR(30) NOT NULL," +
-                "postalCode VARCHAR(10) NOT NULL," +
-                "country VARCHAR(20) NOT NULL," +
-                "phone VARCHAR(20) NOT NULL," +
-                "fax VARCHAR(20);";
-                "email VARCHAR(20) NOT NULL," +
-                "url VARCHAR(20));";                     
+                "contactCity VARCHAR(20) NOT NULL," +
+                "contactCountry VARCHAR(20) NOT NULL," +
+                "cAddressDetails VARCHAR(30) NOT NULL," +
+                "cPostalCode VARCHAR(10) NOT NULL," +
+                "cCountryCode VARCHAR(3) NOT NULL," +
+                "cPhoneNumber VARCHAR(20) NOT NULL," +
+                "cFaxNumber VARCHAR(20)," +
+                "contactEmail VARCHAR(20) NOT NULL," +
+                "companyUrl VARCHAR(20));";
             tx.executeSql(sqlManufacturer, options, successCreate, errorHandler);
+
+            // Create table payment
+            console.info("Creating Table: payment...");
+            var sqlPayment = "CREATE TABLE IF NOT EXISTS payment(" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "paymentType VARCHAR(10) NOT NULL);";
+            tx.executeSql(sqlPayment, options, successCreate, errorHandler);
 
             // Create table order
             console.info("Creating Table: order...");
             var sqlOrder = "CREATE TABLE IF NOT EXISTS order(" +
-                "order_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                "orderDate date(10) NOT NULL," +
-                "shipDate date(10)," +
-                "FOREIGN KEY(user_id) REFERENCES users(id))," +
-                "FOREIGN KEY(payment_id) REFERENCES payment(id));";
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "orderDate DATE NOT NULL," +
+                "shipDate DATE," +
+                "FOREIGN KEY(id) REFERENCES users(id)," +
+                "FOREIGN KEY(id) REFERENCES payment(id));";
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
-             // Create table orderDetails
-             console.info("Creating Table: orderDetails...");
-             var sqlOrderDetails = "CREATE TABLE IF NOT EXISTS orderDetails(" +
-                 "orderDetails_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                 "orderNumber VARCHAR(30) NOT NULL AUTOINCREMENT," +
-                 "price INT NOT NULL," +
-                 "quantity INT NOT NULL," +
-                 "discount INT NOT NULL," +
-                 "total INT NOT NULL," +
-                 "size VARCHAR(10)," +
-                 "color VARCHAR(20)," +
-                 "shipDate date," +
-                 "FOREIGN KEY(product_id) REFERENCES product(id))," +
-                 "FOREIGN KEY(order_id) REFERENCES order(id));";
-             tx.executeSql(sqlOrderDetails, options, successCreate, errorHandler);
- 
-              // Create table payment
-            console.info("Creating Table: payment...");
-            var sqlPayment = "CREATE TABLE IF NOT EXISTS payment(" +
-                "payment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                "paymentType VARCHAR(10) NOT NULL);";
-            tx.executeSql(sqlPayment, options, successCreate, errorHandler); 
-            
+            // Create table orderDetails
+            console.info("Creating Table: orderDetails...");
+            var sqlOrderDetails = "CREATE TABLE IF NOT EXISTS orderDetails(" +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "orderNumber VARCHAR(30) NOT NULL," +
+                "price INT NOT NULL," +
+                "quantity INT NOT NULL," +
+                "discount INT NOT NULL," +
+                "total INT NOT NULL," +
+                "size VARCHAR(10)," +
+                "color VARCHAR(20)," +
+                "shipDate DATE," +
+                "FOREIGN KEY(id) REFERENCES product(id)," +
+                "FOREIGN KEY(id) REFERENCES order(id));";
+            tx.executeSql(sqlOrderDetails, options, successCreate, errorHandler);
+
             // Create table category
             console.info("Creating Table: category...");
             var sqlCategory = "CREATE TABLE IF NOT EXISTS category(" +
-                "category_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
-                "name VARCHAR(20) NOT NULL)," +
+                "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "name VARCHAR(20) NOT NULL," +
                 "description VARCHAR(50) NOT NULL);";
-
             tx.executeSql(sqlCategory, options, successCreate, errorHandler);
         }
 

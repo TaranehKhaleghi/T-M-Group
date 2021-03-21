@@ -68,7 +68,7 @@ var BusinessInfo = {
             var sql = "";
             console.info("Start inserting into table business info");
 
-            sql = "INSERT INTO manufacturers(companyName, companyUrl, bnNumber, cFirstName, cLastName, contactTitle, cCountryCode, cPhoneNumber, cFaxNumber, contactEmail, contactCity, contactCountry, cAddressDetails, cPostalCode) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            sql = "INSERT INTO manufacturers(companyName, companyUrl, bnNumber, contactFName, contactLName, contactTitle, cCountryCode, cPhoneNumber, cFaxNumber, contactEmail, contactCity, contactCountry, cAddressDetails, cPostalCode) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
 
             console.info("Business data added");
