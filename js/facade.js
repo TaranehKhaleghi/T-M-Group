@@ -107,6 +107,19 @@ function LogInUser() {
                                                 localStorage.setItem("city", row['city']);
                                                 localStorage.setItem("country", row['country']);
                                                 localStorage.setItem("addressDetails", row['addressDetails']);
+
+                                                if ($("input[name='accountType']:checked").val() !== "Supplier") {
+                                                        localStorage.setItem("companyName", row['companyName']);
+                                                        localStorage.setItem("companyUrl", row['companyUrl']);
+                                                        localStorage.setItem("bnNumber", row['bnNumber']);
+                                                        localStorage.setItem("contactTitle", row['contactTitle']);
+                                                        localStorage.setItem("contactFName", row['contactFName']);
+                                                        localStorage.setItem("contactLName", row['contactLName']);
+                                                        localStorage.setItem("userEmail", row['userEmail']);
+                                                        localStorage.setItem("city", row['city']);
+                                                        localStorage.setItem("country", row['country']);
+                                                        localStorage.setItem("addressDetails", row['addressDetails']);
+                                                }
                                         }
                                 }
                                 if (registered === 0) {
@@ -121,10 +134,10 @@ function LogInUser() {
         }
 }
 
-function RegisterBusiness(){
+function RegisterBusiness() {
         console.info("Entering Business Registration");
 
-        if (DoValidate_frmBusiness()){
+        if (DoValidate_frmBusiness()) {
                 console.info("Business Registration Form Validation is successful.");
 
                 var companyName = $("#companyName").val();
@@ -133,7 +146,7 @@ function RegisterBusiness(){
                 var contactTitle = $("#contactTitle").val();
                 var contactFName = $("#contactFName").val();
                 var contactLName = $("#contactLName").val();
-                var cCountryCode = $("#countryCode option:selected").val();
+                var cCountryCode = $("#cCountryCode option:selected").val();
                 var cPhoneNumber = $("#cPhoneNumber").val();
                 var cFaxNumber = $("#cFaxNumber").val();
                 var contactEmail = $("#contactEmail").val();
@@ -141,11 +154,13 @@ function RegisterBusiness(){
                 var contactCountry = $("#contactCountry option:selected").val();
                 var cAddressDetails = $("#cAddressDetails").val();
                 var cPostalCode = $("#cPostalCode").val();
-                
+
                 var options = [];
                 options = [companyName, companyUrl, bnNumber, contactTitle, contactFName, contactLName, cCountryCode, cPhoneNumber, cFaxNumber, contactEmail, contactCity, contactCountry, cAddressDetails, cPostalCode];
-
                 BusinessInfo.businessInsert(options);
 
+        }
+        else {
+                console.error("Registration form Validation failed.");
         }
 }
