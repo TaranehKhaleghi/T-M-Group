@@ -28,6 +28,8 @@
 	<link href="css/ui.css" rel="stylesheet" type="text/css" />
 	<link href="css/responsive.css" rel="stylesheet" />
 
+	<link href="css/myStyle.css" rel="stylesheet" type="text/css" />
+
 	<!-- custom javascript -->
 	<script src="js/lib/script.js" type="text/javascript"></script>
 
@@ -129,7 +131,8 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Company name</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Company name" id="companyName" name="companyName">
+							<input type="text" class="form-control" placeholder="Company name" id="companyName"
+								name="companyName">
 						</div>
 					</div>
 
@@ -144,7 +147,8 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">BN #</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="BN number" id="bnNumber" name="bnNumber">
+							<input type="text" class="form-control" placeholder="BN number" id="bnNumber"
+								name="bnNumber">
 						</div>
 					</div>
 
@@ -155,49 +159,62 @@
 					</header>
 
 					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Contact name</label>
+						<label class="col-md-3 col-form-label">Contact title</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Contact first name" id="cFirstName" name="cFirstName">
-						</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Contact last name" id="cLastName" name="cLastName">
+							<input type="text" class="form-control" placeholder="Contact title" id="contactTitle"
+								name="contactTitle">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Contact title</label>
+						<label class="col-md-3 col-form-label">Contact name</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Contact title" id="contactTitle" name="contactTitle">
+							<input type="text" class="form-control" placeholder="Contact first name" id="cFirstName"
+								name="cFirstName">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Contact last name" id="cLastName"
+								name="cLastName">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact phone</label>
-						<div class="col-9">
-							<div class="input-group">
-								<select class="custom-select" style="max-width: 120px;" id="cCountryCode" name="cCountryCode">
-									<option selected="">CA +1</option>
-									<option value="1">US +1</option>
-									<option value="2">GB +44</option>
-									<option value="3">DE +49</option>
-								</select>
-								<input type="text" class="form-control" placeholder="Phone number" id="cPhoneNumber" name="cPhoneNumber">
-								<input type="text" class="form-control" placeholder="Fax number" id="cFaxNumber" name="cFaxNumber">
-							</div>
+						<div class="col">
+							<select class="custom-select" style="max-width: 120px;" id="cCountryCode"
+								name="cCountryCode">
+								<option selected="">CA +1</option>
+								<option value="1">US +1</option>
+								<option value="2">GB +44</option>
+								<option value="3">DE +49</option>
+							</select>
+						</div>
+						<div class="col-6">
+							<input type="text" class="form-control" placeholder="Phone number" id="cPhoneNumber" name="cPhoneNumber">
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<label class="col-md-3 col-form-label">Contact fax</label>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Fax number" id="cFaxNumber"
+								name="cFaxNumber">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact email</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" placeholder="Ex. john@gmail.com" id="contactEmail" name="contactEmail">
+							<input type="email" class="form-control" placeholder="Ex. john@gmail.com" id="contactEmail"
+								name="contactEmail">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact city</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="City" id="contactCity" name="contactCity">
+							<input type="text" class="form-control" placeholder="City" id="contactCity"
+								name="contactCity">
 						</div>
 						<div class="col">
 							<select class="custom-select form-control" id="contactCountry" name="contactCountry">
@@ -213,22 +230,24 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact address</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Street, Building" id="cAddressDetails" name="cAddressDetails">
+							<input type="text" class="form-control" placeholder="Street, Building" id="cAddressDetails"
+								name="cAddressDetails">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Postal/Zip code</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Postal/Zip code" id="cPostalCode" name="cPostalCode">
+							<input type="text" class="form-control" placeholder="Postal/Zip code" id="cPostalCode"
+								name="cPostalCode">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<div class="col-sm-9 offset-sm-3">
 							<label class="custom-control custom-checkbox">
-								<input type="checkbox" class="custom-control-input" id="customCheck1">
-								<div class="custom-control-label" for="customCheck1">I agree with <a href="#"
+								<input type="checkbox" class="custom-control-input" id="customCheck2">
+								<div class="custom-control-label" for="customCheck2">I agree with <a href="#"
 										target="_blank">terms
 										and conditions</a></div>
 							</label>
@@ -238,7 +257,8 @@
 
 					<div class="form-row mb-2">
 						<div class="col-sm-9 offset-sm-3">
-							<button type="submit" class="btn btn-primary" id="saveBtn">Save and Submit</button>
+							<button type="submit" class="btn btn-primary" id="saveBtn" disabled="disabled">Save and
+								Submit</button>
 						</div>
 					</div>
 				</form>

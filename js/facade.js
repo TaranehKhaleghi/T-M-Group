@@ -120,3 +120,32 @@ function LogInUser() {
                 console.error("Log in form Validation failed.");
         }
 }
+
+function RegisterBusiness(){
+        console.info("Entering Business Registration");
+
+        if (DoValidate_frmBusiness()){
+                console.info("Business Registration Form Validation is successful.");
+
+                var companyName = $("#companyName").val();
+                var companyUrl = $("#companyUrl").val();
+                var bnNumber = $("#bnNumber").val();
+                var contactTitle = $("#contactTitle").val();
+                var contactFName = $("#contactFName").val();
+                var contactLName = $("#contactLName").val();
+                var cCountryCode = $("#countryCode option:selected").val();
+                var cPhoneNumber = $("#cPhoneNumber").val();
+                var cFaxNumber = $("#cFaxNumber").val();
+                var contactEmail = $("#contactEmail").val();
+                var contactCity = $("#contactCity").val();
+                var contactCountry = $("#contactCountry option:selected").val();
+                var cAddressDetails = $("#cAddressDetails").val();
+                var cPostalCode = $("#cPostalCode").val();
+                
+                var options = [];
+                options = [companyName, companyUrl, bnNumber, contactTitle, contactFName, contactLName, cCountryCode, cPhoneNumber, cFaxNumber, contactEmail, contactCity, contactCountry, cAddressDetails, cPostalCode];
+
+                BusinessInfo.businessInsert(options);
+
+        }
+}
