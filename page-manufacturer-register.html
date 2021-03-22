@@ -107,27 +107,32 @@
 		<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
 			<article class="card-body">
 				<header class="mb-4">
-					<h4 class="card-title">Business Information</h4>
+					<h4 class="card-title">Manufacturer Information</h4>
 				</header>
 				<form class="block-register" id="BusinessForm">
-					<!--div class="form-group form-row">
+					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">I am a</label>
 						<div class="col-sm-9 pt-1">
 							<label class="custom-control custom-radio custom-control-inline">
-								<input class="custom-control-input" checked="" type="radio" name="account_type"
-									value="option1">
-								<span class="custom-control-label"> Supplier </span>
-							</label>
-							<label class="custom-control custom-radio custom-control-inline">
-								<input class="custom-control-input" type="radio" name="account_type" value="option2">
+								<input class="custom-control-input" checked="true" type="radio" name="accountType"
+									value="Manufacturer">
 								<span class="custom-control-label"> Manufacturer </span>
 							</label>
-							<label class="custom-control custom-radio custom-control-inline">
-								<input class="custom-control-input" type="radio" name="account_type" value="option3">
-								<span class="custom-control-label"> Both </span>
-							</label>
 						</div>
-					</div-->
+					</div>
+
+					<div class="form-group form-row">
+						<label class="col-md-3 col-form-label">Full name</label>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="First name" id="firstName"
+								name="firstName">
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="Last name" id="lastName"
+								name="lastName">
+						</div>
+					</div>
+
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Company name</label>
 						<div class="col">
@@ -181,8 +186,8 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact phone</label>
 						<div class="col">
-							<select class="custom-select" style="max-width: 120px;" id="cCountryCode"
-								name="cCountryCode">
+							<select class="custom-select" style="max-width: 120px;" id="countryCode"
+								name="countryCode">
 								<option selected="">CA +1</option>
 								<option value="1">US +1</option>
 								<option value="2">GB +44</option>
@@ -190,7 +195,8 @@
 							</select>
 						</div>
 						<div class="col-6">
-							<input type="text" class="form-control" placeholder="Phone number" id="cPhoneNumber" name="cPhoneNumber">
+							<input type="text" class="form-control" placeholder="Phone number" id="phoneNumber"
+								name="phoneNumber">
 						</div>
 					</div>
 
@@ -205,19 +211,19 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact email</label>
 						<div class="col-sm-9">
-							<input type="email" class="form-control" placeholder="Ex. john@gmail.com" id="contactEmail"
-								name="contactEmail">
+							<input type="email" class="form-control" placeholder="Ex. john@gmail.com" id="userEmail"
+								name="userEmail">
 						</div>
 					</div>
 
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact city</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="City" id="contactCity"
-								name="contactCity">
+							<input type="text" class="form-control" placeholder="City" id="city"
+								name="city">
 						</div>
 						<div class="col">
-							<select class="custom-select form-control" id="contactCountry" name="contactCountry">
+							<select class="custom-select form-control" id="country" name="country">
 								<!--option>Country</option-->
 								<option>Canada</option>
 								<option>United states</option>
@@ -230,8 +236,8 @@
 					<div class="form-group form-row">
 						<label class="col-md-3 col-form-label">Contact address</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="Street, Building" id="cAddressDetails"
-								name="cAddressDetails">
+							<input type="text" class="form-control" placeholder="Street, Building" id="addressDetails"
+								name="addressDetails">
 						</div>
 					</div>
 
@@ -240,6 +246,16 @@
 						<div class="col">
 							<input type="text" class="form-control" placeholder="Postal/Zip code" id="cPostalCode"
 								name="cPostalCode">
+						</div>
+					</div>
+
+					<div class="form-group form-row">
+						<label class="col-md-3 col-form-label">Password</label>
+						<div class="col-6">
+							<input type="password" class="form-control mb-2" placeholder="Create password"
+								id="cPassword" name="cPassword">
+							<input type="password" class="form-control" placeholder="Repeat password"
+								id="confirmPassword" name="confirmPassword">
 						</div>
 					</div>
 

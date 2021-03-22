@@ -104,12 +104,20 @@ function DoValidate_frmLogIn() {
     return form.valid();
 }
 
-    //validate business info form
+//validate business info form
 //=======================
-function DoValidate_frmBusiness() {
+function DoValidate_frmManufacturer() {
     var form = $("#BusinessForm");
     form.validate({
         rules: {
+            firstName: {
+                required: true,
+                rangelength: [2, 10]
+            },
+            lastName: {
+                required: true,
+                rangelength: [2, 10]
+            },
             companyName: {
                 required: true,    
                 rangelength: [2, 20]           
@@ -120,36 +128,54 @@ function DoValidate_frmBusiness() {
             bnNumber:{
                 required:true
             },
-            cFirstName: {
+            contactFName: {
                 required: true,    
                 rangelength: [2, 20]           
             },
-            cLastName: {
+            contactLName: {
                 required: true,    
                 rangelength: [2, 20]           
             },
-            cPhoneNumber:{
+            phoneNumber:{
                 required: true,
                 phoneAddCheck: true
             },
-            contactEmail:{
+            userEmail:{
                 required: true,
                 emailAddCheck: true
             },
-            contactCity:{
+            city:{
                 required: true
             },
-            contactCountry:{
+            country:{
                 required: true
             },
-            cAddressDetails:{
+            addressDetails:{
                 required:true
             },
             cPostalCode:{
                 required: true
+            },
+            cPassword: {
+                required: true
+            },
+            confirmPassword: {
+                required: true,
+                equalTo: "#cPassword"
+            },
+            customCheck2: {
+                required: true
             }
         },
         messages: {
+            firstName: {
+                required: "first name is required",
+                rangelength: "Length must be between 2 and 10 letters"
+            },
+            lastName: {
+                required: "last name is required",
+                rangelength: "Length must be between 2 and 10 letters"
+            },
             companyName: {
                 required: "company name is required"              
             },
@@ -159,31 +185,68 @@ function DoValidate_frmBusiness() {
             bnNumber:{
                 required: "Business number is required"
             },
-            cFirstName: {
+            contactFName: {
                 required: "contact first name is required"
             },
-            cLastName: {
+            contactLName: {
                 required: "contact first name is required"
             },
-            cPhoneNumber:{
+            phoneNumber:{
                 required: "phone number is required",
                 phoneAddCheck: "Please enter a valid phone number"
             },
-            contactEmail: {
+            userEmail: {
                 required: "Email is required",
                 emailAddCheck: "Please enter a valid email address"
             },
-            contactCity:{
+            city:{
                 required: "city is required"               
             },
-            contactCountry:{
+            country:{
                 required: "country is required" 
             },
-            cAddressDetails:{
+            addressDetails:{
                 required: "address is required"
             },
             cPostalCode:{
                 required: "postal/zip code is required"
+            },
+            cPassword: {
+                required: "Enter password"
+            },
+            confirmPassword: {
+                required: "Confirm password",
+                equalTo: "Password is not match"
+            },
+            customCheck2: {
+                required: "is required"
+            }
+        }
+    });
+    return form.valid();
+}
+
+//validate sign in for manufacturer
+//=======================
+function DoValidate_frmLogInMan() {
+    var form = $("#LogInManForm");
+    form.validate({
+        rules: {
+            userName: {
+                required: true,
+                emailAddCheck: true
+            },
+            loginPassword: {
+                required: true
+            }
+        },
+        messages: {
+            userName: {
+                required: "Email is required",
+                emailAddCheck: "Please enter a valid email address"
+            },
+            loginPassword: {
+                required: "Enter password"
             }
         }
     });

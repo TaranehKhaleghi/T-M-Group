@@ -1,14 +1,18 @@
 
 function btnRegister_click() {
-    RegisterUser();
-}
-
-function btnLogIn_click() {
-    LogInUser();
+    RegisterSupplier();
 }
 
 function btnRegisterBusiness_click(){
-    RegisterBusiness();
+    RegisterManufacturer();
+}
+
+function btnLogIn_click() {
+    LogInSupplier();
+}
+
+function btnLogInMan_click() {
+    LogInManufacturer();
 }
 
 function init() {
@@ -32,9 +36,12 @@ function init() {
 
     $("#submitBtn").on("click", btnRegister_click);
 
+    $("#saveBtn").on("click", btnRegisterBusiness_click);
+
     $("#logInBtn").on("click", btnLogIn_click);
 
-    $("#saveBtn").on("click", btnRegisterBusiness_click);
+    $("#logInManBtn").on("click", btnLogInMan_click);
+
 }
 
 function initDB() {

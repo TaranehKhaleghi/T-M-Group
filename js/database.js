@@ -44,21 +44,21 @@ var DB = {
 
             //don't want to drop any table now. only if necessary.
             //=====================================================
-            //console.info("Dropping Table users if exists...");
-            //var sqlDropUser = "DROP TABLE IF EXISTS users;";
+            //console.info("Dropping Table suppliers if exists...");
+            //var sqlDropUser = "DROP TABLE IF EXISTS suppliers;";
 
             //tx.executeSql(sqlDropUser, options, successDrop, errorHandler);
 
-            //console.info("Dropping Table products if exists...");
-            //var sqlDropProduct = "DROP TABLE IF EXISTS products;";
+            //console.info("Dropping Table product if exists...");
+            //var sqlDropProduct = "DROP TABLE IF EXISTS product;";
 
             //tx.executeSql(sqlDropProduct, options, successDrop, errorHandler);
             //=====================================================
             //uncomment if necessary
 
             // Create table users
-            console.info("Creating Table: users...");
-            var sqlCreateUser = "CREATE TABLE IF NOT EXISTS users(" +
+            console.info("Creating Table: suppliers...");
+            var sqlCreateUser = "CREATE TABLE IF NOT EXISTS suppliers(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "accountType VARCHAR(20) NOT NULL," +
                 "firstName VARCHAR(30) NOT NULL," +
@@ -80,28 +80,32 @@ var DB = {
                 "price INT NOT NULL," +
                 "description VARCHAR(50) NOT NULL," +
                 "image VARBINARY NOT NULL," +
-                "FOREIGN KEY(id) REFERENCES manufacturer(id)," +
+                "FOREIGN KEY(id) REFERENCES manufacturers(id)," +
                 "FOREIGN KEY(id) REFERENCES category(id));";
             tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
 
             // Create table manufacturer
-            console.info("Creating Table: manufacturer...");
+            console.info("Creating Table: manufacturers...");
             var sqlManufacturer = "CREATE TABLE IF NOT EXISTS manufacturers(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "accountType VARCHAR(20) NOT NULL," +
+                "firstName VARCHAR(30) NOT NULL," +
+                "lastName VARCHAR(30) NOT NULL," +
                 "companyName VARCHAR(30) NOT NULL," +
                 "companyUrl VARCHAR(20)," +
                 "bnNumber VARCHAR(30) NOT NULL," +
                 "contactTitle VARCHAR(30)," +
                 "contactFName VARCHAR(30) NOT NULL," +
                 "contactLName VARCHAR(30) NOT NULL," +   
-                "cCountryCode VARCHAR(3) NOT NULL," +
-                "cPhoneNumber VARCHAR(20) NOT NULL," +
+                "countryCode VARCHAR(3) NOT NULL," +
+                "phoneNumber VARCHAR(20) NOT NULL," +
                 "cFaxNumber VARCHAR(20)," +    
-                "contactEmail VARCHAR(20) NOT NULL," +         
-                "contactCity VARCHAR(20) NOT NULL," +
-                "contactCountry VARCHAR(20) NOT NULL," +
-                "cAddressDetails VARCHAR(30) NOT NULL," +
-                "cPostalCode VARCHAR(10) NOT NULL);";
+                "userEmail VARCHAR(20) NOT NULL," +         
+                "city VARCHAR(20) NOT NULL," +
+                "country VARCHAR(20) NOT NULL," +
+                "addressDetails VARCHAR(30) NOT NULL," +
+                "cPostalCode VARCHAR(10) NOT NULL," +
+                "cPassword VARCHAR(50) NOT NULL);";
             tx.executeSql(sqlManufacturer, options, successCreate, errorHandler);
 
             // Create table payment
@@ -133,7 +137,7 @@ var DB = {
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "orderDate DATE NOT NULL," +
                 "shipDate DATE," +
-                "FOREIGN KEY(id) REFERENCES users(id)," +
+                "FOREIGN KEY(id) REFERENCES suppliers(id)," +
                 "FOREIGN KEY(id) REFERENCES payment(id));";
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
@@ -148,6 +152,7 @@ var DB = {
 
         db.transaction(txFunction, errorHandler, successTransaction);
     },
+
     dropTables: function () {
         function successDrop() {
             console.info("Success: Dropping Table successful. ");
@@ -161,13 +166,13 @@ var DB = {
             var options = [];
             //repeat for other tables
             //=======================
-            console.info("Dropping Table: users");
-            var sqlUser = "DROP TABLE IF EXISTS users;";
+            console.info("Dropping Table: suppliers...");
+            var sqlUser = "DROP TABLE IF EXISTS suppliers;";
 
             tx.executeSql(sqlUser, options, successDrop, errorHandler);
             //=====================================================
-            console.info("Dropping Table: products");
-            var sqlProduct = "DROP TABLE IF EXISTS products;";
+            console.info("Dropping Table: product...");
+            var sqlProduct = "DROP TABLE IF EXISTS product;";
 
             tx.executeSql(sqlProduct, options, successDrop, errorHandler);
         }
