@@ -30,11 +30,52 @@
 
 	<script type="text/javascript">
 		/// some script
+		function clearLocalStorage() {
+			localStorage.clear();
+		}
 
+		function selectYourLoginType() {
+			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+			switch (select) {
+				case "1":
+					window.location.replace("page-user-login.html");
+					break;
+				case "2":
+					window.location.replace("page-manufacturer-login.html");
+					break;
+				default:
+					console.info("Nothing");
+					break;
+			}
+		}
+
+		function selectYourRegisterType() {
+			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+			switch (select) {
+				case "1":
+					window.location.replace("page-user-register.html");
+					break;
+				case "2":
+					window.location.replace("page-manufacturer-register.html");
+					break;
+				default:
+					console.info("Nothing");
+					break;
+			}
+		}
 		// jquery ready start
 		$(document).ready(function () {
 			// jQuery code
-
+			if (localStorage.getItem("firstName") !== null) {
+				$(".userProfile").text(localStorage.getItem("firstName"));
+				$("#login").hide();
+				$("#logout").show();
+			}
+			else {
+				$(".userProfile").text("");
+				$("#login").show();
+				$("#logout").hide();
+			}
 		});
 		// jquery end
 	</script>
@@ -76,9 +117,13 @@
 										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
-									<div>
-										<a href="page-user-login.html">Sign in</a> |
-										<a href="page-user-register.html"> Register</a>
+									<span class="userProfile"></span>
+									<div id="login">
+										<a onclick="selectYourLoginType();">Sign in</a> |
+										<a onclick="selectYourRegisterType();">Register</a>
+									</div>
+									<div id="logout">
+										<a href="index.html" onclick="clearLocalStorage();">Log out</a>
 									</div>
 								</div>
 							</div>
@@ -178,7 +223,7 @@
 						<a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
 						<a class="list-group-item" href="page-product-info.html"> Add Items </a>
 						<a class="list-group-item" href="page-profile-setting.html"> Settings </a>
-						<a class="list-group-item" href="index.html"> Log out </a>
+						<a class="list-group-item" href="index.html" onclick="clearLocalStorage();"> Log out </a>
 					</nav>
 				</aside> <!-- col.// -->
 				<main class="col-md-9">

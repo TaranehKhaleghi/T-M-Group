@@ -33,6 +33,36 @@
 		function clearLocalStorage() {
 			localStorage.clear();
 		}
+
+		function selectYourLoginType() {
+			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+			switch (select) {
+				case "1":
+					window.location.replace("page-user-login.html");
+					break;
+				case "2":
+					window.location.replace("page-manufacturer-login.html");
+					break;
+				default:
+					console.info("Nothing");
+					break;
+			}
+		}
+
+		function selectYourRegisterType() {
+			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+			switch (select) {
+				case "1":
+					window.location.replace("page-user-register.html");
+					break;
+				case "2":
+					window.location.replace("page-manufacturer-register.html");
+					break;
+				default:
+					console.info("Nothing");
+					break;
+			}
+		}
 		
 		// jquery ready start
 		$(document).ready(function () {
@@ -95,8 +125,8 @@
 									<span class="text-muted">Welcome!</span>
 									<span class="userProfile"></span>
 									<div id="login">
-										<a href="page-user-login.html">Sign in</a> |
-										<a href="page-user-register.html"> Register</a>
+										<a onclick="selectYourLoginType();">Sign in</a> |
+										<a onclick="selectYourRegisterType();">Register</a>
 									</div>
 									<div id="logout">
 										<a href="index.html" onclick="clearLocalStorage();">Log out</a>
@@ -207,8 +237,8 @@
 						<div class="card-body">
 
 							<figure class="icontext">
-								<div class="icon">
-									<img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg">
+								<div class="icon icon-sm rounded-circle border">
+									<i class="fa fa-user"></i><!--img class="rounded-circle img-sm border" src="images/avatars/avatar3.jpg"-->
 								</div>
 								<div class="text">
 									<strong id="name"> name </strong> <br>

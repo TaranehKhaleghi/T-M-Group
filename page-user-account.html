@@ -30,11 +30,52 @@
 
 	<script type="text/javascript">
 		/// some script
+		function clearLocalStorage() {
+			localStorage.clear();
+		}
 
+		function selectYourLoginType() {
+			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+			switch (select) {
+				case "1":
+					window.location.replace("page-user-login.html");
+					break;
+				case "2":
+					window.location.replace("page-manufacturer-login.html");
+					break;
+				default:
+					console.info("Nothing");
+					break;
+			}
+		}
+
+		function selectYourRegisterType() {
+			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+			switch (select) {
+				case "1":
+					window.location.replace("page-user-register.html");
+					break;
+				case "2":
+					window.location.replace("page-manufacturer-register.html");
+					break;
+				default:
+					console.info("Nothing");
+					break;
+			}
+		}
 		// jquery ready start
 		$(document).ready(function () {
 			// jQuery code
-
+			if (localStorage.getItem("firstName") !== null) {
+				$(".userProfile").text(localStorage.getItem("firstName"));
+				$("#login").hide();
+				$("#logout").show();
+			}
+			else {
+				$(".userProfile").text("");
+				$("#login").show();
+				$("#logout").hide();
+			}
 		});
 		// jquery end
 	</script>
@@ -76,9 +117,13 @@
 										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
-									<div>
-										<a href="page-user-login.html">Sign in</a> |
-										<a href="page-user-register.html"> Register</a>
+									<span class="userProfile"></span>
+									<div id="login">
+										<a onclick="selectYourLoginType();">Sign in</a> |
+										<a onclick="selectYourRegisterType();">Register</a>
+									</div>
+									<div id="logout">
+										<a href="index.html" onclick="clearLocalStorage();">Log out</a>
 									</div>
 								</div>
 							</div>
@@ -172,7 +217,7 @@
 						<a class="list-group-item" href="#"> Received orders </a>
 					</ul>
 					<br>
-					<a class="btn btn-light btn-block" href="#"> <i class="fa fa-power-off"></i> <span class="text">Log
+					<a class="btn btn-light btn-block" href="index.html" onclick="clearLocalStorage();"> <i class="fa fa-power-off"></i> <span class="text">Log
 							out</span> </a>
 					<!--   SIDEBAR .//END   -->
 				</aside>
@@ -265,7 +310,7 @@
 						<a class="list-group-item" href="#"> Received orders </a>
 					</ul>
 					<br>
-					<a class="btn btn-light btn-block" href="#"> <i class="fa fa-power-off"></i> <span class="text">Log
+					<a class="btn btn-light btn-block" href="index.html" onclick="clearLocalStorage();"> <i class="fa fa-power-off"></i> <span class="text">Log
 							out</span> </a>
 					<!--   SIDEBAR .//END   -->
 				</aside>
