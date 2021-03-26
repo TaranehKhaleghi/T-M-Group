@@ -159,3 +159,11 @@ function LogInManufacturer() {
                 console.error("Log in form Validation failed.");
         }
 }
+
+function SaveProduct(){
+
+        if (DoValidate_frmSaveProduct()){
+                
+        }
+
+}

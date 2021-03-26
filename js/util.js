@@ -253,6 +253,41 @@ function DoValidate_frmLogInMan() {
     return form.valid();
 }
 
+function DoValidate_frmSaveProduct(){
+    var form = $("#saveProductForm");
+    form.validate({
+        rules: {
+            productName: {
+                required: true
+            },
+            productPrice: {
+                required: true
+            },
+            category:{
+                required: true
+            },
+            description:{
+                required: true
+            }
+        },
+        messages: {
+            productName: {
+                required: "name is required"
+            },
+            productPrice: {
+                required: "price is required"
+            },
+            category:{
+                required: "category should be selected"
+            },
+            description:{
+                required: "description is required"
+            }
+        }
+    });
+    return form.valid();
+}
+
 jQuery.validator.addMethod("emailAddCheck",
     function (value, element) {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;

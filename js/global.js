@@ -15,6 +15,10 @@ function btnLogInMan_click() {
     LogInManufacturer();
 }
 
+function btnSaveProduct_click(){
+    SaveProduct();
+}
+
 function init() {
     console.info("DOM is ready");
 
@@ -41,6 +45,8 @@ function init() {
     $("#logInBtn").on("click", btnLogIn_click);
 
     $("#logInManBtn").on("click", btnLogInMan_click);
+
+    $("#saveProduct").on("click", btnSaveProduct_click);
 
 }
 
