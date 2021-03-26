@@ -76,6 +76,13 @@
                 $("#logout").hide();
                 $("#userProfile").hide();
             }
+            if (localStorage.getItem("accountType") == "Supplier") {
+                $("#sellingItems").hide();
+                $("#addItems").hide();
+            } else {
+                $("#wishList").hide();
+                $("#myOrder").hide();
+            }
         });
         // jquery end
     </script>
@@ -230,10 +237,10 @@
                     <nav class="list-group">
                         <a class="list-group-item" href="page-profile-main.html"> Account overview </a>
                         <a class="list-group-item" href="page-profile-address.html"> My Address </a>
-                        <a class="list-group-item" href="page-profile-orders.html"> My Orders </a>
-                        <a class="list-group-item" href="page-profile-wishlist.html"> My wishlist </a>
-                        <a class="list-group-item" href="page-profile-seller.html"> My Selling Items </a>
-                        <a class="list-group-item" href="page-product-info.html"> Add Items </a>
+                        <a class="list-group-item" href="page-profile-orders.html" id="myOrder"> My Orders </a>
+                        <a class="list-group-item" href="page-profile-wishlist.html" id="wishList"> My wishlist </a>
+                        <a class="list-group-item" href="page-profile-seller.html" id="sellingItems"> My Selling Items </a>
+                        <a class="list-group-item" href="page-product-info.html" id="addItems"> Add Items </a>
                         <a class="list-group-item active" href="page-profile-setting.html"> Settings </a>
                         <a class="list-group-item" href="index.html" onclick="clearLocalStorage();"> Log out </a>
                 </aside>
