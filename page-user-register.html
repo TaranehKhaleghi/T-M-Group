@@ -2,279 +2,282 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="pragma" content="no-cache" />
-	<meta http-equiv="cache-control" content="max-age=604800" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>T&M Drop shipping | T&M Group</title>
+    <title>T&M Drop shipping | T&M Group</title>
 
-	<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-	<!-- jQuery -->
-	<script src="js/lib/jquery-2.0.0.min.js" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="js/lib/jquery-2.0.0.min.js" type="text/javascript"></script>
 
-	<!--jQuery Validation-->
-	<script src="js/lib/jquery.validate.js" type="text/javascript"></script>
+    <!--jQuery Validation-->
+    <script src="js/lib/jquery.validate.js" type="text/javascript"></script>
 
-	<!-- Bootstrap4 files-->
-	<script src="js/lib/bootstrap.bundle.min.js" type="text/javascript"></script>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap4 files-->
+    <script src="js/lib/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 
-	<!-- Font awesome 5 -->
-	<link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+    <!-- Font awesome 5 -->
+    <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
 
-	<!-- custom style -->
-	<link href="css/ui.css" rel="stylesheet" type="text/css" />
-	<link href="css/responsive.css" rel="stylesheet" />
+    <!-- custom style -->
+    <link href="css/ui.css" rel="stylesheet" type="text/css" />
+    <link href="css/responsive.css" rel="stylesheet" />
 
-	<link href="css/myStyle.css" rel="stylesheet" type="text/css" />
+    <link href="css/myStyle.css" rel="stylesheet" type="text/css" />
 
-	<!-- custom javascript -->
-	<script src="js/lib/script.js" type="text/javascript"></script>
+    <!-- custom javascript -->
+    <script src="js/lib/script.js" type="text/javascript"></script>
 
-	<script src="js/database.js" type="text/javascript"></script>
-	<script src="js/facade.js" type="text/javascript"></script>
-	<script src="js/dropshippingDAL.js" type="text/javascript"></script>
-	<script src="js/util.js" type="text/javascript"></script>
-	<script src="js/global.js" type="text/javascript"></script>
+    <script src="js/database.js" type="text/javascript"></script>
+    <script src="js/facade.js" type="text/javascript"></script>
+    <script src="js/dropshippingDAL.js" type="text/javascript"></script>
+    <script src="js/util.js" type="text/javascript"></script>
+    <script src="js/global.js" type="text/javascript"></script>
 
-	<script type="text/javascript">
-		/// some script
-		function clearLocalStorage() {
-			localStorage.clear();
-		}
+    <script type="text/javascript">
+        /// some script
+        function clearLocalStorage() {
+            localStorage.clear();
+        }
 
-		function selectYourLoginType() {
-			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
-			switch (select) {
-				case "1":
-					window.location.replace("page-user-login.html");
-					break;
-				case "2":
-					window.location.replace("page-manufacturer-login.html");
-					break;
-				default:
-					console.info("Nothing");
-					break;
-			}
-		}
+        function selectYourLoginType() {
+            var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+            switch (select) {
+                case "1":
+                    window.location.replace("page-user-login.html");
+                    break;
+                case "2":
+                    window.location.replace("page-manufacturer-login.html");
+                    break;
+                default:
+                    console.info("Nothing");
+                    break;
+            }
+        }
 
-		function selectYourRegisterType() {
-			var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
-			switch (select) {
-				case "1":
-					window.location.replace("page-user-register.html");
-					break;
-				case "2":
-					window.location.replace("page-manufacturer-register.html");
-					break;
-				default:
-					console.info("Nothing");
-					break;
-			}
-		}
-		// jquery ready start
-		$(document).ready(function () {
-			// jQuery code
-			if (localStorage.getItem("firstName") !== null) {
-				$(".userProfile").text(localStorage.getItem("firstName"));
-				$("#login").hide();
-				$("#logout").show();
-			}
-			else {
-				$(".userProfile").text("");
-				$("#login").show();
-				$("#logout").hide();
-				$("#userProfile").hide();
-			}
-		});
-		// jquery end
-	</script>
+        function selectYourRegisterType() {
+            var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+            switch (select) {
+                case "1":
+                    window.location.replace("page-user-register.html");
+                    break;
+                case "2":
+                    window.location.replace("page-manufacturer-register.html");
+                    break;
+                default:
+                    console.info("Nothing");
+                    break;
+            }
+        }
+        // jquery ready start
+        $(document).ready(function() {
+            // jQuery code
+            if (localStorage.getItem("firstName") !== null) {
+                $(".userProfile").text(localStorage.getItem("firstName"));
+                $("#login").hide();
+                $("#logout").show();
+            } else {
+                $(".userProfile").text("");
+                $("#login").show();
+                $("#logout").hide();
+                $("#userProfile").hide();
+            }
+        });
+        // jquery end
+    </script>
 
 </head>
 
 <body>
 
-	<header class="section-header">
-		<section class="header-main border-bottom">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-lg-2 col-4">
-						<a href="index.html" class="brand-wrap">
-							<img class="logo" src="images/logo.jpg">
-						</a> <!-- brand-wrap.// -->
-					</div>
-					<div class="col-lg-6 col-sm-12">
-						<form action="#" class="search">
-							<div class="input-group w-100">
-								<input type="text" class="form-control" placeholder="Search">
-								<div class="input-group-append">
-									<button class="btn btn-primary" type="submit">
+    <header class="section-header">
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-4">
+                        <a href="index.html" class="brand-wrap">
+                            <img class="logo" src="images/logo.jpg">
+                        </a>
+                        <!-- brand-wrap.// -->
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <form action="#" class="search">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
 										<i class="fa fa-search"></i> Search
 									</button>
-								</div>
-							</div>
-						</form> <!-- search-wrap .end// -->
-					</div> <!-- col.// -->
-					<div class="col-lg-4 col-sm-6 col-12">
-						<div class="widgets-wrap float-md-right">
-							<div class="widget-header  mr-3">
-								<a href="#" class="icon icon-sm rounded-circle border"><i
+                                </div>
+                            </div>
+                        </form>
+                        <!-- search-wrap .end// -->
+                    </div>
+                    <!-- col.// -->
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <div class="widgets-wrap float-md-right">
+                            <div class="widget-header  mr-3">
+                                <a href="#" class="icon icon-sm rounded-circle border"><i
 										class="fa fa-shopping-cart"></i></a>
-								<span class="badge badge-pill badge-danger notify">0</span>
-							</div>
-							<div class="widget-header icontext">
-								<a href="#" class="icon icon-sm rounded-circle border" id = "userProfile"><i class="fa fa-user"></i></a>
-								<div class="text">
-									<span class="text-muted">Welcome!</span>
-									<span class="userProfile"></span>
-									<div id="login">
-										<a  href="#" onclick="selectYourLoginType();">Sign in</a> |
-										<a  href="#" onclick="selectYourRegisterType();">Register</a>
-									</div>
-									<div id="logout">
-										<a href="index.html" onclick="clearLocalStorage();">Log out</a>
-									</div>
-								</div>
-							</div>
+                                <span class="badge badge-pill badge-danger notify">0</span>
+                            </div>
+                            <div class="widget-header icontext">
+                                <a href="#" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
+                                <div class="text">
+                                    <span class="text-muted">Welcome!</span>
+                                    <span class="userProfile"></span>
+                                    <div id="login">
+                                        <a href="#" onclick="selectYourLoginType();">Sign in</a> |
+                                        <a href="#" onclick="selectYourRegisterType();">Register</a>
+                                    </div>
+                                    <div id="logout">
+                                        <a href="index.html" onclick="clearLocalStorage();">Log out</a>
+                                    </div>
+                                </div>
+                            </div>
 
-						</div> <!-- widgets-wrap.// -->
-					</div> <!-- col.// -->
-				</div> <!-- row.// -->
-			</div> <!-- container.// -->
-		</section> <!-- header-main .// -->
-	</header> <!-- section-header.// -->
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- container.// -->
+        </section>
+        <!-- header-main .// -->
+    </header>
+    <!-- section-header.// -->
 
-	<!-- ========================= SECTION CONTENT ========================= -->
-	<section class="section-content padding-y">
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content padding-y">
 
-		<!-- ============================ COMPONENT REGISTER   ================================= -->
-		<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
-			<article class="card-body">
-				<header class="mb-4">
-					<h4 class="card-title">Sign up - Supplier</h4>
-				</header>
-				<form class="block-register" id="RegisterForm">
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">I am a</label>
-						<div class="col-sm-9 pt-1">
-							<label class="custom-control custom-radio custom-control-inline">
+        <!-- ============================ COMPONENT REGISTER   ================================= -->
+        <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
+            <article class="card-body">
+                <header class="mb-4">
+                    <h4 class="card-title">Sign up - Supplier</h4>
+                </header>
+                <form class="block-register" id="RegisterForm">
+                    <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">I am a</label>
+                        <div class="col-sm-9 pt-1">
+                            <label class="custom-control custom-radio custom-control-inline">
 								<input class="custom-control-input" checked="true" type="radio" name="accountType"
 									value="Supplier">
 								<span class="custom-control-label"> Supplier </span>
 							</label>
-						</div>
-					</div>
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Full name</label>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="First name" id="firstName"
-								name="firstName">
-						</div>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Last name" id="lastName"
-								name="lastName">
-						</div>
-					</div>
+                    <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Full name</label>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name" id="firstName" name="firstName">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name" id="lastName" name="lastName">
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Phone</label>
-						<div class="col">
-							<select class="custom-select" style="max-width: 120px;" id="countryCode" name="countryCode">
+                    <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Phone</label>
+                        <div class="col">
+                            <select class="custom-select" style="max-width: 120px;" id="countryCode" name="countryCode">
 								<option selected="">CA +1</option>
 								<option>US +1</option>
 								<option>GB +44</option>
 								<option>DE +49</option>
 							</select>
-						</div>
-						<div class="col-6">
-							<input name="phoneNumber" class="form-control" placeholder="Phone number" id="phoneNumber"
-								type="text">
-						</div>
-					</div>
+                        </div>
+                        <div class="col-6">
+                            <input name="phoneNumber" class="form-control" placeholder="Phone number" id="phoneNumber" type="text">
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Email</label>
-						<div class="col-sm-9">
-							<input name="userEmail" id="userEmail" type="email" class="form-control"
-								placeholder="Ex. john@gmail.com">
-						</div>
-					</div>
+                    <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Email</label>
+                        <div class="col-sm-9">
+                            <input name="userEmail" id="userEmail" type="email" class="form-control" placeholder="Ex. john@gmail.com">
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Address</label>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="City" id="city" name="city">
-						</div>
-						<div class="col">
-							<select class="custom-select form-control" id="country" name="country">
+                    <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Address</label>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="City" id="city" name="city">
+                        </div>
+                        <div class="col">
+                            <select class="custom-select form-control" id="country" name="country">
 								<!--option>Country</option-->
 								<option>Canada</option>
 								<option>United states</option>
 								<option>United Kingdom</option>
 								<option>Germany</option>
 							</select>
-						</div>
-					</div>
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<label class="col-md-3"> </label>
-						<div class="col">
-							<input type="text" class="form-control" placeholder="Street, Building" id="addressDetails"
-								name="addressDetails">
-						</div>
-					</div>
+                    <div class="form-group form-row">
+                        <label class="col-md-3"> </label>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Street, Building" id="addressDetails" name="addressDetails">
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">Password</label>
-						<div class="col-6">
-							<input type="password" class="form-control mb-2" placeholder="Create password" id="password"
-								name="password">
-							<input type="password" class="form-control" placeholder="Repeat password"
-								id="confirmPassword" name="confirmPassword">
-						</div>
-					</div>
+                    <div class="form-group form-row">
+                        <label class="col-md-3 col-form-label">Password</label>
+                        <div class="col-6">
+                            <input type="password" class="form-control mb-2" placeholder="Create password" id="password" name="password">
+                            <input type="password" class="form-control" placeholder="Repeat password" id="confirmPassword" name="confirmPassword">
+                        </div>
+                    </div>
 
-					<div class="form-group form-row">
-						<div class="col-sm-9 offset-sm-3">
-							<label class="custom-control custom-checkbox">
+                    <div class="form-group form-row">
+                        <div class="col-sm-9 offset-sm-3">
+                            <label class="custom-control custom-checkbox">
 								<input type="checkbox" class="custom-control-input" id="customCheck1"
 									name="customCheck1">
 								<div class="custom-control-label" for="customCheck1">I agree with <a href="#"
 										target="_blank">terms and conditions</a></div>
 							</label>
 
-						</div>
-					</div>
+                        </div>
+                    </div>
 
-					<div class="form-row mb-2">
-						<div class="col-sm-9 offset-sm-3">
-							<button type="submit" class="btn btn-primary" id="submitBtn"
-								disabled="disabled">Register</button>
-						</div>
-					</div>
-				</form>
-			</article> <!-- card-body end .// -->
-			<div class="card-footer text-center">Have an account? <a href="page-user-login.html">Log In</a></div>
-		</div> <!-- card.// -->
-		<!-- ============================ COMPONENT REGISTER  END.// ================================= -->
-
-
-	</section>
-	<!-- ========================= SECTION CONTENT END// ========================= -->
+                    <div class="form-row mb-2">
+                        <div class="col-sm-9 offset-sm-3">
+                            <button type="submit" class="btn btn-primary" id="submitBtn" disabled="disabled">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </article>
+            <!-- card-body end .// -->
+            <div class="card-footer text-center">Have an account? <a href="page-user-login.html">Log In</a></div>
+        </div>
+        <!-- card.// -->
+        <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
 
 
-	<!-- ========================= FOOTER ========================= -->
-	<footer class="section-footer border-top padding-y">
-		<div class="container">
-			<p class="text-center">
-				&copy T&M Group Copyright 2021 All rights reserved
-			</p>
-		</div><!-- //container -->
-	</footer>
-	<!-- ========================= FOOTER END // ========================= -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer border-top padding-y">
+        <div class="container">
+            <p class="text-center">
+                &copy T&M Group Copyright 2021 All rights reserved
+            </p>
+        </div>
+        <!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
 
 </body>
 
