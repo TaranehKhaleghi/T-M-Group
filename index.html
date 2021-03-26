@@ -28,6 +28,12 @@
 	<!-- custom javascript -->
 	<script src="js/lib/script.js" type="text/javascript"></script>
 
+	<script src="js/database.js" type="text/javascript"></script>
+	<script src="js/facade.js" type="text/javascript"></script>
+	<script src="js/dropshippingDAL.js" type="text/javascript"></script>
+	<script src="js/util.js" type="text/javascript"></script>
+	<script src="js/global.js" type="text/javascript"></script>
+
 	<script type="text/javascript">
 		// some script
 		function clearLocalStorage() {
@@ -70,12 +76,13 @@
 			if (localStorage.getItem("firstName") !== null) {
 				$(".userProfile").text(localStorage.getItem("firstName"));
 				$("#login").hide();
-				$("#logout").show();
+				$("#logout").show();				
 			}
 			else {
 				$(".userProfile").text("");
 				$("#login").show();
 				$("#logout").hide();
+				$("#userProfile").hide();
 			}
 		});
 		// jquery end
@@ -114,7 +121,7 @@
 								<span class="badge badge-pill badge-danger notify">0</span>
 							</div>
 							<div class="widget-header icontext">
-								<a href="page-profile-main.html" class="icon icon-sm rounded-circle border"><i
+								<a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id = "userProfile"><i
 										class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>

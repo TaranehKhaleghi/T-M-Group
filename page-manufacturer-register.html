@@ -86,6 +86,7 @@
 				$(".userProfile").text("");
 				$("#login").show();
 				$("#logout").hide();
+				$("#userProfile").hide();
 			}
 		});
 		// jquery end
@@ -124,7 +125,7 @@
 								<span class="badge badge-pill badge-danger notify">0</span>
 							</div>
 							<div class="widget-header icontext">
-								<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+								<a href="#" class="icon icon-sm rounded-circle border" id = "userProfile"><i class="fa fa-user"></i></a>
 								<div class="text">
 									<span class="text-muted">Welcome!</span>
 									<span class="userProfile"></span>
@@ -195,9 +196,9 @@
 					</div>
 
 					<div class="form-group form-row">
-						<label class="col-md-3 col-form-label">BN #</label>
+						<label class="col-md-3 col-form-label">Business Number</label>
 						<div class="col">
-							<input type="text" class="form-control" placeholder="BN number" id="bnNumber"
+							<input type="text" class="form-control" placeholder="Business number" id="bnNumber"
 								name="bnNumber">
 						</div>
 					</div>
@@ -205,7 +206,7 @@
 					<hr>
 
 					<header class="mb-4">
-						<h4 class="card-title">Legal Representation Information</h4>
+						<h4 class="card-title">Administration Information</h4>
 					</header>
 
 					<div class="form-group form-row">
