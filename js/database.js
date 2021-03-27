@@ -73,13 +73,14 @@ var DB = {
             tx.executeSql(sqlCreateUser, options, successCreate, errorHandler);
 
             // Create table product
-            console.info("Creating Table: product...");
-            var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS product(" +
+            console.info("Creating Table: products...");
+            var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS products(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "image BLOB," +
                 "name VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
-                "description VARCHAR(50) NOT NULL," +
-                "image VARBINARY NOT NULL," +
+                "category VARCHAR(20) NOt NULL," +
+                "description VARCHAR(50) NOT NULL," +                
                 "FOREIGN KEY(id) REFERENCES manufacturers(id)," +
                 "FOREIGN KEY(id) REFERENCES category(id));";
             tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);

@@ -160,10 +160,36 @@ function LogInManufacturer() {
         }
 }
 
-function SaveProduct(){
+function SaveProduct() {
 
-        if (DoValidate_frmSaveProduct()){
-                
+        if (DoValidate_frmSaveProduct()) {
+
+                productImage = document.getElementById('myImage');
+                image = getBase64Image(productImage);
+                localStorage.setItem("image", image);
+
+                function getBase64Image(img) {
+                        var canvas = document.createElement("canvas");
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+
+                        var ctx = canvas.getContext("2d");
+                        ctx.drawImage(img, 0, 0, img.width, img.height);
+
+                        var dataURL = canvas.toDataURL("image/png");
+
+                        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                }
+
+                var name = $("#productName").val();
+                var price = $("#productPrice").val();
+                var category = $("#category option:selected").val();
+                var description = $("#description").val();
+
+                options = [];
+                options = [image, name, price, category, description];
+
+                SaveProductInfo.productInsert(options);
         }
 
 }

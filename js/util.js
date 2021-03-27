@@ -287,7 +287,7 @@ function DoValidate_frmSaveProduct(){
     });
     return form.valid();
 }
-
+ 
 jQuery.validator.addMethod("emailAddCheck",
     function (value, element) {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;

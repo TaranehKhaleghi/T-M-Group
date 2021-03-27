@@ -14,6 +14,9 @@
     <!-- jQuery -->
     <script src="js/lib/jquery-2.0.0.min.js" type="text/javascript"></script>
 
+    <!--jQuery Validation-->
+    <script src="js/lib/jquery.validate.js" type="text/javascript"></script>
+
     <!-- Bootstrap4 files-->
     <script src="js/lib/bootstrap.bundle.min.js" type="text/javascript"></script>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -25,8 +28,16 @@
     <link href="css/ui.css" rel="stylesheet" type="text/css" />
     <link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
 
+    <link href="css/myStyle.css" rel="stylesheet" type="text/css" />
+
     <!-- custom javascript -->
     <script src="js/lib/script.js" type="text/javascript"></script>
+
+    <script src="js/database.js" type="text/javascript"></script>
+    <script src="js/facade.js" type="text/javascript"></script>
+    <script src="js/dropshippingDAL.js" type="text/javascript"></script>
+    <script src="js/util.js" type="text/javascript"></script>
+    <script src="js/global.js" type="text/javascript"></script>
 
     <script type="text/javascript">
         /// some script
@@ -76,13 +87,13 @@
                 $("#logout").hide();
                 $("#userProfile").hide();
             }
-            $('#OpenImgUpload').click(function(){ $('#imgupload').trigger('click'); });
+            $('#OpenImgUpload').click(function () { $('#imgupload').trigger('click'); });
 
-            $(function(){
-                $("#imgupload").change(function(event){
-                  var x = URL.createObjectURL(event.target.files[0]);
-                  $("#myImage").attr("src", x);
-                  console.log(event);
+             $(function () {
+                $("#imgupload").change(function (event) {
+                    var x = URL.createObjectURL(event.target.files[0]);
+                    $("#myImage").attr("src", x);
+                    console.log(event);
                 });
             })
         });
@@ -256,10 +267,11 @@
                         <div class="card-body">
                             <h4 class="card-title mb-4">Product Information</h4>
                             <form id="saveProductForm">
-                                <div class="form-group">
-                                    <img src="images/items/1.jpg" class="img-sm rounded-circle border" id = "myImage">
+                                <div class="form-group">                                   
+                                    <img src="images/items/1.jpg" class="img-sm rounded-circle border" id="myImage">
                                     <input type="file" id="imgupload" style="display:none" />
-                                    <a href="#" class="btn btn-light mb-3" id="OpenImgUpload"><i class="fa fa-plus"></i> Add image</a>
+                                    <a href="#" class="btn btn-light mb-3" id="OpenImgUpload"><i class="fa fa-plus"></i>
+                                        Add image</a>
                                 </div>
                                 <div class="form-row">
                                     <div class="col form-group">
@@ -281,7 +293,7 @@
                                     <div class="col form-group">
                                         <label>Category</label>
                                         <select class="custom-select form-control" id="category" name="category">
-                                            <option>Select</option>
+                                            <option value="">Select</option>
                                             <option>Home Appliances</option>
                                             <option>Vehicles & Accessories</option>
                                             <option>Furniture</option>

@@ -162,3 +162,48 @@ var SignInManufacturer = {
     },
 
 };
+
+var SaveProductInfo = {
+
+    productInsert: function (options) {
+        function successInsertTransaction() {
+            console.info("Success: Insert Transaction successful");
+        }
+
+        function successInsert() {
+            console.info("Success: Insert successful");
+            alert("Saving product has been successful");
+
+            window.location.replace("page-product-info.html");
+        }
+
+        function txFunction(tx) {
+            var sql = "";
+            console.info("Start inserting product into table");
+            sql = "INSERT INTO products(image, name, price, category, description) VALUES(?,?,?,?,?);";
+            tx.executeSql(sql, options, successInsert, errorHandler);
+
+            console.info("product added");
+        }
+
+        db.transaction(txFunction, errorHandler, successInsertTransaction);
+    },
+
+    selectAll: function (callback) {
+        var options = [];
+
+        function successTransaction() {
+            console.info("Success: Select all Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting all records...");
+
+            var sql = "SELECT * FROM products;";
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+};
