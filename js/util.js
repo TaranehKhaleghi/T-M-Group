@@ -1,4 +1,3 @@
-
 //validate register form
 //=======================
 function DoValidate_frmAdd() {
@@ -78,7 +77,7 @@ function DoValidate_frmAdd() {
 }
 
 //validate sign in form
-//=======================
+//======================
 function DoValidate_frmLogIn() {
     var form = $("#LogInForm");
     form.validate({
@@ -105,7 +104,7 @@ function DoValidate_frmLogIn() {
 }
 
 //validate business info form
-//=======================
+//============================
 function DoValidate_frmManufacturer() {
     var form = $("#BusinessForm");
     form.validate({
@@ -119,41 +118,41 @@ function DoValidate_frmManufacturer() {
                 rangelength: [2, 10]
             },
             companyName: {
-                required: true,    
-                rangelength: [2, 20]           
+                required: true,
+                rangelength: [2, 20]
             },
             companyUrl: {
                 url: true
             },
-            bnNumber:{
-                required:true
+            bnNumber: {
+                required: true
             },
             contactFName: {
-                required: true,    
-                rangelength: [2, 20]           
+                required: true,
+                rangelength: [2, 20]
             },
             contactLName: {
-                required: true,    
-                rangelength: [2, 20]           
+                required: true,
+                rangelength: [2, 20]
             },
-            phoneNumber:{
+            phoneNumber: {
                 required: true,
                 phoneAddCheck: true
             },
-            userEmail:{
+            userEmail: {
                 required: true,
                 emailAddCheck: true
             },
-            city:{
+            city: {
                 required: true
             },
-            country:{
+            country: {
                 required: true
             },
-            addressDetails:{
-                required:true
+            addressDetails: {
+                required: true
             },
-            cPostalCode:{
+            cPostalCode: {
                 required: true
             },
             cPassword: {
@@ -177,12 +176,12 @@ function DoValidate_frmManufacturer() {
                 rangelength: "Length must be between 2 and 10 letters"
             },
             companyName: {
-                required: "company name is required"              
+                required: "company name is required"
             },
             companyUrl: {
                 url: "Please enter a valid url"
             },
-            bnNumber:{
+            bnNumber: {
                 required: "Business number is required"
             },
             contactFName: {
@@ -191,7 +190,7 @@ function DoValidate_frmManufacturer() {
             contactLName: {
                 required: "contact first name is required"
             },
-            phoneNumber:{
+            phoneNumber: {
                 required: "phone number is required",
                 phoneAddCheck: "Please enter a valid phone number"
             },
@@ -199,16 +198,16 @@ function DoValidate_frmManufacturer() {
                 required: "Email is required",
                 emailAddCheck: "Please enter a valid email address"
             },
-            city:{
-                required: "city is required"               
+            city: {
+                required: "city is required"
             },
-            country:{
-                required: "country is required" 
+            country: {
+                required: "country is required"
             },
-            addressDetails:{
+            addressDetails: {
                 required: "address is required"
             },
-            cPostalCode:{
+            cPostalCode: {
                 required: "postal/zip code is required"
             },
             cPassword: {
@@ -227,7 +226,7 @@ function DoValidate_frmManufacturer() {
 }
 
 //validate sign in for manufacturer
-//=======================
+//==================================
 function DoValidate_frmLogInMan() {
     var form = $("#LogInManForm");
     form.validate({
@@ -253,7 +252,9 @@ function DoValidate_frmLogInMan() {
     return form.valid();
 }
 
-function DoValidate_frmSaveProduct(){
+//validate add product info form
+//===============================
+function DoValidate_frmSaveProduct() {
     var form = $("#saveProductForm");
     form.validate({
         rules: {
@@ -263,10 +264,10 @@ function DoValidate_frmSaveProduct(){
             productPrice: {
                 required: true
             },
-            category:{
+            category: {
                 required: true
             },
-            description:{
+            description: {
                 required: true
             }
         },
@@ -277,31 +278,27 @@ function DoValidate_frmSaveProduct(){
             productPrice: {
                 required: "price is required"
             },
-            category:{
+            category: {
                 required: "category should be selected"
             },
-            description:{
+            description: {
                 required: "description is required"
             }
         }
     });
     return form.valid();
 }
- 
+
 jQuery.validator.addMethod("emailAddCheck",
-    function (value, element) {
+    function(value, element) {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;
         return this.optional(element) || regex.test(value);
     },
     "Email is not valid");
 
 jQuery.validator.addMethod("phoneAddCheck",
-    function (value, element) {
+    function(value, element) {
         var regex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
         return this.optional(element) || regex.test(value);
     },
     "Phone is not valid");
-
-
-
-
