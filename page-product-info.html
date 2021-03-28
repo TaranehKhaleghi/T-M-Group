@@ -75,7 +75,7 @@
             }
         }
         // jquery ready start
-        $(document).ready(function () {
+        $(document).ready(function() {
             // jQuery code
             if (localStorage.getItem("firstName") !== null) {
                 $(".userProfile").text(localStorage.getItem("firstName"));
@@ -87,10 +87,12 @@
                 $("#logout").hide();
                 $("#userProfile").hide();
             }
-            $('#OpenImgUpload').click(function () { $('#imgupload').trigger('click'); });
+            $('#OpenImgUpload').click(function() {
+                $('#imgupload').trigger('click');
+            });
 
-             $(function () {
-                $("#imgupload").change(function (event) {
+            $(function() {
+                $("#imgupload").change(function(event) {
                     var x = URL.createObjectURL(event.target.files[0]);
                     $("#myImage").attr("src", x);
                     console.log(event);
@@ -136,8 +138,7 @@
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border"
-                                    id="userProfile"><i class="fa fa-user"></i></a>
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <span class="userProfile"></span>
@@ -168,8 +169,7 @@
     <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
         <div class="container">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
-                aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -186,9 +186,9 @@
                             <a class="dropdown-item" href="#">Vehicles & Accessories</a>
                             <a class="dropdown-item" href="#">Furniture</a>
                             <a class="dropdown-item" href="#">Consumer Electronics</a>
-                            <a class="dropdown-item" href="#">Fabric & Textile</a>
+                            <a class="dropdown-item" href="#">Jewelry</a>
                             <a class="dropdown-item" href="#">Beauty & Personal Care</a>
-                            <a class="dropdown-item" href="#">Construction Equipment</a>
+                            <a class="dropdown-item" href="#">Clothing</a>
                             <a class="dropdown-item" href="#">Health & Medical</a>
                         </div>
                     </li>
@@ -267,7 +267,7 @@
                         <div class="card-body">
                             <h4 class="card-title mb-4">Product Information</h4>
                             <form id="saveProductForm">
-                                <div class="form-group">                                   
+                                <div class="form-group">
                                     <img src="images/items/1.jpg" class="img-sm rounded-circle border" id="myImage">
                                     <input type="file" id="imgupload" style="display:none" />
                                     <a href="#" class="btn btn-light mb-3" id="OpenImgUpload"><i class="fa fa-plus"></i>
@@ -276,14 +276,12 @@
                                 <div class="form-row">
                                     <div class="col form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" placeholder="item" name="productName"
-                                            id="productName">
+                                        <input type="text" class="form-control" placeholder="item" name="productName" id="productName">
                                     </div>
                                     <!-- form-group end.// -->
                                     <div class="col form-group">
                                         <label>Price</label>
-                                        <input type="text" class="form-control" placeholder="$100.00"
-                                            name="productPrice" id="productPrice">
+                                        <input type="text" class="form-control" placeholder="$100.00" name="productPrice" id="productPrice">
                                     </div>
                                     <!-- form-group end.// -->
                                 </div>
@@ -298,16 +296,15 @@
                                             <option>Vehicles & Accessories</option>
                                             <option>Furniture</option>
                                             <option>Consumer Electronics</option>
-                                            <option>Fabric & Textile</option>
+                                            <option>Jewelry</option>
                                             <option>Beauty & Personal Care</option>
-                                            <option>Construction Equipment</option>
+                                            <option>Clothing</option>
                                             <option>Health & Medical</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Description</label>
-                                        <textarea type="text" class="form-control" placeholder="Description..."
-                                            id="description" name="description"></textarea>
+                                        <textarea type="text" class="form-control" placeholder="Description..." id="description" name="description"></textarea>
                                     </div>
                                     <!-- form-group end.// -->
                                     <div class="form-group col-md-6">
@@ -316,17 +313,17 @@
 
                                     <button class="btn btn-primary btn-block" id="saveProduct">Save info</button>
                             </form>
+                            </div>
+                            <!-- card-body.// -->
                         </div>
-                        <!-- card-body.// -->
-                    </div>
-                    <!-- card .// -->
-                    <!-- ============================ COMPONENT PRODUCT INFORMATION END.// ================================= -->
+                        <!-- card .// -->
+                        <!-- ============================ COMPONENT PRODUCT INFORMATION END.// ================================= -->
                 </main>
                 <!-- col.// -->
-            </div>
+                </div>
 
-        </div>
-        <!-- container .//  -->
+            </div>
+            <!-- container .//  -->
     </section>
     <!-- ========================= SECTION CONTENT END// ========================= -->
 
