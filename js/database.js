@@ -5,7 +5,7 @@ function errorHandler(tx, error) {
 }
 
 var DB = {
-    createDatabase: function () {
+    createDatabase: function() {
         var shortName = "DropShipping";
         var version = "1.0";
         var displayName = "DB for T&M Drop Shipping website";
@@ -19,7 +19,7 @@ var DB = {
             console.info("Success: Database creation successful.");
         }
     },
-    createTables: function () {
+    createTables: function() {
 
         function successDrop() {
             console.info("Success: Dropping Table successful. ");
@@ -49,8 +49,8 @@ var DB = {
 
             //tx.executeSql(sqlDropUser, options, successDrop, errorHandler);
 
-            //console.info("Dropping Table product if exists...");
-            //var sqlDropProduct = "DROP TABLE IF EXISTS product;";
+            //console.info("Dropping Table products if exists...");
+            //var sqlDropProduct = "DROP TABLE IF EXISTS products;";
 
             //tx.executeSql(sqlDropProduct, options, successDrop, errorHandler);
             //=====================================================
@@ -80,9 +80,9 @@ var DB = {
                 "name VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
                 "category VARCHAR(20) NOt NULL," +
-                "description VARCHAR(50) NOT NULL," +                
+                "description VARCHAR(50) NOT NULL," +
                 "FOREIGN KEY(id) REFERENCES manufacturers(id)," +
-                "FOREIGN KEY(id) REFERENCES category(id));";
+                "FOREIGN KEY(id) REFERENCES categories(id));";
             tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
 
             // Create table manufacturer
@@ -97,11 +97,11 @@ var DB = {
                 "bnNumber VARCHAR(30) NOT NULL," +
                 "contactTitle VARCHAR(30)," +
                 "contactFName VARCHAR(30) NOT NULL," +
-                "contactLName VARCHAR(30) NOT NULL," +   
+                "contactLName VARCHAR(30) NOT NULL," +
                 "countryCode VARCHAR(3) NOT NULL," +
                 "phoneNumber VARCHAR(20) NOT NULL," +
-                "cFaxNumber VARCHAR(20)," +    
-                "userEmail VARCHAR(20) NOT NULL," +         
+                "cFaxNumber VARCHAR(20)," +
+                "userEmail VARCHAR(20) NOT NULL," +
                 "city VARCHAR(20) NOT NULL," +
                 "country VARCHAR(20) NOT NULL," +
                 "addressDetails VARCHAR(30) NOT NULL," +
@@ -128,7 +128,7 @@ var DB = {
                 "size VARCHAR(10)," +
                 "color VARCHAR(20)," +
                 "shipDate DATE," +
-                "FOREIGN KEY(id) REFERENCES product(id)," +
+                "FOREIGN KEY(id) REFERENCES products(id)," +
                 "FOREIGN KEY(id) REFERENCES orders(id));";
             tx.executeSql(sqlOrderDetails, options, successCreate, errorHandler);
 
@@ -142,9 +142,9 @@ var DB = {
                 "FOREIGN KEY(id) REFERENCES payment(id));";
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
-            // Create table category
-            console.info("Creating Table: category...");
-            var sqlCategory = "CREATE TABLE IF NOT EXISTS category(" +
+            // Create table categories
+            console.info("Creating Table: categories...");
+            var sqlCategory = "CREATE TABLE IF NOT EXISTS categories(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "name VARCHAR(20) NOT NULL," +
                 "description VARCHAR(50) NOT NULL);";
@@ -154,7 +154,7 @@ var DB = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
-    dropTables: function () {
+    dropTables: function() {
         function successDrop() {
             console.info("Success: Dropping Table successful. ");
         }
@@ -172,8 +172,8 @@ var DB = {
 
             tx.executeSql(sqlUser, options, successDrop, errorHandler);
             //=====================================================
-            console.info("Dropping Table: product...");
-            var sqlProduct = "DROP TABLE IF EXISTS product;";
+            console.info("Dropping Table: products...");
+            var sqlProduct = "DROP TABLE IF EXISTS products;";
 
             tx.executeSql(sqlProduct, options, successDrop, errorHandler);
         }
