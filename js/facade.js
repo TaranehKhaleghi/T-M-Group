@@ -221,7 +221,7 @@ function UpdateProductList() {
         var productList = $("#productList");
         productList = productList.html(htmlCode);
 
-        var items = $("#items");
+        var items = $(".items");
         items = items.text(itemsNumber + " Items found");
     }
 
