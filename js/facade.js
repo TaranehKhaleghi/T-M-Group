@@ -159,7 +159,7 @@ function SaveProduct() {
 
         productImage = document.getElementById('myImage');
         image = getBase64Image(productImage);
-        localStorage.setItem("image", image);
+        //localStorage.setItem("image", image);
 
         function getBase64Image(img) {
             var canvas = document.createElement("canvas");
@@ -184,4 +184,46 @@ function SaveProduct() {
 
         SaveProductInfo.productInsert(options);
     }
+}
+
+function UpdateProductList() {
+    function callback(tx, results) {
+        var htmlCode = "";
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            itemsNumber = results.rows.length;
+
+            htmlCode += "<div class='col-md-4'>" +
+                "<figure class='card card-product-grid'>" +
+                "<div class='img-wrap'>" +
+                "<span class='badge badge-danger'>" + "NEW" + "</span>" +
+                "<img id='product1' src='data:image/png;base64,'" + row['image'] + ">" +
+                "<a class='btn-overlay' href='page-product-detail.html'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
+                "</div><!-- img-wrap.-->" +
+                "<figcaption class='info-wrap'>" +
+                "<div class='fix-height'>" +
+                "<a href='page-product-detail.html' class='title'>" + row['name'] + "</a>" +
+                "<div class='price-wrap mt-2'>" +
+                "<span class='price'>" + row['price'] + "</span>" +
+                "&nbsp;&nbsp;<del class='price-old' style='color:red;'>" + row['price'] * 1.50 + "</del>" +
+                "</div><!-- price-wrap.// -->" +
+                "</div>" +
+                "<a href='page-shopping-cart.html' class='btn btn-block btn-primary'>" + "Add to cart" + "</a>" +
+                "</figcaption>" +
+                "</figure>" +
+                "</div><!-- col.// -->";
+
+            //"<img id='product1' src='data:image/png;base64,'" + row['image'] + ">" +
+        }
+
+        var productList = $("#productList");
+        productList = productList.html(htmlCode);
+
+        var items = $("#items");
+        items = items.text(itemsNumber + " Items found");
+    }
+
+    SaveProductInfo.selectAll(callback);
 }
