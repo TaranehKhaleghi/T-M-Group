@@ -159,7 +159,6 @@ function SaveProduct() {
 
         productImage = document.getElementById('myImage');
         image = getBase64Image(productImage);
-        //localStorage.setItem("image", image);
 
         function getBase64Image(img) {
             var canvas = document.createElement("canvas");
@@ -169,7 +168,7 @@ function SaveProduct() {
             var ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0, img.width, img.height);
 
-            var dataURL = canvas.toDataURL("image/png");
+            var dataURL = canvas.toDataURL("image/jpg");
 
             return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
         }
@@ -189,17 +188,20 @@ function SaveProduct() {
 function UpdateProductList() {
     function callback(tx, results) {
         var htmlCode = "";
+        var  itemsNumber = 0;
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-
+            
             itemsNumber = results.rows.length;
+ 
+            var imgURL = "data:image/png;base64," + row['image'];
 
             htmlCode += "<div class='col-md-4'>" +
                 "<figure class='card card-product-grid'>" +
                 "<div class='img-wrap'>" +
                 "<span class='badge badge-danger'>" + "NEW" + "</span>" +
-                "<img id='product1' src='data:image/png;base64,'" + row['image'] + ">" +
+                "<img src='" + imgURL + "'>" +
                 "<a class='btn-overlay' href='page-product-detail.html'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
                 "</div><!-- img-wrap.-->" +
                 "<figcaption class='info-wrap'>" +
@@ -214,8 +216,6 @@ function UpdateProductList() {
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
-
-            //"<img id='product1' src='data:image/png;base64,'" + row['image'] + ">" +
         }
 
         var productList = $("#productList");
