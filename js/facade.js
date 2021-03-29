@@ -258,3 +258,20 @@ function UpdatePopularProduct() {
 
     SaveProductInfo.selectAll(callback);
 }
+
+function UpdateNavManufacturerList() {
+    function callback(tx, results) {
+        var htmlCode = "<a class='dropdown-item' href='page-manufacturers.html'>Manufacturers List</a>";
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            htmlCode += "<a class='dropdown-item' href='page-manufacturer-grid.html'>" +
+                row['companyName'] +
+                "</a>"; 
+        }
+        var manufacturerList = $("#manufacturerList");
+        manufacturerList = manufacturerList.html(htmlCode);
+    }
+
+    SignupManufacturer.selectAll(callback);
+}
