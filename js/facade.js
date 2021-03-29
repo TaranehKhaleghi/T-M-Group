@@ -168,7 +168,7 @@ function SaveProduct() {
             var ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0, img.width, img.height);
 
-            var dataURL = canvas.toDataURL("image/jpg");
+            var dataURL = canvas.toDataURL("image/png");
 
             return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
         }
@@ -188,13 +188,13 @@ function SaveProduct() {
 function UpdateProductList() {
     function callback(tx, results) {
         var htmlCode = "";
-        var  itemsNumber = 0;
+        var itemsNumber = 0;
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            
+
             itemsNumber = results.rows.length;
- 
+
             var imgURL = "data:image/png;base64," + row['image'];
 
             htmlCode += "<div class='col-md-4'>" +
@@ -223,6 +223,37 @@ function UpdateProductList() {
 
         var items = $(".items");
         items = items.text(itemsNumber + " Items found");
+    }
+
+    SaveProductInfo.selectAll(callback);
+}
+
+function UpdatePopularProduct() {
+    function callback(tx, results) {
+        var htmlCode = "";
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            var imgURL = "data:image/png;base64," + row['image'];
+
+            htmlCode += "<div class='col-md-3'>" +
+                "<div href='#' class='card card-product-grid'>" +
+                "<a href='#' class='img-wrap'>" +
+                "<img src='" + imgURL + "'>" +
+                "</a>" +
+                "<figcaption class='info-wrap'>" +
+                "<a href='#' class='title'>" + row['name'] +
+                "</a>" +
+                "<div class='price mt-1'>" + row['price'] +
+                "</div><!-- price-wrap.// -->" +
+                "</figcaption>" +
+                "</div>" +
+                "</div><!-- col.// -->";
+        }
+
+        var productList = $("#popularProduct");
+        productList = productList.html(htmlCode);
     }
 
     SaveProductInfo.selectAll(callback);

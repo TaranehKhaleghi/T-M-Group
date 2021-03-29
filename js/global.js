@@ -20,6 +20,7 @@ function btnSaveProduct_click() {
 
 function viewProductList_show() {
     UpdateProductList();
+    UpdatePopularProduct();
 }
 
 function init() {
