@@ -156,14 +156,14 @@ var DB = {
             tx.executeSql(sqlCategory, options, successCreate, errorHandler);           
             
             console.info("Inserting data to Table categories...");
-            var sqlInsertCategories = ["INSERT INTO categories(name, description) VALUES('appliances', 'Fridge-stove-dishwasher');",
-                " INSERT INTO categories(name, description) VALUES('autopart', 'Vehicles accessories');",
-                " INSERT INTO categories(name, description) VALUES('furniture', 'Sofa-chair-dining tables-beds');",
-                " INSERT INTO categories(name, description) VALUES('electronic', 'electronics');",
-                " INSERT INTO categories(name, description) VALUES('jewelry', 'neckless-earing-bracelet');",
-                " INSERT INTO categories(name, description) VALUES('beauty', 'makeup-skin care');",
-                " INSERT INTO categories(name, description) VALUES('clothing', 'shirts-pants-jeans-coats');",
-                " INSERT INTO categories(name, description) VALUES('health', 'vitamins-sanitizers-masks');"];
+            var sqlInsertCategories = ["INSERT INTO categories(name, description) VALUES('Appliances', 'fridge-stove-dishwasher');",
+                " INSERT INTO categories(name, description) VALUES('Autoparts', 'vehicles accessories');",
+                " INSERT INTO categories(name, description) VALUES('Furniture', 'sofa-chair-dining tables-beds');",
+                " INSERT INTO categories(name, description) VALUES('Electronics', 'cables-lights');",
+                " INSERT INTO categories(name, description) VALUES('Jewelries', 'neckless-earing-bracelet');",
+                " INSERT INTO categories(name, description) VALUES('Beauties', 'makeup-skin care');",
+                " INSERT INTO categories(name, description) VALUES('Clothings', 'shirts-pants-jeans-coats');",
+                " INSERT INTO categories(name, description) VALUES('Healths', 'vitamins-sanitizers-masks');"];
 
             for (var i = 0; i < sqlInsertCategories.length; i++) {
                 tx.executeSql(sqlInsertCategories[i], options, successInsert, errorHandler);
