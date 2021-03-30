@@ -1,6 +1,6 @@
 var SignupSupplier = {
 
-    supplierInsert: function (options) {
+    supplierInsert: function(options) {
         function successInsertTransaction() {
             console.info("Success: Insert Transaction successful");
         }
@@ -25,7 +25,7 @@ var SignupSupplier = {
         db.transaction(txFunction, errorHandler, successInsertTransaction);
     },
 
-    selectAll: function (callback) {
+    selectAll: function(callback) {
         var options = [];
 
         function successTransaction() {
@@ -46,7 +46,7 @@ var SignupSupplier = {
 
 var SignupManufacturer = {
 
-    manufacturerInsert: function (options) {
+    manufacturerInsert: function(options) {
         function successInsertTransaction() {
             console.info("Success: Insert Transaction successful");
         }
@@ -71,7 +71,7 @@ var SignupManufacturer = {
         db.transaction(txFunction, errorHandler, successInsertTransaction);
     },
 
-    selectAll: function (callback) {
+    selectAll: function(callback) {
         var options = [];
 
         function successTransaction() {
@@ -92,7 +92,7 @@ var SignupManufacturer = {
 
 var SignInSupplier = {
 
-    selectedSupplier: function (callback, options) {
+    selectedSupplier: function(callback, options) {
         function successTransaction() {
             console.info("Success: Transaction successful");
         }
@@ -115,7 +115,7 @@ var SignInSupplier = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
-    selectAll: function (callback) {
+    selectAll: function(callback) {
         var options = [];
 
         function successTransaction() {
@@ -140,7 +140,7 @@ var SignInSupplier = {
 
 var SignInManufacturer = {
 
-    selectAll: function (callback) {
+    selectAll: function(callback) {
         var options = [];
 
         function successTransaction() {
@@ -165,7 +165,7 @@ var SignInManufacturer = {
 
 var SaveProductInfo = {
 
-    productInsert: function (options) {
+    productInsert: function(options) {
         function successInsertTransaction() {
             console.info("Success: Insert Transaction successful");
         }
@@ -179,8 +179,8 @@ var SaveProductInfo = {
 
         function txFunction(tx) {
             var sql = "";
-            console.info("Start inserting product into table");
-            sql = "INSERT INTO products(image, name, price, category, description) VALUES(?,?,?,?,?);";
+            console.info("Start inserting products into table");
+            sql = "INSERT INTO products(manufacturerId, categoryId, image, name, price, description) VALUES(?,?,?,?,?,?);";
             tx.executeSql(sql, options, successInsert, errorHandler);
 
             console.info("product added");
@@ -189,7 +189,7 @@ var SaveProductInfo = {
         db.transaction(txFunction, errorHandler, successInsertTransaction);
     },
 
-    selectAll: function (callback) {
+    selectAll: function(callback) {
         var options = [];
 
         function successTransaction() {
@@ -206,15 +206,30 @@ var SaveProductInfo = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
+    select: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting a category's products...");
+            var sql = "SELECT * FROM products WHERE categoryId=?;";
+
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
 };
 
 var GetCategories = {
 
-    selectAll: function (callback) {
+    selectAll: function(callback) {
         var options = [];
 
         function successTransaction() {
-            console.info("Success: Select all Transaction successful");          
+            console.info("Success: Select all Transaction successful");
         }
 
         function txFunction(tx) {

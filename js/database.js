@@ -76,13 +76,14 @@ var DB = {
             console.info("Creating Table: products...");
             var sqlCreateProducts = "CREATE TABLE IF NOT EXISTS products(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "manufacturerId INTEGER NOT NULL," +
+                "categoryId INTEGER NOT NULL," +
                 "image BLOB," +
                 "name VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
-                "category VARCHAR(20) NOt NULL," +
                 "description VARCHAR(50) NOT NULL," +
-                "FOREIGN KEY(id) REFERENCES manufacturers(id)," +
-                "FOREIGN KEY(id) REFERENCES categories(id));";
+                "FOREIGN KEY(manufacturerId) REFERENCES manufacturers(id)," +
+                "FOREIGN KEY(categoryId) REFERENCES categories(id));";
             tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
 
             // Create table manufacturer
@@ -120,6 +121,8 @@ var DB = {
             console.info("Creating Table: orderDetails...");
             var sqlOrderDetails = "CREATE TABLE IF NOT EXISTS orderDetails(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "productId INTEGER NOT NULL," +
+                "orderId INTEGER NOT NULL," +
                 "orderNumber VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
                 "quantity INT NOT NULL," +
@@ -128,18 +131,20 @@ var DB = {
                 "size VARCHAR(10)," +
                 "color VARCHAR(20)," +
                 "shipDate DATE," +
-                "FOREIGN KEY(id) REFERENCES products(id)," +
-                "FOREIGN KEY(id) REFERENCES orders(id));";
+                "FOREIGN KEY(productId) REFERENCES products(id)," +
+                "FOREIGN KEY(orderId) REFERENCES orders(id));";
             tx.executeSql(sqlOrderDetails, options, successCreate, errorHandler);
 
             // Create table order
             console.info("Creating Table: orders...");
             var sqlOrder = "CREATE TABLE IF NOT EXISTS orders(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                "supplierId INTEGER NOT NULL," +
+                "paymentId INTEGER NOT NULL," +
                 "orderDate DATE NOT NULL," +
                 "shipDate DATE," +
-                "FOREIGN KEY(id) REFERENCES suppliers(id)," +
-                "FOREIGN KEY(id) REFERENCES payment(id));";
+                "FOREIGN KEY(supplierId) REFERENCES suppliers(id)," +
+                "FOREIGN KEY(paymentId) REFERENCES payment(id));";
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
             // Drop table categories if exist
@@ -153,8 +158,8 @@ var DB = {
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "name VARCHAR(20) NOT NULL," +
                 "description VARCHAR(200) NOT NULL);";
-            tx.executeSql(sqlCategory, options, successCreate, errorHandler);           
-            
+            tx.executeSql(sqlCategory, options, successCreate, errorHandler);
+
             console.info("Inserting data to Table categories...");
             var sqlInsertCategories = ["INSERT INTO categories(name, description) VALUES('Appliances', 'fridge-stove-dishwasher');",
                 " INSERT INTO categories(name, description) VALUES('Autoparts', 'vehicles accessories');",
@@ -163,7 +168,8 @@ var DB = {
                 " INSERT INTO categories(name, description) VALUES('Jewelries', 'neckless-earing-bracelet');",
                 " INSERT INTO categories(name, description) VALUES('Beauties', 'makeup-skin care');",
                 " INSERT INTO categories(name, description) VALUES('Clothes', 'shirts-pants-jeans-coats');",
-                " INSERT INTO categories(name, description) VALUES('Health', 'vitamins-sanitizers-masks');"];
+                " INSERT INTO categories(name, description) VALUES('Health', 'vitamins-sanitizers-masks');"
+            ];
 
             for (var i = 0; i < sqlInsertCategories.length; i++) {
                 tx.executeSql(sqlInsertCategories[i], options, successInsert, errorHandler);

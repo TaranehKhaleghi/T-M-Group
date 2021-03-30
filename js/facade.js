@@ -45,6 +45,7 @@ function LogInSupplier() {
                     if (row['userEmail'].trim() === userName && row['password'].trim() === loginPassword) {
                         registered++;
 
+                        localStorage.setItem("supplierId", row['id']);
                         localStorage.setItem("accountType", row['accountType']);
                         localStorage.setItem("firstName", row['firstName']);
                         localStorage.setItem("lastName", row['lastName']);
@@ -123,6 +124,7 @@ function LogInManufacturer() {
                     if (row['userEmail'].trim() === userName && row['cPassword'].trim() === loginPassword) {
                         registered++;
 
+                        localStorage.setItem("manufacturerId", row['id']);
                         localStorage.setItem("accountType", row['accountType']);
                         localStorage.setItem("firstName", row['firstName']);
                         localStorage.setItem("lastName", row['lastName']);
@@ -157,6 +159,8 @@ function LogInManufacturer() {
 function SaveProduct() {
     if (DoValidate_frmSaveProduct()) {
 
+        var manufacturerId = localStorage.getItem("manufacturerId");
+
         productImage = document.getElementById('myImage');
         image = getBase64Image(productImage);
 
@@ -175,17 +179,18 @@ function SaveProduct() {
 
         var name = $("#productName").val();
         var price = $("#productPrice").val();
-        var category = $("#category option:selected").val();
+        var categoryId = $("#category option:selected").val();
         var description = $("#description").val();
 
         options = [];
-        options = [image, name, price, category, description];
+        options = [manufacturerId, categoryId, image, name, price, description];
 
         SaveProductInfo.productInsert(options);
     }
 }
 
 function UpdateProductList() {
+
     function callback(tx, results) {
         var htmlCode = "";
         var itemsNumber = 0;
@@ -267,7 +272,7 @@ function UpdateNavManufacturerList() {
             var row = results.rows[i];
             htmlCode += "<a class='dropdown-item' href='page-manufacturer-grid.html'>" +
                 row['companyName'] +
-                "</a>"; 
+                "</a>";
         }
         var manufacturerList = $("#manufacturerList");
         manufacturerList = manufacturerList.html(htmlCode);
@@ -282,9 +287,9 @@ function UpdateNavCategoryList() {
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            htmlCode += "<a class='dropdown-item' href='page-category-grid.html'>" +
+            htmlCode += "<a class='dropdown-item' href='page-category-grid.html' id='" + row['id'] + "'>" +
                 row['name'] +
-                "</a>"; 
+                "</a>";
         }
         var categoryList = $("#categoryList");
         categoryList = categoryList.html(htmlCode);
@@ -295,12 +300,12 @@ function UpdateNavCategoryList() {
 
 function UpdateLeftMenuCategory() {
     function callback(tx, results) {
-    var htmlCode = "";
+        var htmlCode = "";
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
             htmlCode += "<li>" + "<a class='menu-category' href='page-category-grid.html'>" +
                 row['name'] +
-                "</a>" + "</li>"; 
+                "</a>" + "</li>";
         }
         var categoryList = $("#categoryMenu");
         categoryList = categoryList.html(htmlCode);
@@ -310,10 +315,10 @@ function UpdateLeftMenuCategory() {
 
 function UpdateDropdownCategory() {
     function callback(tx, results) {
-    $("#category").html("<option selected value=''>" + "Select" +"</option>");
+        $("#category").html("<option selected value=''>" + "Select" + "</option>");
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            $("#category").append("<option value='" +row['id']+"'>" + row['name'] +"</option>");
+            $("#category").append("<option value='" + row['id'] + "'>" + row['name'] + "</option>");
         }
     }
     GetCategories.selectAll(callback);
