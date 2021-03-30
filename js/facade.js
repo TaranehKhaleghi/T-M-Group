@@ -292,3 +292,18 @@ function UpdateNavCategoryList() {
 
     GetCategories.selectAll(callback);
 }
+
+function UpdateLeftMenuCategory() {
+    function callback(tx, results) {
+    var htmlCode = "";
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            htmlCode += "<li>" + "<a class='menu-category' href='page-category-grid.html'>" +
+                row['name'] +
+                "</a>" + "</li>"; 
+        }
+        var categoryList = $("#categoryMenu");
+        categoryList = categoryList.html(htmlCode);
+    }
+    GetCategories.selectAll(callback);
+}
