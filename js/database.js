@@ -162,8 +162,8 @@ var DB = {
                 " INSERT INTO categories(name, description) VALUES('Electronics', 'cables-lights');",
                 " INSERT INTO categories(name, description) VALUES('Jewelries', 'neckless-earing-bracelet');",
                 " INSERT INTO categories(name, description) VALUES('Beauties', 'makeup-skin care');",
-                " INSERT INTO categories(name, description) VALUES('Clothings', 'shirts-pants-jeans-coats');",
-                " INSERT INTO categories(name, description) VALUES('Healths', 'vitamins-sanitizers-masks');"];
+                " INSERT INTO categories(name, description) VALUES('Clothes', 'shirts-pants-jeans-coats');",
+                " INSERT INTO categories(name, description) VALUES('Health', 'vitamins-sanitizers-masks');"];
 
             for (var i = 0; i < sqlInsertCategories.length; i++) {
                 tx.executeSql(sqlInsertCategories[i], options, successInsert, errorHandler);
