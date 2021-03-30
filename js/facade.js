@@ -275,3 +275,20 @@ function UpdateNavManufacturerList() {
 
     SignupManufacturer.selectAll(callback);
 }
+
+function UpdateNavCategoryList() {
+    function callback(tx, results) {
+        var htmlCode = "<a class='dropdown-item' href='page-categories.html'>Categories List</a>";
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            htmlCode += "<a class='dropdown-item' href='page-category-grid.html'>" +
+                row['name'] +
+                "</a>"; 
+        }
+        var categoryList = $("#categoryList");
+        categoryList = categoryList.html(htmlCode);
+    }
+
+    GetCategories.selectAll(callback);
+}

@@ -207,3 +207,24 @@ var SaveProductInfo = {
     },
 
 };
+
+var GetCategories = {
+
+    selectAll: function (callback) {
+        var options = [];
+
+        function successTransaction() {
+            console.info("Success: Select all Transaction successful");          
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting all categories...");
+
+            var sql = "SELECT * FROM categories;";
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+};

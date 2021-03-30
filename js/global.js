@@ -22,6 +22,7 @@ function updateAllList_show() {
     UpdateProductList();
     UpdatePopularProduct();
     UpdateNavManufacturerList();
+    UpdateNavCategoryList();
 }
 
 function init() {
