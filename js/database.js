@@ -142,13 +142,33 @@ var DB = {
                 "FOREIGN KEY(id) REFERENCES payment(id));";
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
+            // Drop table categories if exist
+            console.info("Dropping Table type if exists...");
+            var sqlDropCategory = "DROP TABLE IF EXISTS categories;";
+            tx.executeSql(sqlDropCategory, options, successDrop, errorHandler);
+
             // Create table categories
             console.info("Creating Table: categories...");
             var sqlCategory = "CREATE TABLE IF NOT EXISTS categories(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "name VARCHAR(20) NOT NULL," +
-                "description VARCHAR(50) NOT NULL);";
-            tx.executeSql(sqlCategory, options, successCreate, errorHandler);
+                "description VARCHAR(200) NOT NULL);";
+            tx.executeSql(sqlCategory, options, successCreate, errorHandler);           
+            
+            console.info("Inserting data to Table categories...");
+            var sqlInsertCategories = ["INSERT INTO categories(name, description) VALUES('appliances', 'Fridge-stove-dishwasher');",
+                " INSERT INTO categories(name, description) VALUES('autopart', 'Vehicles accessories');",
+                " INSERT INTO categories(name, description) VALUES('furniture', 'Sofa-chair-dining tables-beds');",
+                " INSERT INTO categories(name, description) VALUES('electronic', 'electronics');",
+                " INSERT INTO categories(name, description) VALUES('jewelry', 'neckless-earing-bracelet');",
+                " INSERT INTO categories(name, description) VALUES('beauty', 'makeup-skin care');",
+                " INSERT INTO categories(name, description) VALUES('clothing', 'shirts-pants-jeans-coats');",
+                " INSERT INTO categories(name, description) VALUES('health', 'vitamins-sanitizers-masks');"];
+
+            for (var i = 0; i < sqlInsertCategories.length; i++) {
+                tx.executeSql(sqlInsertCategories[i], options, successInsert, errorHandler);
+
+            }
         }
 
         db.transaction(txFunction, errorHandler, successTransaction);
