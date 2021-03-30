@@ -19,12 +19,18 @@ function btnSaveProduct_click() {
 }
 
 function updateAllList_show() {
-    UpdateProductList();
+    UpdateProductList(getId());
     UpdatePopularProduct();
     UpdateNavManufacturerList();
     UpdateNavCategoryList();
     UpdateLeftMenuCategory();
     UpdateDropdownCategory();
+}
+
+function getId() {
+    var id = $('.dropdown-item').attr('id');
+
+    return id;
 }
 
 function init() {
@@ -55,6 +61,8 @@ function init() {
     $("#logInManBtn").on("click", btnLogInMan_click);
 
     $("#saveProduct").on("click", btnSaveProduct_click);
+
+    $(".dropdown-item").on("click", getId);
 
     window.onload = function() {
         updateAllList_show();

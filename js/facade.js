@@ -189,7 +189,8 @@ function SaveProduct() {
     }
 }
 
-function UpdateProductList() {
+function UpdateProductList(categoryId) {
+    var options = [categoryId];
 
     function callback(tx, results) {
         var htmlCode = "";
@@ -230,7 +231,7 @@ function UpdateProductList() {
         items = items.text(itemsNumber + " Items found");
     }
 
-    SaveProductInfo.selectAll(callback);
+    SaveProductInfo.select(callback, options);
 }
 
 function UpdatePopularProduct() {
