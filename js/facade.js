@@ -307,3 +307,14 @@ function UpdateLeftMenuCategory() {
     }
     GetCategories.selectAll(callback);
 }
+
+function UpdateDropdownCategory() {
+    function callback(tx, results) {
+    $("#category").html("<option selected value=''>" + "Select" +"</option>");
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+            $("#category").append("<option value='" +row['id']+"'>" + row['name'] +"</option>");
+        }
+    }
+    GetCategories.selectAll(callback);
+}

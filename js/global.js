@@ -24,6 +24,7 @@ function updateAllList_show() {
     UpdateNavManufacturerList();
     UpdateNavCategoryList();
     UpdateLeftMenuCategory();
+    UpdateDropdownCategory();
 }
 
 function init() {
