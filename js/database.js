@@ -140,11 +140,13 @@ var DB = {
             var sqlOrder = "CREATE TABLE IF NOT EXISTS orders(" +
                 "id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "supplierId INTEGER NOT NULL," +
-                "paymentId INTEGER NOT NULL," +
+                "image BLOB," +
+                "name VARCHAR(30) NOT NULL," +
+                "price INT NOT NULL," +
+                "description VARCHAR(50) NOT NULL," +
+                "quantity INT NOT NULL," +
                 "orderDate DATE NOT NULL," +
-                "shipDate DATE," +
-                "FOREIGN KEY(supplierId) REFERENCES suppliers(id)," +
-                "FOREIGN KEY(paymentId) REFERENCES payment(id));";
+                "FOREIGN KEY(supplierId) REFERENCES suppliers(id));"; 
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
             // Drop table categories if exist

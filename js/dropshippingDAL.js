@@ -258,3 +258,63 @@ var GetCategories = {
     },
 
 };
+
+var SaveOrderInfo = {
+
+    orderInsert: function(options) {
+        function successInsertTransaction() {
+            console.info("Success: Insert Order Transaction successful");
+        }
+
+        function successInsert() {
+            console.info("Success: Order Insert successful");
+            alert("Saving order has been successful");
+
+            //window.location.replace("page-shopping-cart.html");
+        }
+
+        function txFunction(tx) {
+            var sql = "";
+            console.info("Start inserting orders into table");
+            sql = "INSERT INTO orders(supplierId, image, name, price, description, quantity, orderDate) VALUES(?,?,?,?,?,?,?);";
+            tx.executeSql(sql, options, successInsert, errorHandler);
+
+            console.info("order added");
+        }
+
+        db.transaction(txFunction, errorHandler, successInsertTransaction);
+    },
+
+    selectAll: function(callback) {
+        var options = [];
+
+        function successTransaction() {
+            console.info("Success: Select all Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting all records...");
+
+            var sql = "SELECT * FROM orders;";
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+    select: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting an order's details...");
+            var sql = "SELECT * FROM orders WHERE id=?;";
+
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+};
