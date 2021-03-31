@@ -40,6 +40,10 @@ function init() {
     $('#shopByCategory').click(function() {
         window.location = "page-category-grid.html";
     });
+    
+    $('#shopByManufacturer').click(function() {
+        window.location = "page-manufacturer-grid.html";
+    });
 
     $('#customCheck1').click(function() {
         if ($('#submitBtn').is(':disabled')) {

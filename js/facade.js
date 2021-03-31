@@ -373,8 +373,6 @@ function UpdateManufactureProductList(manufacturerId) {
 
         var items = $(".items");
         items = items.text(itemsNumber + " Items found");
-
-        window.location = "page-manufacturer-grid.html";
     }
 
     SaveProductInfo.selectManufacturer(callback, options);
