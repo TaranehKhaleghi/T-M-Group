@@ -377,7 +377,7 @@ function UpdateManufacturerProductList(manufacturerId) {
 function UpdateRecentProducts() {
     function callback(tx, results) {
         var htmlCode = "";
-      //  var accountType = localStorage.getItem('accountType');
+        //  var accountType = localStorage.getItem('accountType');
 
         for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
             var row = results.rows[i];
@@ -408,60 +408,61 @@ function UpdateRecentProducts() {
 
 function SaveOrder() {
 
-        var supplierId = localStorage.getItem("supplierId");
-       // var paymentId = localStorage.getItem("paymentId");
+    var supplierId = localStorage.getItem("supplierId");
+    // var paymentId = localStorage.getItem("paymentId");
 
-        productImage = document.getElementByClass('myImage');
-        image = getBase64Image(productImage);
+    productImage = document.getElementByClass('myImage');
+    image = getBase64Image(productImage);
 
-        function getBase64Image(img) {
-            var canvas = document.createElement("canvas");
-            canvas.width = img.width;
-            canvas.height = img.height;
+    function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
 
-            var ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, img.width, img.height);
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, img.width, img.height);
 
-            var dataURL = canvas.toDataURL("image/png");
+        var dataURL = canvas.toDataURL("image/png");
 
-            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-        }
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    }
 
-        var name = $(".title").val();
-        var price = $(".price").val();
-        var description = $(".description").val();
-        var quantity = $(".quantity").val();
-        var orderDate = Date.now();
+    var name = $(".title").val();
+    var price = $(".price").val();
+    var description = $(".description").val();
+    var quantity = $(".quantity").val();
+    var orderDate = Date.now();
 
-        var options = [];
-        options = [supplierId, image, name, price, description, quantity, orderDate];
+    var options = [];
+    options = [supplierId, image, name, price, description, quantity, orderDate];
 
-        SaveOrderInfo.orderInsert(options);
+    SaveOrderInfo.orderInsert(options);
 }
 
 function UpdateRecentOrders() {
     function callback(tx, results) {
         var htmlCode = "";
-      //  var accountType = localStorage.getItem('accountType');
+        //  var accountType = localStorage.getItem('accountType');
+        if (results.rows.length !== 0) {
+            for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
+                var row = results.rows[i];
 
-        for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
-            var row = results.rows[i];
+                var imgURL = "data:image/png;base64," + row['image'];
 
-            var imgURL = "data:image/png;base64," + row['image'];
-
-            htmlCode += "<div class='col-md-3'>" +
-                "<div href='#' class='card card-product-grid'>" +
-                "<a href='#' class='img-wrap'>" +
-                "<img src='" + imgURL + "'>" +
-                "</a>" +
-                "<figcaption class='info-wrap'>" +
-                "<a href='#' class='title'>" + row['name'] +
-                "</a>" +
-                "<div class='price mt-1'>" + row['price'] +
-                "</div><!-- price-wrap.// -->" +
-                "</figcaption>" +
-                "</div>" +
-                "</div><!-- col.// -->";
+                htmlCode += "<div class='col-md-3'>" +
+                    "<div href='#' class='card card-product-grid'>" +
+                    "<a href='#' class='img-wrap'>" +
+                    "<img src='" + imgURL + "'>" +
+                    "</a>" +
+                    "<figcaption class='info-wrap'>" +
+                    "<a href='#' class='title'>" + row['name'] +
+                    "</a>" +
+                    "<div class='price mt-1'>" + row['price'] +
+                    "</div><!-- price-wrap.// -->" +
+                    "</figcaption>" +
+                    "</div>" +
+                    "</div><!-- col.// -->";
+            }
         }
 
         var orderList = $("#recent");
