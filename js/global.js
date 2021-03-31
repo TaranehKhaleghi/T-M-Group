@@ -19,7 +19,8 @@ function btnSaveProduct_click() {
 }
 
 function updateAllList_show() {
-    UpdateProductList(getId());
+    //UpdateProductList(getId());
+    //UpdateManufactureProductList(getId());
     UpdatePopularProduct();
     UpdateNavManufacturerList();
     UpdateNavCategoryList();
@@ -27,11 +28,11 @@ function updateAllList_show() {
     UpdateDropdownCategory();
 }
 
-function getId() {
-    var id = $('.dropdown-item').attr('id');
+/* function getId() {
+    var id = $('.dropdown-item').val();
 
     return id;
-}
+} */
 
 function init() {
     console.info("DOM is ready");
@@ -62,7 +63,7 @@ function init() {
 
     $("#saveProduct").on("click", btnSaveProduct_click);
 
-    $(".dropdown-item").on("click", getId);
+    //$(".dropdown-item").on("click", getId);
 
     window.onload = function() {
         updateAllList_show();

@@ -231,7 +231,7 @@ function UpdateProductList(categoryId) {
         items = items.text(itemsNumber + " Items found");
     }
 
-    SaveProductInfo.select(callback, options);
+    SaveProductInfo.selectCategory(callback, options);
 }
 
 function UpdatePopularProduct() {
@@ -271,7 +271,7 @@ function UpdateNavManufacturerList() {
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            htmlCode += "<a class='dropdown-item' href='page-manufacturer-grid.html'>" +
+            htmlCode += "<a class='dropdown-item' href='page-manufacturer-grid.html' onclick='UpdateManufactureProductList(" + row['id'] + ")'>" +
                 row['companyName'] +
                 "</a>";
         }
@@ -288,7 +288,7 @@ function UpdateNavCategoryList() {
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            htmlCode += "<a class='dropdown-item' href='page-category-grid.html' id='" + row['id'] + "'>" +
+            htmlCode += "<a class='dropdown-item' href='page-category-grid.html' onclick='UpdateProductList(" + row['id'] + ")'>" +
                 row['name'] +
                 "</a>";
         }
@@ -323,4 +323,49 @@ function UpdateDropdownCategory() {
         }
     }
     GetCategories.selectAll(callback);
+}
+
+function UpdateManufactureProductList(manufacturerId) {
+    var options = [manufacturerId];
+
+    function callback(tx, results) {
+        var htmlCode = "";
+        var itemsNumber = 0;
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            itemsNumber = results.rows.length;
+
+            var imgURL = "data:image/png;base64," + row['image'];
+
+            htmlCode += "<div class='col-md-4'>" +
+                "<figure class='card card-product-grid'>" +
+                "<div class='img-wrap'>" +
+                "<span class='badge badge-danger'>" + "NEW" + "</span>" +
+                "<img src='" + imgURL + "'>" +
+                "<a class='btn-overlay' href='page-product-detail.html'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
+                "</div><!-- img-wrap.-->" +
+                "<figcaption class='info-wrap'>" +
+                "<div class='fix-height'>" +
+                "<a href='page-product-detail.html' class='title'>" + row['name'] + "</a>" +
+                "<div class='price-wrap mt-2'>" +
+                "<span class='price'>" + row['price'] + "</span>" +
+                "&nbsp;&nbsp;<del class='price-old' style='color:red;'>" + row['price'] * 1.50 + "</del>" +
+                "</div><!-- price-wrap.// -->" +
+                "</div>" +
+                "<a href='page-shopping-cart.html' class='btn btn-block btn-primary'>" + "Add to cart" + "</a>" +
+                "</figcaption>" +
+                "</figure>" +
+                "</div><!-- col.// -->";
+        }
+
+        var manufacturerProductList = $("#productList");
+        manufacturerProductList = manufacturerProductList.html(htmlCode);
+
+        var items = $(".items");
+        items = items.text(itemsNumber + " Items found");
+    }
+
+    SaveProductInfo.selectManufacturer(callback, options);
 }

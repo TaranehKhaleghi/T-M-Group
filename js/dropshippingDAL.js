@@ -206,7 +206,7 @@ var SaveProductInfo = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
-    select: function(callback, options) {
+    selectCategory: function(callback, options) {
         function successTransaction() {
             console.info("Success: Transaction successful");
         }
@@ -214,6 +214,21 @@ var SaveProductInfo = {
         function txFunction(tx) {
             console.info("Selecting a category's products...");
             var sql = "SELECT * FROM products WHERE categoryId=?;";
+
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+    selectManufacturer: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting a category's products...");
+            var sql = "SELECT * FROM products WHERE manufacturerId=?;";
 
             tx.executeSql(sql, options, callback, errorHandler);
         }
