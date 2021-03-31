@@ -227,7 +227,7 @@ var SaveProductInfo = {
         }
 
         function txFunction(tx) {
-            console.info("Selecting a category's products...");
+            console.info("Selecting a manufacturer's products...");
             var sql = "SELECT * FROM products WHERE manufacturerId=?;";
 
             tx.executeSql(sql, options, callback, errorHandler);

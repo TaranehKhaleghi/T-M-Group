@@ -37,6 +37,10 @@ function updateAllList_show() {
 function init() {
     console.info("DOM is ready");
 
+    $('#shopByCategory').click(function() {
+        window.location = "page-category-grid.html";
+    });
+
     $('#customCheck1').click(function() {
         if ($('#submitBtn').is(':disabled')) {
             $('#submitBtn').removeAttr('disabled');
