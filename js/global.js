@@ -19,8 +19,6 @@ function btnSaveProduct_click() {
 }
 
 function updateAllList_show() {
-    //UpdateProductList(getId());
-    //UpdateManufactureProductList(getId());
     UpdatePopularProduct();
     UpdateNavManufacturerList();
     UpdateNavCategoryList();
@@ -28,21 +26,15 @@ function updateAllList_show() {
     UpdateDropdownCategory();
 }
 
-/* function getId() {
-    var id = $('.dropdown-item').val();
-
-    return id;
-} */
-
 function init() {
     console.info("DOM is ready");
 
     $('#shopByCategory').click(function() {
-        window.location = "page-category-grid.html";
+        window.location.replace("page-category-grid.html");
     });
-    
+
     $('#shopByManufacturer').click(function() {
-        window.location = "page-manufacturer-grid.html";
+        window.location.replace("page-manufacturer-grid.html");
     });
 
     $('#customCheck1').click(function() {
@@ -71,8 +63,6 @@ function init() {
 
     $("#saveProduct").on("click", btnSaveProduct_click);
 
-    //$(".dropdown-item").on("click", getId);
-
     window.onload = function() {
         updateAllList_show();
     };
@@ -91,6 +81,7 @@ function initDB() {
         console.error("Error: (Fatal) error in initDB(). Can not proceed.");
     }
 }
+
 $(document).ready(function() {
     init();
     initDB();

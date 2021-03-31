@@ -182,7 +182,7 @@ function SaveProduct() {
         var categoryId = $("#category option:selected").val();
         var description = $("#description").val();
 
-        options = [];
+        var options = [];
         options = [manufacturerId, categoryId, image, name, price, description];
 
         SaveProductInfo.productInsert(options);
@@ -190,10 +190,7 @@ function SaveProduct() {
 }
 
 function UpdateProductList(categoryId) {
-    
-    console.info("onclick called");
     var options = [categoryId];
-    console.info(categoryId);
 
     function callback(tx, results) {
         var htmlCode = "";
@@ -232,7 +229,6 @@ function UpdateProductList(categoryId) {
 
         var items = $(".items");
         items = items.text(itemsNumber + " Items found");
-        
     }
 
     SaveProductInfo.selectCategory(callback, options);
@@ -271,12 +267,12 @@ function UpdatePopularProduct() {
 
 function UpdateNavManufacturerList() {
     function callback(tx, results) {
-        
+
         var htmlCode = "<a class='dropdown-item' href='page-manufacturers.html'>Manufacturers List</a>";
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            htmlCode += "<a class='dropdown-item' onclick='UpdateManufactureProductList(" + row['id'] + ")'>" +
+            htmlCode += "<a class='dropdown-item' onclick='UpdateManufacturerProductList(" + row['id'] + ")'>" +
                 row['companyName'] +
                 "</a>";
         }
@@ -287,10 +283,8 @@ function UpdateNavManufacturerList() {
     SignupManufacturer.selectAll(callback);
 }
 
-
-
 function UpdateNavCategoryList() {
-  
+
     function callback(tx, results) {
         var htmlCode = "<a class='dropdown-item' href='page-categories.html'>Categories List</a>";
 
@@ -309,10 +303,11 @@ function UpdateNavCategoryList() {
 
 function UpdateLeftMenuCategory() {
     function callback(tx, results) {
-        var htmlCode = "";
+        var htmlCode = "<li>" + "<a class='dropdown-item' href='page-category-grid.html'>Categories List</a>";
+
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            htmlCode += "<li>" + "<a class='menu-category' href='page-category-grid.html'>" +
+            htmlCode += "<li>" + "<a class='menu-category' onclick='UpdateProductList(" + row['id'] + ")'>" +
                 row['name'] +
                 "</a>" + "</li>";
         }
@@ -333,7 +328,7 @@ function UpdateDropdownCategory() {
     GetCategories.selectAll(callback);
 }
 
-function UpdateManufactureProductList(manufacturerId) {
+function UpdateManufacturerProductList(manufacturerId) {
     var options = [manufacturerId];
 
     function callback(tx, results) {

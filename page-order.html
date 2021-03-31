@@ -73,7 +73,7 @@
             }
         }
         // jquery ready start
-        $(document).ready(function () {
+        $(document).ready(function() {
             // jQuery code
             if (localStorage.getItem("firstName") !== null) {
                 $(".userProfile").text(localStorage.getItem("firstName"));
@@ -125,8 +125,7 @@
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border"
-                                    id="userProfile"><i class="fa fa-user"></i></a>
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <span class="userProfile"></span>
@@ -157,8 +156,7 @@
     <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
         <div class="container">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
-                aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -168,11 +166,11 @@
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item dropdown" id="shopByCategory">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SHOP BY CATEGORY</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">SHOP BY CATEGORY</a>
                         <div class="dropdown-menu" id="categoryList"></div>
                     </li>
                     <li class="nav-item dropdown" id="shopByManufacturer">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">SHOP BY MANUFACTURER</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">SHOP BY MANUFACTURER</a>
                         <div class="dropdown-menu" id="manufacturerList"></div>
                     </li>
                     <li class="nav-item">
@@ -378,8 +376,7 @@
                             </header>
                             <div id="pay_paynet" class="collapse show" data-parent="#accordion_pay">
                                 <div class="card-body">
-                                    <p class="text-center text-muted">Connect your PayPal account and use it to pay your
-                                        bills. You'll be redirected to PayPal to add your billing information.</p>
+                                    <p class="text-center text-muted">Connect your PayPal account and use it to pay your bills. You'll be redirected to PayPal to add your billing information.</p>
                                     <p class="text-center">
                                         <a href="#"><img src="../images/misc/btn-paypal.png" height="32"></a>
                                         <br><br>
@@ -402,12 +399,9 @@
                                 <div class="card-body">
                                     <p class="alert alert-success">Some information or instruction</p>
                                     <form class="form-inline">
-                                        <input type="text" class="form-control mr-2" placeholder="xxxx-xxxx-xxxx-xxxx"
-                                            name="">
-                                        <input type="text" class="form-control mr-2" style="width: 100px"
-                                            placeholder="dd/yy" name="">
-                                        <input type="number" maxlength="3" class="form-control mr-2"
-                                            style="width: 100px" placeholder="cvc" name="">
+                                        <input type="text" class="form-control mr-2" placeholder="xxxx-xxxx-xxxx-xxxx" name="">
+                                        <input type="text" class="form-control mr-2" style="width: 100px" placeholder="dd/yy" name="">
+                                        <input type="number" maxlength="3" class="form-control mr-2" style="width: 100px" placeholder="cvc" name="">
                                         <button class="btn btn btn-success">Button</button>
                                     </form>
                                 </div>
