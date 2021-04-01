@@ -150,7 +150,7 @@ var DB = {
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
             // Drop table categories if exist
-            console.info("Dropping Table type if exists...");
+            console.info("Dropping Table categories if exists...");
             var sqlDropCategory = "DROP TABLE IF EXISTS categories;";
             tx.executeSql(sqlDropCategory, options, successDrop, errorHandler);
 

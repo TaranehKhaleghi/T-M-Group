@@ -206,6 +206,22 @@ var SaveProductInfo = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
+    selectProduct: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting a product...");
+            var sql = "SELECT * FROM products WHERE id=?;";
+
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+
     selectCategory: function(callback, options) {
         function successTransaction() {
             console.info("Success: Transaction successful");

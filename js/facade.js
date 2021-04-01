@@ -161,8 +161,8 @@ function SaveProduct() {
 
         var manufacturerId = localStorage.getItem("manufacturerId");
 
-        productImage = document.getElementById('myImage');
-        image = getBase64Image(productImage);
+        var productImage = document.getElementById('myImage');
+        var image = getBase64Image(productImage);
 
         function getBase64Image(img) {
             var canvas = document.createElement("canvas");
@@ -207,19 +207,19 @@ function UpdateProductList(categoryId) {
                 "<figure class='card card-product-grid'>" +
                 "<div class='img-wrap'>" +
                 "<span class='badge badge-danger'>" + "NEW" + "</span>" +
-                "<img class='myImage' src='" + imgURL + "'>" +
+                "<img src='" + imgURL + "'>" +
                 "<a class='btn-overlay' href='page-product-detail.html'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
                 "</div><!-- img-wrap.-->" +
                 "<figcaption class='info-wrap'>" +
                 "<div class='fix-height'>" +
                 "<a href='page-product-detail.html' class='title'>" + row['name'] + "</a>" +
-                "<p class='description'>" + row['description'] + "</p>" +
+                "<p>" + row['description'] + "</p>" +
                 "<div class='price-wrap mt-2'>" +
                 "<span class='price'>" + row['price'] + "</span>" +
                 "&nbsp;&nbsp;<del class='price-old' style='color:red;'>" + row['price'] * 1.50 + "</del>" +
                 "</div><!-- price-wrap.// -->" +
                 "</div>" +
-                "<a class='btn btn-block btn-primary addToCart'>" + "Add to cart" + "</a>" +
+                "<a class='btn btn-block btn-primary' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" +
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
@@ -375,9 +375,9 @@ function UpdateManufacturerProductList(manufacturerId) {
 }
 
 function UpdateRecentProducts() {
+
     function callback(tx, results) {
         var htmlCode = "";
-        //  var accountType = localStorage.getItem('accountType');
 
         for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
             var row = results.rows[i];
@@ -406,43 +406,40 @@ function UpdateRecentProducts() {
     SaveProductInfo.selectAll(callback);
 }
 
-function SaveOrder() {
+function SaveOrder(productId) {
+
+    console.info("Save order method");
 
     var supplierId = localStorage.getItem("supplierId");
-    // var paymentId = localStorage.getItem("paymentId");
 
-    productImage = document.getElementByClass('myImage');
-    image = getBase64Image(productImage);
+    var options = [productId];
 
-    function getBase64Image(img) {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
+    function callback(tx, results) {
 
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0, img.width, img.height);
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
 
-        var dataURL = canvas.toDataURL("image/png");
+            var image = row['image'];
+            var name = row['name'];
+            var price = row['price'];
+            var description = row['description'];
+            var quantity = 1;
+            var orderDate = Date.now();
+        }
+        var orderOptions = [];
+        orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
 
-        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        SaveOrderInfo.orderInsert(orderOptions);
     }
 
-    var name = $(".title").val();
-    var price = $(".price").val();
-    var description = $(".description").val();
-    var quantity = $(".quantity").val();
-    var orderDate = Date.now();
-
-    var options = [];
-    options = [supplierId, image, name, price, description, quantity, orderDate];
-
-    SaveOrderInfo.orderInsert(options);
+    SaveProductInfo.selectProduct(callback, options);
 }
 
 function UpdateRecentOrders() {
+    
     function callback(tx, results) {
         var htmlCode = "";
-        //  var accountType = localStorage.getItem('accountType');
+        
         if (results.rows.length !== 0) {
             for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
                 var row = results.rows[i];
