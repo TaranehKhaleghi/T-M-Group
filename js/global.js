@@ -32,11 +32,18 @@ function init() {
     console.info("DOM is ready");
 
     $('#shopByCategory').click(function() {
-        window.location.replace("page-category-grid.html");
+        var accountType = localStorage.getItem('accountType');
+        if(accountType=='Supplier'){
+            window.location.replace("page-category-grid.html");
+        }
     });
 
     $('#shopByManufacturer').click(function() {
-        window.location.replace("page-manufacturer-grid.html");
+        var accountType = localStorage.getItem('accountType');
+        if(accountType=='Supplier'){
+            window.location.replace("page-manufacturer-grid.html");
+        }
+       
     });
 
     $('#customCheck1').click(function() {
