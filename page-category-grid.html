@@ -86,6 +86,12 @@
                 $("#logout").hide();
                 $("#userProfile").hide();
             }
+
+            if (localStorage.getItem("accountType") === "Manufacturer") {
+                $('a').addClass('disabled');
+            } else {
+                $('a').removeClass('disabled');
+            }
         });
         // jquery end
     </script>

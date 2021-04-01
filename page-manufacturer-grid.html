@@ -85,6 +85,12 @@
                 $("#logout").hide();
                 $("#userProfile").hide();
             }
+
+            if (localStorage.getItem("accountType") === "Manufacturer") {
+                $('a').addClass('disabled');
+            } else {
+                $('a').removeClass('disabled');
+            }
         });
         // jquery end
     </script>
@@ -109,8 +115,8 @@
                                 <input type="text" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
-										<i class="fa fa-search"></i> Search
-									</button>
+                                        <i class="fa fa-search"></i> Search
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -121,12 +127,11 @@
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header  mr-3">
                                 <a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
-										class="fa fa-shopping-cart"></i></a>
+                                        class="fa fa-shopping-cart"></i></a>
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i
-										class="fa fa-user"></i></a>
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <span class="userProfile"></span>
@@ -158,8 +163,8 @@
         <div class="container">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav">
@@ -243,7 +248,7 @@
                                             <input type="text" class="form-control" placeholder="Search">
                                             <div class="input-group-append">
                                                 <button class="btn btn-light" type="button"><i
-														class="fa fa-search"></i></button>
+                                                        class="fa fa-search"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -273,35 +278,35 @@
                             <div class="filter-content collapse show" id="collapse_2">
                                 <div class="card-body">
                                     <label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Mercedes
-											<b class="badge badge-pill badge-light float-right">120</b>
-										</div>
-									</label>
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Mercedes
+                                            <b class="badge badge-pill badge-light float-right">120</b>
+                                        </div>
+                                    </label>
                                     <label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Toyota
-											<b class="badge badge-pill badge-light float-right">15</b>
-										</div>
-									</label>
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Toyota
+                                            <b class="badge badge-pill badge-light float-right">15</b>
+                                        </div>
+                                    </label>
                                     <label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Mitsubishi
-											<b class="badge badge-pill badge-light float-right">35</b>
-										</div>
-									</label>
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Mitsubishi
+                                            <b class="badge badge-pill badge-light float-right">35</b>
+                                        </div>
+                                    </label>
                                     <label class="custom-control custom-checkbox">
-										<input type="checkbox" checked="" class="custom-control-input">
-										<div class="custom-control-label">Nissan
-											<b class="badge badge-pill badge-light float-right">89</b>
-										</div>
-									</label>
+                                        <input type="checkbox" checked="" class="custom-control-input">
+                                        <div class="custom-control-label">Nissan
+                                            <b class="badge badge-pill badge-light float-right">89</b>
+                                        </div>
+                                    </label>
                                     <label class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input">
-										<div class="custom-control-label">Honda
-											<b class="badge badge-pill badge-light float-right">30</b>
-										</div>
-									</label>
+                                        <input type="checkbox" class="custom-control-input">
+                                        <div class="custom-control-label">Honda
+                                            <b class="badge badge-pill badge-light float-right">30</b>
+                                        </div>
+                                    </label>
                                 </div>
                                 <!-- card-body.// -->
                             </div>
@@ -344,24 +349,24 @@
                             <div class="filter-content collapse show" id="collapse_4">
                                 <div class="card-body">
                                     <label class="checkbox-btn">
-										<input type="checkbox">
-										<span class="btn btn-light"> XS </span>
-									</label>
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> XS </span>
+                                    </label>
 
                                     <label class="checkbox-btn">
-										<input type="checkbox">
-										<span class="btn btn-light"> SM </span>
-									</label>
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> SM </span>
+                                    </label>
 
                                     <label class="checkbox-btn">
-										<input type="checkbox">
-										<span class="btn btn-light"> LG </span>
-									</label>
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> LG </span>
+                                    </label>
 
                                     <label class="checkbox-btn">
-										<input type="checkbox">
-										<span class="btn btn-light"> XXL </span>
-									</label>
+                                        <input type="checkbox">
+                                        <span class="btn btn-light"> XXL </span>
+                                    </label>
                                 </div>
                                 <!-- card-body.// -->
                             </div>
@@ -377,25 +382,25 @@
                             <div class="filter-content collapse in" id="collapse_5">
                                 <div class="card-body">
                                     <label class="custom-control custom-radio">
-										<input type="radio" name="my_filter_radio" checked=""
-											class="custom-control-input">
-										<div class="custom-control-label">Any condition</div>
-									</label>
+                                        <input type="radio" name="my_filter_radio" checked=""
+                                            class="custom-control-input">
+                                        <div class="custom-control-label">Any condition</div>
+                                    </label>
 
                                     <label class="custom-control custom-radio">
-										<input type="radio" name="my_filter_radio" class="custom-control-input">
-										<div class="custom-control-label">Brand new </div>
-									</label>
+                                        <input type="radio" name="my_filter_radio" class="custom-control-input">
+                                        <div class="custom-control-label">Brand new </div>
+                                    </label>
 
                                     <label class="custom-control custom-radio">
-										<input type="radio" name="my_filter_radio" class="custom-control-input">
-										<div class="custom-control-label">Used items</div>
-									</label>
+                                        <input type="radio" name="my_filter_radio" class="custom-control-input">
+                                        <div class="custom-control-label">Used items</div>
+                                    </label>
 
                                     <label class="custom-control custom-radio">
-										<input type="radio" name="my_filter_radio" class="custom-control-input">
-										<div class="custom-control-label">Very old</div>
-									</label>
+                                        <input type="radio" name="my_filter_radio" class="custom-control-input">
+                                        <div class="custom-control-label">Very old</div>
+                                    </label>
                                 </div>
                                 <!-- card-body.// -->
                             </div>
@@ -412,11 +417,11 @@
                         <div class="form-inline">
                             <span class="mr-md-auto items"></span>
                             <select class="mr-2 form-control">
-								<option>Latest items</option>
-								<option>Trending</option>
-								<option>Most Popular</option>
-								<option>Cheapest</option>
-							</select>
+                                <option>Latest items</option>
+                                <option>Trending</option>
+                                <option>Most Popular</option>
+                                <option>Cheapest</option>
+                            </select>
                             <div class="btn-group">
                                 <a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view">
                                     <i class="fa fa-bars"></i></a>

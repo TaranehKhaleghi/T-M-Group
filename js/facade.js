@@ -353,12 +353,13 @@ function UpdateManufacturerProductList(manufacturerId) {
                 "<figcaption class='info-wrap'>" +
                 "<div class='fix-height'>" +
                 "<a href='page-product-detail.html' class='title'>" + row['name'] + "</a>" +
+                "<p>" + row['description'] + "</p>" +
                 "<div class='price-wrap mt-2'>" +
                 "<span class='price'>" + row['price'] + "</span>" +
                 "&nbsp;&nbsp;<del class='price-old' style='color:red;'>" + row['price'] * 1.50 + "</del>" +
                 "</div><!-- price-wrap.// -->" +
                 "</div>" +
-                "<a href='page-shopping-cart.html' class='btn btn-block btn-primary'>" + "Add to cart" + "</a>" +
+                "<a class='btn btn-block btn-primary' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" +
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
