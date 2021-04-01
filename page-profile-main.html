@@ -96,13 +96,15 @@
             if (localStorage.getItem("accountType") == "Supplier") {
                 $("#sellingItems").hide();
                 $("#addItems").hide();
+                $("#recentProduct").hide();
                 $("#recentItems").text(" Orders");
             } else {
                 $("#cardGroup").hide();
                 $("#wishList").hide();
                 $("#myOrder").hide();
+                $("#recentOrder").hide();
                 $("#recentItems").text(" Products");
-            }            
+            }
         });
         // jquery end
     </script>
@@ -127,8 +129,8 @@
                                 <input type="text" class="form-control" placeholder="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-primary" type="submit">
-										<i class="fa fa-search"></i> Search
-									</button>
+                                        <i class="fa fa-search"></i> Search
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -139,12 +141,11 @@
                         <div class="widgets-wrap float-md-right">
                             <div class="widget-header  mr-3">
                                 <a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
-										class="fa fa-shopping-cart"></i></a>
+                                        class="fa fa-shopping-cart"></i></a>
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i
-										class="fa fa-user"></i></a>
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <span class="userProfile"></span>
@@ -176,8 +177,8 @@
         <div class="container">
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
             <div class="collapse navbar-collapse" id="main_nav">
                 <ul class="navbar-nav">
@@ -310,9 +311,8 @@
                     <article class="card  mb-3">
                         <div class="card-body">
                             <h5 class="card-title mb-4">Recent<span id="recentItems"></span></h5>
-
-                            <div class="row" id="recent">                        
-                            </div>
+                            <div class="row" id="recentProduct"></div>
+                            <div class="row" id="recentOrder"></div>
                             <!-- row.// -->
 
                             <!-- <a href="#" class="btn btn-outline-primary btn-block"> See all orders <i

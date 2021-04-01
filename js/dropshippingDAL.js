@@ -333,4 +333,18 @@ var SaveOrderInfo = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
+    selectSupplier: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting a supplier's orders...");
+            var sql = "SELECT * FROM orders WHERE supplierId=?;";
+
+            tx.executeSql(sql, options, callback, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
 };

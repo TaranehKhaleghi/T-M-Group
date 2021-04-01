@@ -375,35 +375,62 @@ function UpdateManufacturerProductList(manufacturerId) {
 }
 
 function UpdateRecentProducts() {
+    var manufacturerId = localStorage.getItem("manufacturerId");
+
+    var options = [manufacturerId];
 
     function callback(tx, results) {
         var htmlCode = "";
 
-        for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
-            var row = results.rows[i];
+        if (results.rows.length !== 0) {
+            if (results.rows.length < 5) {
+                for (var i = 0; i < results.rows.length; i++) {
+                    var row = results.rows[i];
 
-            var imgURL = "data:image/png;base64," + row['image'];
+                    var imgURL = "data:image/png;base64," + row['image'];
 
-            htmlCode += "<div class='col-md-3'>" +
-                "<div href='#' class='card card-product-grid'>" +
-                "<a href='#' class='img-wrap'>" +
-                "<img src='" + imgURL + "'>" +
-                "</a>" +
-                "<figcaption class='info-wrap'>" +
-                "<a href='#' class='title'>" + row['name'] +
-                "</a>" +
-                "<div class='price mt-1'>" + row['price'] +
-                "</div><!-- price-wrap.// -->" +
-                "</figcaption>" +
-                "</div>" +
-                "</div><!-- col.// -->";
+                    htmlCode += "<div class='col-md-3'>" +
+                        "<div href='#' class='card card-product-grid'>" +
+                        "<a href='#' class='img-wrap'>" +
+                        "<img src='" + imgURL + "'>" +
+                        "</a>" +
+                        "<figcaption class='info-wrap'>" +
+                        "<a href='#' class='title'>" + row['name'] +
+                        "</a>" +
+                        "<div class='price mt-1'>" + row['price'] +
+                        "</div><!-- price-wrap.// -->" +
+                        "</figcaption>" +
+                        "</div>" +
+                        "</div><!-- col.// -->";
+                }
+            } else {
+                for (var i = results.rows.length - 1; i > results.rows.length - 5; i--) {
+                    var row = results.rows[i];
+
+                    var imgURL = "data:image/png;base64," + row['image'];
+
+                    htmlCode += "<div class='col-md-3'>" +
+                        "<div href='#' class='card card-product-grid'>" +
+                        "<a href='#' class='img-wrap'>" +
+                        "<img src='" + imgURL + "'>" +
+                        "</a>" +
+                        "<figcaption class='info-wrap'>" +
+                        "<a href='#' class='title'>" + row['name'] +
+                        "</a>" +
+                        "<div class='price mt-1'>" + row['price'] +
+                        "</div><!-- price-wrap.// -->" +
+                        "</figcaption>" +
+                        "</div>" +
+                        "</div><!-- col.// -->";
+                }
+            }
         }
 
-        var productList = $("#recent");
-        productList = productList.html(htmlCode);
+        var recentProduct = $("#recentProduct");
+        recentProduct = recentProduct.html(htmlCode);
     }
 
-    SaveProductInfo.selectAll(callback);
+    SaveProductInfo.selectManufacturer(callback, options);
 }
 
 function SaveOrder(productId) {
@@ -436,35 +463,60 @@ function SaveOrder(productId) {
 }
 
 function UpdateRecentOrders() {
-    
+    var supplierId = localStorage.getItem("supplierId");
+
+    var options = [supplierId];
+
     function callback(tx, results) {
         var htmlCode = "";
-        
+
         if (results.rows.length !== 0) {
-            for (var i = (results.rows.length) - 1; i > (results.rows.length) - 4; i--) {
-                var row = results.rows[i];
+            if (results.rows.length < 5) {
+                for (var i = 0; i < results.rows.length; i++) {
+                    var row = results.rows[i];
 
-                var imgURL = "data:image/png;base64," + row['image'];
+                    var imgURL = "data:image/png;base64," + row['image'];
 
-                htmlCode += "<div class='col-md-3'>" +
-                    "<div href='#' class='card card-product-grid'>" +
-                    "<a href='#' class='img-wrap'>" +
-                    "<img src='" + imgURL + "'>" +
-                    "</a>" +
-                    "<figcaption class='info-wrap'>" +
-                    "<a href='#' class='title'>" + row['name'] +
-                    "</a>" +
-                    "<div class='price mt-1'>" + row['price'] +
-                    "</div><!-- price-wrap.// -->" +
-                    "</figcaption>" +
-                    "</div>" +
-                    "</div><!-- col.// -->";
+                    htmlCode += "<div class='col-md-3'>" +
+                        "<div href='#' class='card card-product-grid'>" +
+                        "<a href='#' class='img-wrap'>" +
+                        "<img src='" + imgURL + "'>" +
+                        "</a>" +
+                        "<figcaption class='info-wrap'>" +
+                        "<a href='#' class='title'>" + row['name'] +
+                        "</a>" +
+                        "<div class='price mt-1'>" + row['price'] +
+                        "</div><!-- price-wrap.// -->" +
+                        "</figcaption>" +
+                        "</div>" +
+                        "</div><!-- col.// -->";
+                }
+            } else {
+                for (var i = results.rows.length - 1; i > results.rows.length - 5; i--) {
+                    var row = results.rows[i];
+
+                    var imgURL = "data:image/png;base64," + row['image'];
+
+                    htmlCode += "<div class='col-md-3'>" +
+                        "<div href='#' class='card card-product-grid'>" +
+                        "<a href='#' class='img-wrap'>" +
+                        "<img src='" + imgURL + "'>" +
+                        "</a>" +
+                        "<figcaption class='info-wrap'>" +
+                        "<a href='#' class='title'>" + row['name'] +
+                        "</a>" +
+                        "<div class='price mt-1'>" + row['price'] +
+                        "</div><!-- price-wrap.// -->" +
+                        "</figcaption>" +
+                        "</div>" +
+                        "</div><!-- col.// -->";
+                }
             }
         }
 
-        var orderList = $("#recent");
-        orderList = orderList.html(htmlCode);
+        var recentOrder = $("#recentOrder");
+        recentOrder = recentOrder.html(htmlCode);
     }
 
-    SaveOrderInfo.selectAll(callback);
+    SaveOrderInfo.selectSupplier(callback, options);
 }
