@@ -208,7 +208,7 @@ function UpdateProductList(categoryId) {
                 "<div class='img-wrap'>" +
                 "<span class='badge badge-danger'>" + "NEW" + "</span>" +
                 "<img src='" + imgURL + "'>" +
-                "<a class='btn-overlay' href='page-product-detail.html'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
+                "<a href='#' class='btn-overlay' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
                 "</div><!-- img-wrap.-->" +
                 "<figcaption class='info-wrap'>" +
                 "<div class='fix-height'>" +
@@ -348,7 +348,7 @@ function UpdateManufacturerProductList(manufacturerId) {
                 "<div class='img-wrap'>" +
                 "<span class='badge badge-danger'>" + "NEW" + "</span>" +
                 "<img src='" + imgURL + "'>" +
-                "<a class='btn-overlay' href='page-product-detail.html'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
+                "<a class='btn-overlay' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-search-plus'>" + "</i>" + "Quick view" + "</a>" +
                 "</div><!-- img-wrap.-->" +
                 "<figcaption class='info-wrap'>" +
                 "<div class='fix-height'>" +
@@ -521,9 +521,7 @@ function DeleteItem(productId) {
 
 function ViewItem(productId) {
 
-    console.info("Save order method");
-
-    var supplierId = localStorage.getItem("supplierId");
+    console.info("View item method");
 
     var options = [productId];
 
@@ -532,17 +530,22 @@ function ViewItem(productId) {
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
 
-            var image = row['image'];
+            var productId = row['id'];
+            var manufacturerId = row['manufacturerId'];
+            var imgURL = row['image'];
             var name = row['name'];
             var price = row['price'];
             var description = row['description'];
-            var quantity = 1;
-            var orderDate = Date.now();
-        }
-        var orderOptions = [];
-        orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
 
-        SaveOrderInfo.orderInsert(orderOptions);
+            localStorage.setItem("productId", productId);
+            localStorage.setItem("manufacturerId", manufacturerId);
+            localStorage.setItem("image", imgURL);
+            localStorage.setItem("name", name);
+            localStorage.setItem("price", price);
+            localStorage.setItem("description", description);
+        }
+
+        window.location.replace("page-product-detail.html");
     }
 
     SaveProductInfo.selectProduct(callback, options);
@@ -651,7 +654,6 @@ function UpdateTotalOrders() {
     }
 
     SaveOrderInfo.selectSupplier(callback, options);
-
 }
 
 function UpdateMyAddress() {

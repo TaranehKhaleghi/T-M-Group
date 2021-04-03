@@ -258,7 +258,6 @@ var SaveProductInfo = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
-
     selectCategory: function(callback, options) {
         function successTransaction() {
             console.info("Success: Transaction successful");
