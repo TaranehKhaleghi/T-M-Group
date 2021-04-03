@@ -375,6 +375,52 @@ function UpdateManufacturerProductList(manufacturerId) {
     SaveProductInfo.selectManufacturer(callback, options);
 }
 
+function UpdateManufacturerSellingItems() {
+    var manufacturerId = localStorage.getItem("manufacturerId");
+
+    var options = [manufacturerId];
+
+    function callback(tx, results) {
+        var htmlCode = "";
+        var itemsNumber = 0;
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            itemsNumber = results.rows.length;
+
+            var imgURL = "data:image/png;base64," + row['image'];
+
+            htmlCode += "<div class='col-md-4'>" +
+                "<figure class='card card-product-grid'>" +
+                "<div class='img-wrap'>" +
+                "<img src='" + imgURL + "'>" +
+                "</div><!-- img-wrap.// -->" +
+                "<figcaption class='info-wrap'>" +
+                "<a href='' class='title mb-2'>" + row['description'] + "</a>" +
+                "<div class='price-wrap mb-3'>" +
+                "<span class='price'>" + row['price'] + "</span>" +
+                "<small class='text-muted'>" + "/per item" + "</small>" +
+                "</div><!-- price-wrap.// -->" +
+                "<a href='' class='btn btn-outline-primary' onclick='EditItem(" + row['id'] + ")'>" + "<i class='fa fa-pen'>" + "</i>" + " Edit " + "</a>" +
+                "<a href='' class='btn btn-primary' style='float: right;' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-eye'>" + "</i>" + " View " + "</a>" +
+                "<hr>" +
+                "<a href='' class='btn btn-danger btn-block' onclick='DeleteItem(" + row['id'] + ")'>" + " Delete " + "</a>" +
+                "</figcaption>" +
+                "</figure>" +
+                "</div><!-- col.// -->";
+        }
+
+        var manufacturerSellingItem = $("#sellingItem");
+        manufacturerSellingItem = manufacturerSellingItem.html(htmlCode);
+
+        var items = $(".items");
+        items = items.text(itemsNumber + " Items found");
+    }
+
+    SaveProductInfo.selectManufacturer(callback, options);
+}
+
 function UpdateRecentProducts() {
     var manufacturerId = localStorage.getItem("manufacturerId");
 

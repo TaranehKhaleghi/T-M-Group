@@ -26,6 +26,7 @@ function updateAllList_show() {
     UpdateDropdownCategory();
     UpdateRecentProducts();
     UpdateRecentOrders();
+    UpdateManufacturerSellingItems();
 }
 
 function init() {
@@ -33,17 +34,17 @@ function init() {
 
     $('#shopByCategory').click(function() {
         var accountType = localStorage.getItem('accountType');
-        if(accountType=='Supplier'){
+        if (accountType == 'Supplier') {
             window.location.replace("page-category-grid.html");
         }
     });
 
     $('#shopByManufacturer').click(function() {
         var accountType = localStorage.getItem('accountType');
-        if(accountType=='Supplier'){
+        if (accountType == 'Supplier') {
             window.location.replace("page-manufacturer-grid.html");
         }
-       
+
     });
 
     $('#customCheck1').click(function() {
@@ -71,7 +72,7 @@ function init() {
     $("#logInManBtn").on("click", btnLogInMan_click);
 
     $("#saveProduct").on("click", btnSaveProduct_click);
-        
+
     window.onload = function() {
         updateAllList_show();
     };
