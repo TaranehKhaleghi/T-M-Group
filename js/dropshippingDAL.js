@@ -158,6 +158,25 @@ var SignInSupplier = {
 
 var SignInManufacturer = {
 
+    manufacturerAddress: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successRegistered() {
+            console.info("Success: Address found successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting a Manufacturer...  ");
+            var sql = "SELECT * FROM manufacturers WHERE id=?;";
+
+            tx.executeSql(sql, options, callback, successRegistered, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
     selectAll: function(callback) {
         var options = [];
 

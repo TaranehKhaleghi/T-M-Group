@@ -655,9 +655,13 @@ function UpdateTotalOrders() {
 }
 
 function UpdateMyAddress() {
-
-    var supplierId = localStorage.getItem("supplierId");
-    var options = [supplierId];
+    if (localStorage.getItem("supplierId") !== null) {
+        var supplierId = localStorage.getItem("supplierId");
+        var options = [supplierId];
+    } else {
+        var manufacturerId = localStorage.getItem("manufacturerId");
+        var options = [manufacturerId];
+    }
 
     function callback(tx, results) {
         var htmlCode = "";
@@ -684,8 +688,12 @@ function UpdateMyAddress() {
             }
             var myAddress = $("#myAddress");
             myAddress = myAddress.html(htmlCode);
-        }  
+        }
     }
-    SignInSupplier.supplierAddress(callback, options);
 
+    if (localStorage.getItem("supplierId") !== null) {
+        SignInSupplier.supplierAddress(callback, options);
+    } else {
+        SignInManufacturer.manufacturerAddress(callback, options);
+    }
 }
