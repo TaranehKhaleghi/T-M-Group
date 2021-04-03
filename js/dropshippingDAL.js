@@ -100,16 +100,34 @@ var SignInSupplier = {
         function successRegistered() {
             console.info("Success: Log in successful");
             alert("Registered supplier!");
-
             window.location.replace("index.html");
         }
 
         function txFunction(tx) {
-            console.info("Selecting a User...  ");
+            console.info("Selecting a Supplier...  ");
             var sql = "SELECT * FROM suppliers WHERE id=?;";
 
             tx.executeSql(sql, options, callback, successRegistered, errorHandler);
             console.info("Data found...");
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+    supplierAddress: function(callback, options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successRegistered() {
+            console.info("Success: Address found successful");
+        }
+
+        function txFunction(tx) {
+            console.info("Selecting a Supplier...  ");
+            var sql = "SELECT * FROM suppliers WHERE id=?;";
+
+            tx.executeSql(sql, options, callback, successRegistered, errorHandler);
         }
 
         db.transaction(txFunction, errorHandler, successTransaction);

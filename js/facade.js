@@ -573,15 +573,51 @@ function UpdateTotalOrders() {
     var options = [supplierId];
     var orderNumbers = 0;
 
-    function callback(tx, results) {      
+    function callback(tx, results) {
 
         if (results.rows.length !== 0) {
-             orderNumbers = results.rows.length;
-             var totalOrder = $("#totalOrders");
-             totalOrder = totalOrder.text(orderNumbers);
+            orderNumbers = results.rows.length;
+            var totalOrder = $("#totalOrders");
+            totalOrder = totalOrder.text(orderNumbers);
         }
     }
 
     SaveOrderInfo.selectSupplier(callback, options);
+
+}
+
+function UpdateMyAddress() {
+
+    var supplierId = localStorage.getItem("supplierId");
+    var options = [supplierId];
+
+    function callback(tx, results) {
+        var htmlCode = "";
+
+        if (results.rows.length !== 0) {
+            for (var i = 0; i < results.rows.length; i++) {
+                var row = results.rows[i];
+                htmlCode += "<div class='col-md-6'>" +
+                    "<article class='box mb-4'>" +
+                    "<h6>" + row['city'] + ", " + row['country'] + "</h6>" +
+                    "<p>" + row['addressDetails'] +
+                    "<br>" +
+                    "</p>" +
+                    "<a href='#' class='btn btn-light'>" +
+                    "<i class='fa fa-pen'>" +
+                    "</i>" +
+                    "</a>" +
+                    "<a href='#' class='btn btn-light'>" +
+                    "<i class='text-danger fa fa-trash'>" +
+                    "</i>" +
+                    "</a>" +
+                    "</article>" +
+                    "</div>";
+            }
+            var myAddress = $("#myAddress");
+            myAddress = myAddress.html(htmlCode);
+        }  
+    }
+    SignInSupplier.supplierAddress(callback, options);
 
 }
