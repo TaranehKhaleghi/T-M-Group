@@ -270,6 +270,50 @@ var SaveProductInfo = {
         db.transaction(txFunction, errorHandler, successTransaction);
     },
 
+    productUpdate: function(options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successUpdate() {
+            console.info("Success: Update successful");
+            alert("Product updated successfully");
+        }
+
+        function txFunction(tx) {
+            console.info("Updating...  ");
+            var sql = "";
+            sql = "UPDATE products " +
+                "SET manufacturerId=? , categoryId=?, image=?, name=?, price=?, description=?" +
+                "WHERE id=?;";
+            tx.executeSql(sql, options, successUpdate, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+    productDelete: function(options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successDelete() {
+            console.info("Success: Delete successful");
+            alert("Product deleted successfully");
+
+            window.location.reload();
+        }
+
+        function txFunction(tx) {
+            console.info("Deleting from products...  ");
+            var sql = "";
+            sql = "DELETE FROM products " +
+                "WHERE id=?;";
+            tx.executeSql(sql, options, successDelete, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    }
 };
 
 var GetCategories = {

@@ -402,10 +402,10 @@ function UpdateManufacturerSellingItems() {
                 "<span class='price'>" + row['price'] + "</span>" +
                 "<small class='text-muted'>" + "/per item" + "</small>" +
                 "</div><!-- price-wrap.// -->" +
-                "<a href='' class='btn btn-outline-primary' onclick='EditItem(" + row['id'] + ")'>" + "<i class='fa fa-pen'>" + "</i>" + " Edit " + "</a>" +
-                "<a href='' class='btn btn-primary' style='float: right;' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-eye'>" + "</i>" + " View " + "</a>" +
+                "<a class='btn btn-outline-primary' onclick='EditItem(" + row['id'] + ")'>" + "<i class='fa fa-pen'>" + "</i>" + " Edit " + "</a>" +
+                "<a class='btn btn-primary' style='float: right;' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-eye'>" + "</i>" + " View " + "</a>" +
                 "<hr>" +
-                "<a href='' class='btn btn-danger btn-block' onclick='DeleteItem(" + row['id'] + ")'>" + " Delete " + "</a>" +
+                "<a class='btn btn-danger btn-block' onclick='DeleteItem(" + row['id'] + ")'>" + " Delete " + "</a>" +
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
@@ -478,6 +478,74 @@ function UpdateRecentProducts() {
     }
 
     SaveProductInfo.selectManufacturer(callback, options);
+}
+
+function EditItem(productId) {
+
+    console.info("Save order method");
+
+    var supplierId = localStorage.getItem("supplierId");
+
+    var options = [productId];
+
+    function callback(tx, results) {
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            var image = row['image'];
+            var name = row['name'];
+            var price = row['price'];
+            var description = row['description'];
+            var quantity = 1;
+            var orderDate = Date.now();
+        }
+        var orderOptions = [];
+        orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
+
+        SaveOrderInfo.orderInsert(orderOptions);
+    }
+
+    SaveProductInfo.selectProduct(callback, options);
+}
+
+function DeleteItem(productId) {
+
+    console.info("Delete item method");
+    var options = [productId];
+    console.info(productId);
+
+    SaveProductInfo.productDelete(options);
+
+}
+
+function ViewItem(productId) {
+
+    console.info("Save order method");
+
+    var supplierId = localStorage.getItem("supplierId");
+
+    var options = [productId];
+
+    function callback(tx, results) {
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            var image = row['image'];
+            var name = row['name'];
+            var price = row['price'];
+            var description = row['description'];
+            var quantity = 1;
+            var orderDate = Date.now();
+        }
+        var orderOptions = [];
+        orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
+
+        SaveOrderInfo.orderInsert(orderOptions);
+    }
+
+    SaveProductInfo.selectProduct(callback, options);
 }
 
 function SaveOrder(productId) {
