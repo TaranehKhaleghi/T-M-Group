@@ -635,3 +635,21 @@ function UpdateRecentOrders() {
 
     SaveOrderInfo.selectSupplier(callback, options);
 }
+
+function UpdateTotalOrders() {
+    var supplierId = localStorage.getItem("supplierId");
+    var options = [supplierId];
+    var orderNumbers = 0;
+
+    function callback(tx, results) {      
+
+        if (results.rows.length !== 0) {
+             orderNumbers = results.rows.length;
+             var totalOrder = $("#totalOrders");
+             totalOrder = totalOrder.text(orderNumbers);
+        }
+    }
+
+    SaveOrderInfo.selectSupplier(callback, options);
+
+}

@@ -27,6 +27,7 @@ function updateAllList_show() {
     UpdateRecentProducts();
     UpdateRecentOrders();
     UpdateManufacturerSellingItems();
+    UpdateTotalOrders();
 }
 
 function init() {
