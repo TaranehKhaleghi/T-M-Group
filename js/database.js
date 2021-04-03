@@ -68,7 +68,7 @@ var DB = {
                 "userEmail VARCHAR(50) NOT NULL," +
                 "city VARCHAR(20) NOT NULL," +
                 "country VARCHAR(20) NOT NULL," +
-                "addressDetails VARCHAR(50) NOT NULL," +
+                "addressDetails VARCHAR(100) NOT NULL," +
                 "password VARCHAR(50) NOT NULL);";
             tx.executeSql(sqlCreateUser, options, successCreate, errorHandler);
 
@@ -81,7 +81,7 @@ var DB = {
                 "image BLOB," +
                 "name VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
-                "description VARCHAR(50) NOT NULL," +
+                "description VARCHAR(100) NOT NULL," +
                 "FOREIGN KEY(manufacturerId) REFERENCES manufacturers(id)," +
                 "FOREIGN KEY(categoryId) REFERENCES categories(id));";
             tx.executeSql(sqlCreateProducts, options, successCreate, errorHandler);
@@ -102,10 +102,10 @@ var DB = {
                 "countryCode VARCHAR(3) NOT NULL," +
                 "phoneNumber VARCHAR(20) NOT NULL," +
                 "cFaxNumber VARCHAR(20)," +
-                "userEmail VARCHAR(20) NOT NULL," +
+                "userEmail VARCHAR(50) NOT NULL," +
                 "city VARCHAR(20) NOT NULL," +
                 "country VARCHAR(20) NOT NULL," +
-                "addressDetails VARCHAR(30) NOT NULL," +
+                "addressDetails VARCHAR(100) NOT NULL," +
                 "cPostalCode VARCHAR(10) NOT NULL," +
                 "cPassword VARCHAR(50) NOT NULL);";
             tx.executeSql(sqlManufacturer, options, successCreate, errorHandler);
@@ -143,10 +143,10 @@ var DB = {
                 "image BLOB," +
                 "name VARCHAR(30) NOT NULL," +
                 "price INT NOT NULL," +
-                "description VARCHAR(50) NOT NULL," +
+                "description VARCHAR(100) NOT NULL," +
                 "quantity INT NOT NULL," +
                 "orderDate DATE NOT NULL," +
-                "FOREIGN KEY(supplierId) REFERENCES suppliers(id));"; 
+                "FOREIGN KEY(supplierId) REFERENCES suppliers(id));";
             tx.executeSql(sqlOrder, options, successCreate, errorHandler);
 
             // Drop table categories if exist
