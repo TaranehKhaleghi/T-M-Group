@@ -219,7 +219,7 @@ function UpdateProductList(categoryId) {
                 "&nbsp;&nbsp;<del class='price-old' style='color:red;'>" + row['price'] * 1.50 + "</del>" +
                 "</div><!-- price-wrap.// -->" +
                 "</div>" +
-                "<a class='btn btn-block btn-primary' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" +
+                "<a href='#' class='btn btn-block btn-primary' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" +
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
@@ -359,7 +359,7 @@ function UpdateManufacturerProductList(manufacturerId) {
                 "&nbsp;&nbsp;<del class='price-old' style='color:red;'>" + row['price'] * 1.50 + "</del>" +
                 "</div><!-- price-wrap.// -->" +
                 "</div>" +
-                "<a class='btn btn-block btn-primary' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" +
+                "<a href='#' class='btn btn-block btn-primary' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" +
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
@@ -397,15 +397,15 @@ function UpdateManufacturerSellingItems() {
                 "<img src='" + imgURL + "'>" +
                 "</div><!-- img-wrap.// -->" +
                 "<figcaption class='info-wrap'>" +
-                "<a href='' class='title mb-2'>" + row['description'] + "</a>" +
+                "<a href='#' class='title mb-2'>" + row['description'] + "</a>" +
                 "<div class='price-wrap mb-3'>" +
                 "<span class='price'>" + row['price'] + "</span>" +
                 "<small class='text-muted'>" + "/per item" + "</small>" +
                 "</div><!-- price-wrap.// -->" +
-                "<a class='btn btn-outline-primary' onclick='EditItem(" + row['id'] + ")'>" + "<i class='fa fa-pen'>" + "</i>" + " Edit " + "</a>" +
-                "<a class='btn btn-primary' style='float: right;' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-eye'>" + "</i>" + " View " + "</a>" +
+                "<a href='#' class='btn btn-outline-primary' onclick='EditItem(" + row['id'] + ")'>" + "<i class='fa fa-pen'>" + "</i>" + " Edit " + "</a>" +
+                "<a href='#' class='btn btn-primary' style='float: right;' onclick='ViewItem(" + row['id'] + ")'>" + "<i class='fa fa-eye'>" + "</i>" + " View " + "</a>" +
                 "<hr>" +
-                "<a class='btn btn-danger btn-block' onclick='DeleteItem(" + row['id'] + ")'>" + " Delete " + "</a>" +
+                "<a href='#' class='btn btn-danger btn-block' onclick='DeleteItem(" + row['id'] + ")'>" + " Delete " + "</a>" +
                 "</figcaption>" +
                 "</figure>" +
                 "</div><!-- col.// -->";
@@ -641,12 +641,12 @@ function UpdateTotalOrders() {
     var options = [supplierId];
     var orderNumbers = 0;
 
-    function callback(tx, results) {      
+    function callback(tx, results) {
 
         if (results.rows.length !== 0) {
-             orderNumbers = results.rows.length;
-             var totalOrder = $("#totalOrders");
-             totalOrder = totalOrder.text(orderNumbers);
+            orderNumbers = results.rows.length;
+            var totalOrder = $("#totalOrders");
+            totalOrder = totalOrder.text(orderNumbers);
         }
     }
 

@@ -330,7 +330,7 @@ var SaveOrderInfo = {
             console.info("Success: Order Insert successful");
             alert("Saving order has been successful");
 
-            //window.location.replace("page-shopping-cart.html");
+            window.location.reload();
         }
 
         function txFunction(tx) {
