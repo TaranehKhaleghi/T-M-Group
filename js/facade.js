@@ -571,6 +571,7 @@ function SaveOrder(productId) {
             var quantity = 1;
             var orderDate = Date.now();
         }
+
         var orderOptions = [];
         orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
 
