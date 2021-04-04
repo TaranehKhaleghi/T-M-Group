@@ -482,9 +482,7 @@ function UpdateRecentProducts() {
 
 function EditItem(productId) {
 
-    console.info("Save order method");
-
-    var supplierId = localStorage.getItem("supplierId");
+    console.info("Edit item method");
 
     var options = [productId];
 
@@ -493,25 +491,65 @@ function EditItem(productId) {
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
 
-            var image = row['image'];
+            var productId = row['id'];
+            var manufacturerId = row['manufacturerId'];
+            var imgURL = row['image'];
             var name = row['name'];
             var price = row['price'];
             var description = row['description'];
-            var quantity = 1;
-            var orderDate = Date.now();
-        }
-        var orderOptions = [];
-        orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
 
-        SaveOrderInfo.orderInsert(orderOptions);
+            localStorage.setItem("productId", productId);
+            localStorage.setItem("manufacturerId", manufacturerId);
+            localStorage.setItem("image", imgURL);
+            localStorage.setItem("name", name);
+            localStorage.setItem("price", price);
+            localStorage.setItem("description", description);
+        }
+
+        window.location.replace("page-product-update.html");
     }
 
     SaveProductInfo.selectProduct(callback, options);
 }
 
+function UpdateProduct() {
+    if (DoValidate_frmUpdateProduct()) {
+        console.info("Update Validation is successful");
+
+        var id = localStorage.getItem("productId");
+        var manufacturerId = localStorage.getItem("manufacturerId");
+        var categoryId = $("#category option:selected").val();
+
+        var productImage = document.getElementById('updateImage');
+        var image = getBase64Image(productImage);
+
+        function getBase64Image(img) {
+            var canvas = document.createElement("canvas");
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, img.width, img.height);
+
+            var dataURL = canvas.toDataURL("image/png");
+
+            return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        }
+
+        var name = $("#updateName").val();
+        var price = $("#updatePrice").val();
+        var description = $("#updateDescription").val();
+
+        updatedProduct = [manufacturerId, categoryId, image, name, price, description, id];
+
+        SaveProductInfo.productUpdate(updatedProduct);
+    }
+}
+
 function DeleteItem(productId) {
 
     console.info("Delete item method");
+
     var options = [productId];
     console.info(productId);
 

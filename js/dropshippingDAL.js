@@ -296,13 +296,15 @@ var SaveProductInfo = {
         function successUpdate() {
             console.info("Success: Update successful");
             alert("Product updated successfully");
+
+            window.location.replace("page-profile-seller.html");
         }
 
         function txFunction(tx) {
             console.info("Updating...  ");
             var sql = "";
             sql = "UPDATE products " +
-                "SET manufacturerId=? , categoryId=?, image=?, name=?, price=?, description=?" +
+                "SET manufacturerId=?, categoryId=?, image=?, name=?, price=?, description=?" +
                 "WHERE id=?;";
             tx.executeSql(sql, options, successUpdate, errorHandler);
         }

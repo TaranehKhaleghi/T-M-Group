@@ -289,6 +289,43 @@ function DoValidate_frmSaveProduct() {
     return form.valid();
 }
 
+//validate update product info form
+//===============================
+function DoValidate_frmUpdateProduct() {
+    var form = $("#updateProductForm");
+    form.validate({
+        rules: {
+            updateName: {
+                required: true
+            },
+            updatePrice: {
+                required: true
+            },
+            category: {
+                required: true
+            },
+            updateDescription: {
+                required: true
+            }
+        },
+        messages: {
+            updateName: {
+                required: "name is required"
+            },
+            updatePrice: {
+                required: "price is required"
+            },
+            category: {
+                required: "category should be selected"
+            },
+            updateDescription: {
+                required: "description is required"
+            }
+        }
+    });
+    return form.valid();
+}
+
 jQuery.validator.addMethod("emailAddCheck",
     function(value, element) {
         var regex = /^[^@]+@[^@]+\.[^@]+$/;

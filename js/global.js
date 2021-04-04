@@ -18,6 +18,10 @@ function btnSaveProduct_click() {
     SaveProduct();
 }
 
+function btnUpdateProduct_click() {
+    UpdateProduct();
+}
+
 function updateAllList_show() {
     UpdatePopularProduct();
     UpdateNavManufacturerList();
@@ -74,6 +78,8 @@ function init() {
     $("#logInManBtn").on("click", btnLogInMan_click);
 
     $("#saveProduct").on("click", btnSaveProduct_click);
+
+    $("#updateProduct").on("click", btnUpdateProduct_click);
 
     window.onload = function() {
         updateAllList_show();
