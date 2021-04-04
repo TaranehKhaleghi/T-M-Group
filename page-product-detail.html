@@ -95,6 +95,12 @@
 
             if (localStorage.getItem("accountType") === "Manufacturer") {
                 $('.hideShop').addClass('disabled');
+            } else {
+                $('.hideShop').removeClass('disabled');
+            }
+
+            if (localStorage.getItem("accountType") !== "Supplier") {
+                $('#hideCart').hide();
             }
 
             var imgURL = "data:image/png;base64," + localStorage.getItem("image");
@@ -145,7 +151,7 @@
                     <!-- col.// -->
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="widgets-wrap float-md-right">
-                            <div class="widget-header  mr-3">
+                            <div class="widget-header  mr-3" id="hideCart">
                                 <a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
 										class="fa fa-shopping-cart"></i></a>
                                 <span class="badge badge-pill badge-danger notify">0</span>

@@ -593,30 +593,34 @@ function SaveOrder(productId) {
 
     console.info("Save order method");
 
-    var supplierId = localStorage.getItem("supplierId");
+    if (localStorage.getItem("supplierId") === null) {
+        alert("Please sign in first as Supplier!")
+    } else {
+        var supplierId = localStorage.getItem("supplierId");
 
-    var options = [productId];
+        var options = [productId];
 
-    function callback(tx, results) {
+        function callback(tx, results) {
 
-        for (var i = 0; i < results.rows.length; i++) {
-            var row = results.rows[i];
+            for (var i = 0; i < results.rows.length; i++) {
+                var row = results.rows[i];
 
-            var image = row['image'];
-            var name = row['name'];
-            var price = row['price'];
-            var description = row['description'];
-            var quantity = 1;
-            var orderDate = Date.now();
+                var image = row['image'];
+                var name = row['name'];
+                var price = row['price'];
+                var description = row['description'];
+                var quantity = 1;
+                var orderDate = Date.now();
+            }
+
+            var orderOptions = [];
+            orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
+
+            SaveOrderInfo.orderInsert(orderOptions);
         }
 
-        var orderOptions = [];
-        orderOptions = [supplierId, image, name, price, description, quantity, orderDate];
-
-        SaveOrderInfo.orderInsert(orderOptions);
+        SaveProductInfo.selectProduct(callback, options);
     }
-
-    SaveProductInfo.selectProduct(callback, options);
 }
 
 function UpdateRecentOrders() {

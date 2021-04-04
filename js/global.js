@@ -40,17 +40,16 @@ function init() {
 
     $('#shopByCategory').click(function() {
         var accountType = localStorage.getItem('accountType');
-        if (accountType == 'Supplier') {
+        if (accountType !== 'Manufacturer') {
             window.location.replace("page-category-grid.html");
         }
     });
 
     $('#shopByManufacturer').click(function() {
         var accountType = localStorage.getItem('accountType');
-        if (accountType == 'Supplier') {
+        if (accountType !== 'Manufacturer') {
             window.location.replace("page-manufacturer-grid.html");
         }
-
     });
 
     $('#customCheck1').click(function() {
