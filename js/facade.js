@@ -589,6 +589,26 @@ function ViewItem(productId) {
     SaveProductInfo.selectProduct(callback, options);
 }
 
+function IncreaseQuantity() {
+    var quantity = $("#quantity").val();
+    quantity++;
+
+    $("#quantity").val(quantity);
+
+    localStorage.setItem("quantity", quantity);
+}
+
+function DecreaseQuantity() {
+    var quantity = $("#quantity").val();
+
+    if (quantity > 0) {
+        quantity--;
+        $("#quantity").val(quantity);
+    }
+
+    localStorage.setItem("quantity", quantity);
+}
+
 function SaveOrder(productId) {
 
     console.info("Save order method");
@@ -597,6 +617,7 @@ function SaveOrder(productId) {
         alert("Please sign in first as Supplier!")
     } else {
         var supplierId = localStorage.getItem("supplierId");
+        var quantity = localStorage.getItem("quantity");
 
         var options = [productId];
 
@@ -609,7 +630,6 @@ function SaveOrder(productId) {
                 var name = row['name'];
                 var price = row['price'];
                 var description = row['description'];
-                var quantity = 1;
                 var orderDate = Date.now();
             }
 

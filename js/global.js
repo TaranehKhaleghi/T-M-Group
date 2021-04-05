@@ -22,6 +22,14 @@ function btnUpdateProduct_click() {
     UpdateProduct();
 }
 
+function btnPlus_click() {
+    IncreaseQuantity();
+}
+
+function btnMinus_click() {
+    DecreaseQuantity();
+}
+
 function updateAllList_show() {
     UpdatePopularProduct();
     UpdateNavManufacturerList();
@@ -79,6 +87,10 @@ function init() {
     $("#saveProduct").on("click", btnSaveProduct_click);
 
     $("#updateProduct").on("click", btnUpdateProduct_click);
+
+    $("#button-plus").on("click", btnPlus_click);
+
+    $("#button-minus").on("click", btnMinus_click);
 
     window.onload = function() {
         updateAllList_show();
