@@ -55,6 +55,7 @@ function LogInSupplier() {
                         localStorage.setItem("city", row['city']);
                         localStorage.setItem("country", row['country']);
                         localStorage.setItem("addressDetails", row['addressDetails']);
+                        localStorage.setItem("password", row['password']);
                     }
                 }
                 if (registered === 0) {
@@ -142,7 +143,7 @@ function LogInManufacturer() {
                         localStorage.setItem("country", row['country']);
                         localStorage.setItem("addressDetails", row['addressDetails']);
                         localStorage.setItem("cPostalCode", row['cPostalCode']);
-                        localStorage.setItem("cPassword", row['cPassword']);
+                        localStorage.setItem("password", row['cPassword']);
                     }
                 }
                 if (registered === 0) {
@@ -153,6 +154,56 @@ function LogInManufacturer() {
         SignInManufacturer.selectAll(callback);
     } else {
         console.error("Log in form Validation failed.");
+    }
+}
+
+function UpdateSetting() {
+    if (DoValidate_frmUpdateSetting()) {
+        console.info("Update Validation is successful");
+
+        if (localStorage.getItem("accountType") === "Supplier") {
+            var id = localStorage.getItem("supplierId");
+        } else {
+            var id = localStorage.getItem("manufacturerId");
+            var companyName = localStorage.getItem("companyName");
+            var companyUrl = localStorage.getItem("companyUrl");
+            var bnNumber = localStorage.getItem("bnNumber");
+            var contactTitle = localStorage.getItem("contactTitle");
+            var contactFName = localStorage.getItem("contactFName");
+            var contactLName = localStorage.getItem("contactLName");
+            var cFaxNumber = localStorage.getItem("cFaxNumber");
+            var cPostalCode = localStorage.getItem("cPostalCode");
+        }
+
+        var accountType = localStorage.getItem("accountType");
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var countryCode = $("#countryCode option:selected").val();
+        var phoneNumber = $("#phoneNumber").val();
+        var userEmail = $("#userEmail").val();
+        var city = $("#city").val();
+        var country = $("#country option:selected").val();
+        var addressDetails = localStorage.getItem("addressDetails");
+        var password = $("#password").val();
+
+        localStorage.setItem("firstName", firstName);
+        localStorage.setItem("lastName", lastName);
+        localStorage.setItem("countryCode", countryCode);
+        localStorage.setItem("phoneNumber", phoneNumber);
+        localStorage.setItem("userEmail", userEmail);
+        localStorage.setItem("city", city);
+        localStorage.setItem("country", country);
+        localStorage.setItem("password", password);
+
+        var updatedSetting = [];
+
+        if (localStorage.getItem("accountType") === "Supplier") {
+            updatedSetting = [accountType, firstName, lastName, countryCode, phoneNumber, userEmail, city, country, addressDetails, password, id];
+            SignupSupplier.supplierUpdate(updatedSetting);
+        } else {
+            updatedSetting = [accountType, firstName, lastName, companyName, companyUrl, bnNumber, contactTitle, contactFName, contactLName, countryCode, phoneNumber, cFaxNumber, userEmail, city, country, addressDetails, cPostalCode, password, id];
+            SignupManufacturer.manufacturerUpdate(updatedSetting);
+        }
     }
 }
 

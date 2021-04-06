@@ -252,6 +252,72 @@ function DoValidate_frmLogInMan() {
     return form.valid();
 }
 
+//validate setting form
+//=======================
+function DoValidate_frmUpdateSetting() {
+    var form = $("#SettingForm");
+    form.validate({
+        rules: {
+            settingFirstName: {
+                required: true,
+                rangelength: [2, 10]
+            },
+            lastName: {
+                required: true,
+                rangelength: [2, 10]
+            },
+            phoneNumber: {
+                required: true,
+                phoneAddCheck: true
+            },
+            userEmail: {
+                required: true,
+                emailAddCheck: true
+            },
+            city: {
+                required: true,
+                rangelength: [1, 20]
+            },
+            password: {
+                required: true
+            },
+            confirmPassword: {
+                required: true,
+                equalTo: "#password"
+            }
+        },
+        messages: {
+            settingFirstName: {
+                required: "first name is required",
+                rangelength: "Length must be between 2 and 10 letters"
+            },
+            lastName: {
+                required: "last name is required",
+                rangelength: "Length must be between 2 and 10 letters"
+            },
+            phoneNumber: {
+                required: "phone number is required",
+                phoneAddCheck: "Please enter a valid phone number"
+            },
+            userEmail: {
+                required: "Email is required",
+                emailAddCheck: "Please enter a valid email address"
+            },
+            city: {
+                required: "city is required"
+            },
+            password: {
+                required: "Enter password"
+            },
+            confirmPassword: {
+                required: "Confirm password",
+                equalTo: "Password is not match"
+            }
+        }
+    });
+    return form.valid();
+}
+
 //validate add product info form
 //===============================
 function DoValidate_frmSaveProduct() {

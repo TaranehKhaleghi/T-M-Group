@@ -25,6 +25,30 @@ var SignupSupplier = {
         db.transaction(txFunction, errorHandler, successInsertTransaction);
     },
 
+    supplierUpdate: function(options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successUpdate() {
+            console.info("Success: Update successful");
+            alert("Supplier updated successfully");
+
+            window.location.replace("page-profile-main.html");
+        }
+
+        function txFunction(tx) {
+            console.info("Updating supplier...  ");
+            var sql = "";
+            sql = "UPDATE suppliers " +
+                "SET accountType=?, firstName=?, lastName=?, countryCode=?, phoneNumber=?, userEmail=?, city=?, country=?, addressDetails=?, password=?" +
+                "WHERE id=?;";
+            tx.executeSql(sql, options, successUpdate, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
     selectAll: function(callback) {
         var options = [];
 
@@ -69,6 +93,30 @@ var SignupManufacturer = {
         }
 
         db.transaction(txFunction, errorHandler, successInsertTransaction);
+    },
+
+    manufacturerUpdate: function(options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successUpdate() {
+            console.info("Success: Update successful");
+            alert("Manufacturer updated successfully");
+
+            window.location.replace("page-profile-main.html");
+        }
+
+        function txFunction(tx) {
+            console.info("Updating manufacturer...  ");
+            var sql = "";
+            sql = "UPDATE manufacturers " +
+                "SET accountType=?, firstName=?, lastName=?, companyName=?, companyUrl=?, bnNumber=?, contactTitle=?, contactFName=?, contactLName=?, countryCode=?, phoneNumber=?, cFaxNumber=?, userEmail=?, city=?, country=?, addressDetails=?, cPostalCode=?, cPassword=?" +
+                "WHERE id=?;";
+            tx.executeSql(sql, options, successUpdate, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
     },
 
     selectAll: function(callback) {
