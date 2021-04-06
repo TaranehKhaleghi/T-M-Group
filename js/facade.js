@@ -2,7 +2,7 @@ function RegisterSupplier() {
     console.info("Entering RegisterSupplier");
     if (DoValidate_frmAdd()) {
         console.info("Supplier Registration Form Validation is successful.");
-        var accountType = $("input[name='accountType']:checked").val();
+        var accountType = $("#accountType").text();
         var firstName = $("#firstName").val();
         var lastName = $("#lastName").val();
         var countryCode = $("#countryCode option:selected").val();
@@ -74,7 +74,7 @@ function RegisterManufacturer() {
     if (DoValidate_frmManufacturer()) {
         console.info("Business Registration Form Validation is successful.");
 
-        var accountType = $("input[name='accountType']:checked").val();
+        var accountType = $("#accountType").text();
         var firstName = $("#firstName").val();
         var lastName = $("#lastName").val();
         var companyName = $("#companyName").val();
@@ -228,6 +228,8 @@ function UpdateProductList(categoryId) {
         var productList = $("#productList");
         productList = productList.html(htmlCode);
 
+        localStorage.setItem("quantity", 1);
+
         var items = $(".items");
         items = items.text(itemsNumber + " Items found");
     }
@@ -367,6 +369,8 @@ function UpdateManufacturerProductList(manufacturerId) {
 
         var manufacturerProductList = $("#productList");
         manufacturerProductList = manufacturerProductList.html(htmlCode);
+
+        localStorage.setItem("quantity", 1);
 
         var items = $(".items");
         items = items.text(itemsNumber + " Items found");
@@ -581,6 +585,7 @@ function ViewItem(productId) {
             localStorage.setItem("name", name);
             localStorage.setItem("price", price);
             localStorage.setItem("description", description);
+            localStorage.setItem("quantity", 1);
         }
 
         window.location.replace("page-product-detail.html");
