@@ -416,7 +416,7 @@ var SaveOrderInfo = {
             console.info("Success: Order Insert successful");
             alert("Saving order has been successful");
 
-            window.location.reload();
+           // window.location.reload();
         }
 
         function txFunction(tx) {
@@ -439,7 +439,7 @@ var SaveOrderInfo = {
         }
 
         function txFunction(tx) {
-            console.info("Selecting all records...");
+            console.info("Selecting all orders...");
 
             var sql = "SELECT * FROM orders;";
             tx.executeSql(sql, options, callback, errorHandler);

@@ -818,3 +818,61 @@ function UpdateMyAddress() {
         SignInManufacturer.manufacturerAddress(callback, options);
     }
 }
+
+function UpdateMyOrders() {
+    if (localStorage.getItem("supplierId") !== null) {
+        var supplierId = localStorage.getItem("supplierId");
+        var options = [supplierId];
+    }
+    function callback(tx, results) {
+        console.info("row num: "+ results.rows.length);
+        if (results.rows.length !== 0) {
+            var htmlTable = "<tbody>";
+
+            var htmlCode = "<div class='col-md-8'>" +
+                "<h6 class='text-muted'>" + "Delivery to" +
+                "</h6>" +
+                "<p>" + localStorage.getItem("firstName") + " " + localStorage.getItem("lastName") +
+                "<br>" + "Phone: " + localStorage.getItem("phoneNumber") +
+                "<br>" + "Email: " + localStorage.getItem("userEmail") +
+                "<br>" + "Address: " + localStorage.getItem("addressDetails") + ", " +
+                localStorage.getItem("city") + ", " + localStorage.getItem("country") +
+                "</p>" +
+                "</div>";
+
+            for (var i = 0; i < results.rows.length; i++) {
+                
+
+                var row = results.rows[i];
+                var imgURL = "data:image/png;base64," + row['image'];
+
+                htmlTable += "<tr>" +
+                    "<td width='90'>" + "<img src='" + imgURL + "'>" + "</td>" +
+                    "<td>" + "<p class='title mb-0'>" + "Name: "+ row['name'] + "</p>" + "</td>" +
+                    "<td>" + "<var class='price text-muted'>" + "Price: " + "$ " + row['price'] + "</var>" + "</td>" +
+                    "<td>" +"Description: " + row['description'] + "</td>" +                     
+                    "<td width='250'>" + "<a href='#' class='btn btn-outline-primary'>" + "Track order" + "</a>" + "&nbsp;" +
+                    "<div class='dropdown d-inline-block'>" +
+                    "<a href='#' data-toggle='dropdown' class='dropdown-toggle btn btn-outline-secondary'>" + "More" + "</a>" +
+                    "<div class='dropdown-menu dropdown-menu-right'>" +
+                    "<a href='#' class='dropdown-item'>" + "Return" + "</a>" +
+                    "<a href='#' class='dropdown-item'>" + "Cancel order" + "</a>" +
+                    "</div>" +
+                    "</div>" +
+                    "</td>" +
+                    "</tr>";
+            }
+            var myOrders = $("#myOrders");
+            myOrders = myOrders.html(htmlCode);
+
+            var orderTable = $('#orderTable');
+            htmlTable = htmlTable + "</tbody>";
+
+            orderTable = orderTable.html(htmlTable);
+        }
+    }
+
+    if (localStorage.getItem("supplierId") !== null) {
+        SaveOrderInfo.selectSupplier(callback, options);
+    }
+}

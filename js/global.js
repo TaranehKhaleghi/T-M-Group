@@ -41,6 +41,7 @@ function updateAllList_show() {
     UpdateManufacturerSellingItems();
     UpdateTotalOrders();
     UpdateMyAddress();
+    UpdateMyOrders();
 }
 
 function init() {
