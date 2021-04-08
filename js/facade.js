@@ -850,8 +850,8 @@ function UpdateMyOrders() {
                     "<td width='90'>" + "<img src='" + imgURL + "'>" + "</td>" +
                     "<td>" + "<p class='title mb-0'>" + "Name: "+ row['name'] + "</p>" + "</td>" +
                     "<td>" + "<p class='title mb-0'>" + "Quantity: "+ row['quantity']  + " Pcs" + "</p>" + "</td>" +
-                    "<td>" + "<var class='price text-muted'>" + "Price per item: " + "$ " + row['price'] + "</var>" + "</td>" +
-                    "<td>" + "<var class='price text-muted'>" + "Total price: " + "$ " + row['price'] * row['quantity'] + "</var>" + "</td>" +
+                    "<td>" + "<var class='price text-muted'>" + "Price per item: " + "$" + row['price'] + "</var>" + "</td>" +
+                    "<td>" + "<var class='price text-muted'>" + "Total price: " + "$" + row['price'] * row['quantity'] + "</var>" + "</td>" +
                     "<td>" + row['description'] + "</td>" +                     
                     "<td width='250'>" + "<a href='#' class='btn btn-outline-primary'>" + "Track order" + "</a>" + "&nbsp;" +
                     "<div class='dropdown d-inline-block'>" +
