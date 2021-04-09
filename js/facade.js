@@ -846,6 +846,7 @@ function UpdateMyOrders() {
                 "</div>";
 
             for (var i = 0; i < results.rows.length; i++) {
+                var ordersNum = results.rows.length;
                 var row = results.rows[i];
                 var imgURL = "data:image/png;base64," + row['image'];
 
@@ -872,6 +873,9 @@ function UpdateMyOrders() {
             var orderTable = $('#orderTable');
             htmlTable = htmlTable + "</tbody>";
             orderTable = orderTable.html(htmlTable);
+
+            var ordersNumber = $('#ordersNumber');
+            ordersNumber = ordersNumber.text(ordersNum);
 
             var myOrderId = $("#orderId");
             myOrderId = myOrderId.text("Order ID: " + localStorage.getItem("supplierId") + Date.now());

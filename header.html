@@ -73,7 +73,7 @@
         }
 
         // jquery ready start
-        $(document).ready(function () {
+        $(document).ready(function() {
             // jQuery code
             if (localStorage.getItem("firstName") !== null) {
                 $(".userProfile").text(localStorage.getItem("firstName"));
@@ -121,11 +121,10 @@
                             <div class="widget-header  mr-3">
                                 <a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
                                         class="fa fa-shopping-cart"></i></a>
-                                <span class="badge badge-pill badge-danger notify">0</span>
+                                <span class="badge badge-pill badge-danger notify" id="ordersNumber">0</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border"
-                                    id="userProfile"><i class="fa fa-user"></i></a>
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <span class="userProfile"></span>
@@ -155,8 +154,7 @@
         <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
             <div class="container">
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
-                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 

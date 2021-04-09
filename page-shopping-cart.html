@@ -72,6 +72,11 @@
                     break;
             }
         }
+
+        function Hello() {
+            alert("Hello " + localStorage.getItem("firstName") + ", make purchase is in progress, please check out later!");
+        }
+
         // jquery ready start
         $(document).ready(function() {
             // jQuery code
@@ -132,7 +137,7 @@
                             <div class="widget-header  mr-3" id="hideCart">
                                 <a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
 										class="fa fa-shopping-cart"></i></a>
-                                <span class="badge badge-pill badge-danger notify">0</span>
+                                <span class="badge badge-pill badge-danger notify" id="ordersNumber">0</span>
                             </div>
                             <div class="widget-header icontext">
                                 <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i
@@ -232,8 +237,8 @@
             <div class="row">
                 <main class="col-md-9">
                     <div class="card">
-
-                        <table class="table table-borderless table-shopping-cart">
+                        <table class="table table-borderless table-shopping-cart" id="orderTable"></table>
+                        <!--table class="table table-borderless table-shopping-cart">
                             <thead class="text-muted">
                                 <tr class="small text-uppercase">
                                     <th scope="col">Product</th>
@@ -242,6 +247,7 @@
                                     <th scope="col" class="text-right" width="200"> </th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 <tr>
                                     <td>
@@ -265,81 +271,21 @@
                                         <div class="price-wrap">
                                             <var class="price">$1156.00</var>
                                             <small class="text-muted"> $315.20 each </small>
-                                        </div>
-                                        <!-- price-wrap .// -->
-                                    </td>
-                                    <td class="text-right">
-                                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
-                                        <a href="" class="btn btn-light"> Remove</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <figure class="itemside">
-                                            <div class="aside"><img src="images/items/2.jpg" class="img-sm"></div>
-                                            <figcaption class="info">
-                                                <a href="#" class="title text-dark">Product name goes here nice</a>
-                                                <p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-                                            </figcaption>
-                                        </figure>
-                                    </td>
-                                    <td>
-                                        <select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-										</select>
-                                    </td>
-                                    <td>
-                                        <div class="price-wrap">
-                                            <var class="price">$149.97</var>
-                                            <small class="text-muted"> $75.00 each </small>
-                                        </div>
-                                        <!-- price-wrap .// -->
-                                    </td>
-                                    <td class="text-right">
-                                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
-                                        <a href="" class="btn btn-light btn-round"> Remove</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <figure class="itemside">
-                                            <div class="aside"><img src="images/items/3.jpg" class="img-sm"></div>
-                                            <figcaption class="info">
-                                                <a href="#" class="title text-dark">Another name of some product goes
-													just here</a>
-                                                <p class="small text-muted">Size: XL, Color: blue, Brand: Tissot</p>
-                                            </figcaption>
-                                        </figure>
-                                    </td>
-                                    <td>
-                                        <select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-										</select>
-                                    </td>
-                                    <td>
-                                        <div class="price-wrap">
-                                            <var class="price">$98.00</var>
-                                            <small class="text-muted"> $578.00 each</small>
-                                        </div>
-                                        <!-- price-wrap .// -->
-                                    </td>
-                                    <td class="text-right">
-                                        <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
-                                        <a href="" class="btn btn-light btn-round"> Remove</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </div-->
+                        <!-- price-wrap .// -->
+                        <!--/td>
+                        <td class="text-right">
+                            <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a>
+                            <a href="" class="btn btn-light"> Remove</a>
+                        </td>
+                        </tr>
+                        </tbody>
+                        </table-->
 
                         <div class="card-body border-top">
-                            <a href="#" class="btn btn-primary float-md-right"> Make Purchase <i
+                            <a href="#" class="btn btn-primary float-md-right" onclick="Hello()"> Make Purchase <i
 									class="fa fa-chevron-right"></i> </a>
-                            <a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+                            <a href="page-category-grid.html" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
                         </div>
                     </div>
                     <!-- card.// -->
@@ -372,16 +318,16 @@
                     <div class="card">
                         <div class="card-body">
                             <dl class="dlist-align">
-                                <dt>Total price:</dt>
-                                <dd class="text-right">USD 568</dd>
+                                <dt id="subTotal"></dt>
+                                <dd class="text-right"></dd>
                             </dl>
                             <dl class="dlist-align">
-                                <dt>Discount:</dt>
-                                <dd class="text-right">USD 658</dd>
+                                <dt id="shippingFee"></dt>
+                                <dd class="text-right"></dd>
                             </dl>
                             <dl class="dlist-align">
-                                <dt>Total:</dt>
-                                <dd class="text-right  h5"><strong>$1,650</strong></dd>
+                                <dt class="h5" id="finalTotal"><strong></strong></dt>
+                                <dd class="text-right h5"><strong></strong></dd>
                             </dl>
                             <hr>
                             <p class="text-center mb-3">
