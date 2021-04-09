@@ -575,7 +575,7 @@ function UpdateProduct() {
         var manufacturerId = localStorage.getItem("manufacturerId");
         var categoryId = $("#category option:selected").val();
 
-        var productImage = document.getElementById('updateImage');
+        var productImage = document.getElementById("updateImage");
         var image = getBase64Image(productImage);
 
         function getBase64Image(img) {
@@ -843,7 +843,7 @@ function UpdateMyOrders() {
             var subTotal = 0;
             var finalTotal = 0;
             var shippingFee = 0;
-
+            var ordersNum = 0;
 
             var htmlCode = "<div class='col-md-8'>" +
                 "<h6 class='text-muted'>" + "Delivery to" +
@@ -857,8 +857,10 @@ function UpdateMyOrders() {
                 "</div>";
 
             for (var i = 0; i < results.rows.length; i++) {
-                var ordersNum = results.rows.length;
                 var row = results.rows[i];
+
+                ordersNum += row['quantity'];
+
                 var imgURL = "data:image/png;base64," + row['image'];
 
                 htmlTable += "<tr>" +
