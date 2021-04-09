@@ -686,7 +686,18 @@ function SaveOrder(productId) {
                 var name = row['name'];
                 var price = row['price'];
                 var description = row['description'];
-                var orderDate = Date.now();
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1;
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+                today = yyyy + '-' + mm + '-' + dd;
+                var orderDate = today;
             }
 
             var orderOptions = [];
@@ -881,7 +892,18 @@ function UpdateMyOrders() {
             myOrderId = myOrderId.text("Order ID: " + localStorage.getItem("supplierId") + Date.now());
 
             var myOrderDate = $("#orderDate");
-            myOrderDate = myOrderDate.text("Order Date: " + Date.now());
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+            today = yyyy + '-' + mm + '-' + dd;
+            myOrderDate = myOrderDate.text("Order Date: " + today);
 
             var mySubTotal = $("#subTotal");
             mySubTotal = mySubTotal.text("Subtotal: $" + subTotal);
