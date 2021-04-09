@@ -342,14 +342,14 @@ var SaveProductInfo = {
         }
 
         function successUpdate() {
-            console.info("Success: Update successful");
+            console.info("Success: Update product successful");
             alert("Product updated successfully");
 
             window.location.replace("page-profile-seller.html");
         }
 
         function txFunction(tx) {
-            console.info("Updating...  ");
+            console.info("Updating product...  ");
             var sql = "";
             sql = "UPDATE products " +
                 "SET manufacturerId=?, categoryId=?, image=?, name=?, price=?, description=?" +
@@ -366,7 +366,7 @@ var SaveProductInfo = {
         }
 
         function successDelete() {
-            console.info("Success: Delete successful");
+            console.info("Success: Delete product successful");
             alert("Product deleted successfully");
 
             window.location.reload();
@@ -409,14 +409,14 @@ var SaveOrderInfo = {
 
     orderInsert: function(options) {
         function successInsertTransaction() {
-            console.info("Success: Insert Order Transaction successful");
+            console.info("Success: Insert order transaction successful");
         }
 
         function successInsert() {
-            console.info("Success: Order Insert successful");
+            console.info("Success: Order insert successful");
             alert("Saving order has been successful");
 
-           // window.location.reload();
+            // window.location.reload();
         }
 
         function txFunction(tx) {
@@ -435,7 +435,7 @@ var SaveOrderInfo = {
         var options = [];
 
         function successTransaction() {
-            console.info("Success: Select all Transaction successful");
+            console.info("Success: Select all transaction successful");
         }
 
         function txFunction(tx) {
@@ -477,4 +477,51 @@ var SaveOrderInfo = {
 
         db.transaction(txFunction, errorHandler, successTransaction);
     },
+
+    orderUpdate: function(options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successUpdate() {
+            console.info("Success: Update order successful");
+            alert("Order updated successfully");
+
+            window.location.replace("page-profile-orders.html");
+        }
+
+        function txFunction(tx) {
+            console.info("Updating orders...  ");
+            var sql = "";
+            sql = "UPDATE orders " +
+                "SET supplierId=?, image=?, name=?, price=?, description=?, quantity=?, orderDate=?" +
+                "WHERE id=?;";
+            tx.executeSql(sql, options, successUpdate, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    },
+
+    orderDelete: function(options) {
+        function successTransaction() {
+            console.info("Success: Transaction successful");
+        }
+
+        function successDelete() {
+            console.info("Success: Delete order successful");
+            alert("Order deleted successfully");
+
+            window.location.reload();
+        }
+
+        function txFunction(tx) {
+            console.info("Deleting from orders...  ");
+            var sql = "";
+            sql = "DELETE FROM orders " +
+                "WHERE id=?;";
+            tx.executeSql(sql, options, successDelete, errorHandler);
+        }
+
+        db.transaction(txFunction, errorHandler, successTransaction);
+    }
 };

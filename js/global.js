@@ -22,6 +22,10 @@ function btnUpdateProduct_click() {
     UpdateProduct();
 }
 
+function btnUpdateOrder_click() {
+    UpdateOrder();
+}
+
 function btnPlus_click() {
     IncreaseQuantity();
 }
@@ -88,6 +92,8 @@ function init() {
     $("#saveProduct").on("click", btnSaveProduct_click);
 
     $("#updateProduct").on("click", btnUpdateProduct_click);
+
+    $("#updateOrder").on("click", btnUpdateOrder_click);
 
     $("#button-plus").on("click", btnPlus_click);
 

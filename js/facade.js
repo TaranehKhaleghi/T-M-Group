@@ -860,8 +860,8 @@ function UpdateMyOrders() {
                     "<div class='dropdown d-inline-block'>" +
                     "<a href='#' data-toggle='dropdown' class='dropdown-toggle btn btn-outline-secondary'>" + "More" + "</a>" +
                     "<div class='dropdown-menu dropdown-menu-right'>" +
-                    "<a href='#' class='dropdown-item'>" + " Edit order " + "</a>" +
-                    "<a href='#' class='dropdown-item'>" + "Cancel order" + "</a>" +
+                    "<a href='#' class='dropdown-item' onclick='EditOrder(" + row['id'] + ")'>" + " Edit order " + "</a>" +
+                    "<a href='#' class='dropdown-item' onclick='DeleteOrder(" + row['id'] + ")'>" + "Cancel order" + "</a>" +
                     "</div>" +
                     "</div>" +
                     "</td>" +
@@ -898,4 +898,66 @@ function UpdateMyOrders() {
     if (localStorage.getItem("supplierId") !== null) {
         SaveOrderInfo.selectSupplier(callback, options);
     }
+}
+
+function EditOrder(orderId) {
+    console.info("Edit order method");
+    localStorage.setItem("orderId", orderId);
+
+    var options = [orderId];
+
+    function callback(tx, results) {
+
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            var supplierId = row['supplierId'];
+            var imgURL = row['image'];
+            var name = row['name'];
+            var price = row['price'];
+            var description = row['description'];
+            var quantity = row['quantity'];
+            var orderDate = row['orderDate'];
+
+            localStorage.setItem("supplierId", supplierId);
+            localStorage.setItem("image", imgURL);
+            localStorage.setItem("name", name);
+            localStorage.setItem("price", price);
+            localStorage.setItem("description", description);
+            localStorage.setItem("quantity", quantity);
+            localStorage.setItem("orderDate", orderDate);
+        }
+
+        window.location.replace("page-order-update.html");
+    }
+
+    SaveOrderInfo.select(callback, options);
+}
+
+function UpdateOrder() {
+
+    var id = localStorage.getItem("orderId");
+    var supplierId = localStorage.getItem("supplierId");
+    var image = localStorage.getItem("image");
+
+    var name = $("#updateName").text();
+    var price = $("#updatePrice").text();
+    var description = $("#updateDescription").text();
+
+    var quantity = localStorage.getItem("quantity");
+    var orderDate = localStorage.getItem("orderDate");
+
+    updatedOrder = [supplierId, image, name, price, description, quantity, orderDate, id];
+
+    SaveOrderInfo.orderUpdate(updatedOrder);
+}
+
+function DeleteOrder(orderId) {
+
+    console.info("Delete order method");
+
+    var options = [orderId];
+    console.info(orderId);
+
+    SaveOrderInfo.orderDelete(options);
 }
