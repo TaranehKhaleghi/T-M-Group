@@ -824,10 +824,15 @@ function UpdateMyOrders() {
         var supplierId = localStorage.getItem("supplierId");
         var options = [supplierId];
     }
+
     function callback(tx, results) {
-        console.info("row num: "+ results.rows.length);
+        console.info("row num: " + results.rows.length);
         if (results.rows.length !== 0) {
             var htmlTable = "<tbody>";
+            var subTotal = 0;
+            var finalTotal = 0;
+            var shippingFee = 0;
+
 
             var htmlCode = "<div class='col-md-8'>" +
                 "<h6 class='text-muted'>" + "Delivery to" +
@@ -841,36 +846,52 @@ function UpdateMyOrders() {
                 "</div>";
 
             for (var i = 0; i < results.rows.length; i++) {
-                
-
                 var row = results.rows[i];
                 var imgURL = "data:image/png;base64," + row['image'];
 
                 htmlTable += "<tr>" +
                     "<td width='90'>" + "<img src='" + imgURL + "'>" + "</td>" +
-                    "<td>" + "<p class='title mb-0'>" + "Name: "+ row['name'] + "</p>" + "</td>" +
-                    "<td>" + "<p class='title mb-0'>" + "Quantity: "+ row['quantity']  + " Pcs" + "</p>" + "</td>" +
+                    "<td>" + "<p class='title mb-0'>" + "Name: " + row['name'] + "</p>" + "</td>" +
+                    "<td>" + "<p class='title mb-0'>" + "Quantity: " + row['quantity'] + " Pcs" + "</p>" + "</td>" +
                     "<td>" + "<var class='price text-muted'>" + "Price per item: " + "$" + row['price'] + "</var>" + "</td>" +
                     "<td>" + "<var class='price text-muted'>" + "Total price: " + "$" + row['price'] * row['quantity'] + "</var>" + "</td>" +
-                    "<td>" + row['description'] + "</td>" +                     
+                    "<td>" + row['description'] + "</td>" +
                     "<td width='250'>" + "<a href='#' class='btn btn-outline-primary'>" + "Track order" + "</a>" + "&nbsp;" +
                     "<div class='dropdown d-inline-block'>" +
                     "<a href='#' data-toggle='dropdown' class='dropdown-toggle btn btn-outline-secondary'>" + "More" + "</a>" +
                     "<div class='dropdown-menu dropdown-menu-right'>" +
-                    "<a href='#' class='dropdown-item'>" + "Return" + "</a>" +
+                    "<a href='#' class='dropdown-item'>" + " Edit order " + "</a>" +
                     "<a href='#' class='dropdown-item'>" + "Cancel order" + "</a>" +
                     "</div>" +
                     "</div>" +
                     "</td>" +
                     "</tr>";
+
+                subTotal += row['price'] * row['quantity'];
             }
             var myOrders = $("#myOrders");
             myOrders = myOrders.html(htmlCode);
 
             var orderTable = $('#orderTable');
             htmlTable = htmlTable + "</tbody>";
-
             orderTable = orderTable.html(htmlTable);
+
+            var myOrderId = $("#orderId");
+            myOrderId = myOrderId.text("Order ID: " + localStorage.getItem("supplierId") + Date.now());
+
+            var myOrderDate = $("#orderDate");
+            myOrderDate = myOrderDate.text("Order Date: " + Date.now());
+
+            var mySubTotal = $("#subTotal");
+            mySubTotal = mySubTotal.text("Subtotal: $" + subTotal);
+
+            shippingFee = subTotal * 0.015;
+            var myShippingFee = $("#shippingFee");
+            myShippingFee = myShippingFee.text("Shipping fee: $" + shippingFee);
+
+            finalTotal = subTotal + shippingFee;
+            var myFinalTotal = $("#finalTotal");
+            myFinalTotal = myFinalTotal.text("Total: $" + finalTotal);
         }
     }
 
