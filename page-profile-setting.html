@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="max-age=604800" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>T&M Drop shipping | T&M Group</title>
+
+    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <!-- jQuery -->
+    <script src="js/lib/jquery-2.0.0.min.js" type="text/javascript"></script>
+
+    <!--jQuery Validation-->
+    <script src="js/lib/jquery.validate.js" type="text/javascript"></script>
+
+    <!-- Bootstrap4 files-->
+    <script src="js/lib/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+    <!-- Font awesome 5 -->
+    <link href="fonts/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+
+    <!-- custom style -->
+    <link href="css/ui.css" rel="stylesheet" type="text/css" />
+    <link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+
+    <link href="css/myStyle.css" rel="stylesheet" type="text/css" />
+
+    <!-- custom javascript -->
+    <script src="js/lib/script.js" type="text/javascript"></script>
+
+    <script src="js/database.js" type="text/javascript"></script>
+    <script src="js/facade.js" type="text/javascript"></script>
+    <script src="js/dropshippingDAL.js" type="text/javascript"></script>
+    <script src="js/util.js" type="text/javascript"></script>
+    <script src="js/global.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        /// some script
+        function clearLocalStorage() {
+            localStorage.clear();
+        }
+
+        function selectYourLoginType() {
+            var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+            switch (select) {
+                case "1":
+                    window.location.replace("page-user-login.html");
+                    break;
+                case "2":
+                    window.location.replace("page-manufacturer-login.html");
+                    break;
+                default:
+                    console.info("Nothing");
+                    break;
+            }
+        }
+
+        function selectYourRegisterType() {
+            var select = prompt("What's your account type? 1 - Supplier or 2 - Manufacturer", "");
+            switch (select) {
+                case "1":
+                    window.location.replace("page-user-register.html");
+                    break;
+                case "2":
+                    window.location.replace("page-manufacturer-register.html");
+                    break;
+                default:
+                    console.info("Nothing");
+                    break;
+            }
+        }
+
+        function btnSaveAndSubmit_click() {
+            UpdateSetting();
+        }
+
+        // jquery ready start
+        $(document).ready(function() {
+            // jQuery code
+            if (localStorage.getItem("firstName") !== null) {
+                $(".userProfile").text(localStorage.getItem("firstName"));
+                $("#login").hide();
+                $("#logout").show();
+            } else {
+                $(".userProfile").text("");
+                $("#login").show();
+                $("#logout").hide();
+                $("#userProfile").hide();
+            }
+            if (localStorage.getItem("accountType") == "Supplier") {
+                $("#sellingItems").hide();
+                $("#addItems").hide();
+            } else {
+                $("#wishList").hide();
+                $("#myOrder").hide();
+            }
+
+            if (localStorage.getItem("accountType") === "Manufacturer") {
+                $('.hideShop').addClass('disabled');
+            } else {
+                $('.hideShop').removeClass('disabled');
+            }
+
+            if (localStorage.getItem("accountType") !== "Supplier") {
+                $('#hideCart').hide();
+            }
+
+            $("#firstName").val(localStorage.getItem("firstName"));
+            $("#lastName").val(localStorage.getItem("lastName"));
+            $("#userEmail").val(localStorage.getItem("userEmail"));
+            $("#city").val(localStorage.getItem("city"));
+            $("#phoneNumber").val(localStorage.getItem("phoneNumber"));
+            $("#password").val(localStorage.getItem("password"));
+            $("#confirmPassword").val(localStorage.getItem("password"));
+
+            $("#saveAndSubmitBtn").on("click", btnSaveAndSubmit_click);
+        });
+        // jquery end
+    </script>
+
+</head>
+
+<body>
+
+    <header class="section-header">
+        <section class="header-main border-bottom">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-4">
+                        <a href="index.html" class="brand-wrap">
+                            <img class="logo" src="images/logo.jpg">
+                        </a>
+                        <!-- brand-wrap.// -->
+                    </div>
+                    <div class="col-lg-6 col-sm-12">
+                        <form action="#" class="search">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fa fa-search"></i> Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- search-wrap .end// -->
+                    </div>
+                    <!-- col.// -->
+                    <div class="col-lg-4 col-sm-6 col-12">
+                        <div class="widgets-wrap float-md-right">
+                            <div class="widget-header  mr-3" id="hideCart">
+                                <a href="page-shopping-cart.html" class="icon icon-sm rounded-circle border"><i
+                                        class="fa fa-shopping-cart"></i></a>
+                                <span class="badge badge-pill badge-danger notify" id="ordersNumber">0</span>
+                            </div>
+                            <div class="widget-header icontext">
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
+                                <div class="text">
+                                    <span class="text-muted">Welcome!</span>
+                                    <span class="userProfile"></span>
+                                    <div id="login">
+                                        <a href="#" onclick="selectYourLoginType();">Sign in</a> |
+                                        <a href="#" onclick="selectYourRegisterType();">Register</a>
+                                    </div>
+                                    <div id="logout">
+                                        <a href="index.html" onclick="clearLocalStorage();">Log out</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- widgets-wrap.// -->
+                    </div>
+                    <!-- col.// -->
+                </div>
+                <!-- row.// -->
+            </div>
+            <!-- container.// -->
+        </section>
+        <!-- header-main .// -->
+    </header>
+    <!-- section-header.// -->
+
+
+    <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item dropdown" id="shopByCategory">
+                        <a class="nav-link hideShop" data-toggle="dropdown" href="">SHOP BY CATEGORY</a>
+                        <!-- <div class="dropdown-menu" id="categoryList"></div> -->
+                    </li>
+                    <li class="nav-item dropdown" id="shopByManufacturer">
+                        <a class="nav-link hideShop" data-toggle="dropdown" href="">SHOP BY MANUFACTURER</a>
+                        <!-- <div class="dropdown-menu" id="manufacturerList"></div> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="page-pricing.html">PRICING</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="page-about.html">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="page-contact.html">CONTACT US</a>
+                    </li>
+                    <!--li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> More</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="#">Foods and Drink</a>
+							<a class="dropdown-item" href="#">Home interior</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Category 1</a>
+							<a class="dropdown-item" href="#">Category 2</a>
+							<a class="dropdown-item" href="#">Category 3</a>
+						</div>
+					</li-->
+                </ul>
+            </div>
+            <!-- collapse .// -->
+        </div>
+        <!-- container .// -->
+    </nav>
+
+    </header>
+    <!-- section-header.// -->
+
+
+    <!-- ========================= SECTION PAGE TOP ========================= -->
+    <section class="section-pagetop bg">
+        <div class="container">
+            <h2 class="title-page">My account</h2>
+        </div>
+        <!-- container //  -->
+    </section>
+    <!-- ========================= SECTION PAGE TOP END// ========================= -->
+
+    <!-- ========================= SECTION CONTENT ========================= -->
+    <section class="section-content padding-y">
+        <div class="container">
+
+            <div class="row">
+                <aside class="col-md-3">
+                    <nav class="list-group">
+                        <a class="list-group-item" href="page-profile-main.html"> Account overview </a>
+                        <a class="list-group-item" href="page-profile-address.html"> My Address </a>
+                        <a class="list-group-item" href="page-profile-orders.html" id="myOrder"> My Orders </a>
+                        <a class="list-group-item" href="page-profile-wishlist.html" id="wishList"> My wishlist </a>
+                        <a class="list-group-item" href="page-profile-seller.html" id="sellingItems"> My Selling Items </a>
+                        <a class="list-group-item" href="page-product-info.html" id="addItems"> Add Items </a>
+                        <a class="list-group-item active" href="page-profile-setting.html"> Settings </a>
+                        <a class="list-group-item" href="index.html" onclick="clearLocalStorage();"> Log out </a>
+                </aside>
+                <!-- col.// -->
+                <main class="col-md-9">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="row" id="SettingForm">
+                                <div class="col-md-9">
+                                    <div class="form-row">
+                                        <div class="col form-group">
+                                            <label>First name</label>
+                                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First name" value="">
+                                        </div>
+                                        <div class="col form-group">
+                                            <label>Last name</label>
+                                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last name" value="">
+                                        </div>
+                                        <!-- form-group end.// -->
+                                        <div class="col form-group">
+                                            <label>Email</label>
+                                            <input type="email" class="form-control" name="userEmail" id="userEmail" placeholder="youremail@gmail.com" value="">
+                                        </div>
+                                        <!-- form-group end.// -->
+                                    </div>
+                                    <!-- form-row.// -->
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Country</label>
+                                            <select class="custom-select form-control" name="country" id="country">
+                                                <option>Canada</option>
+                                                <option>United states</option>
+                                                <option>United Kingdom</option>
+                                                <option>Germany</option>
+                                            </select>
+                                        </div>
+                                        <!-- form-group end.// -->
+                                        <div class="form-group col-md-6">
+                                            <label>City</label>
+                                            <input type="text" class="form-control" name="city" id="city" placeholder="Waterloo" value="">
+                                        </div>
+                                        <!-- form-group end.// -->
+                                    </div>
+                                    <!-- form-row.// -->
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Country code</label>
+                                            <select class="custom-select form-control" name="countryCode" id="countryCode">
+                                                <option selected="">CA +1</option>
+                                                <option>US +1</option>
+                                                <option>GB +44</option>
+                                                <option>DE +49</option>
+                                            </select>
+                                        </div>
+                                        <!-- form-group end.// -->
+                                        <div class="form-group col-md-6">
+                                            <label>Phone</label>
+                                            <input type="text" class="form-control" name="phoneNumber" id="phoneNumber" placeholder="Phone number" value="">
+                                        </div>
+                                        <!-- form-group end.// -->
+                                    </div>
+                                    <!-- form-row.// -->
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label>Change password</label>
+                                            <input type="password" class="form-control" name="password" id="password" placeholder="****************" value="">
+                                        </div>
+                                        <!-- form-group end.// -->
+                                        <div class="form-group col-md-6">
+                                            <label>Confirm new password</label>
+                                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="****************" value="">
+                                        </div>
+                                        <!-- form-group end.// -->
+                                    </div>
+                                    <!-- form-row.// -->
+
+                                    <button class="btn btn-primary" id="saveAndSubmitBtn">Save and Submit</button>
+
+                                    <br><br><br><br><br><br>
+
+                                </div>
+                                <!-- col.// -->
+                                <div class="col-md">
+                                    <img src="images/avatars/avatar1.jpg" class="img-md rounded-circle border">
+                                </div>
+                                <!-- col.// -->
+                            </form>
+                        </div>
+                        <!-- card-body.// -->
+                    </div>
+                    <!-- card .// -->
+
+
+
+                </main>
+                <!-- col.// -->
+            </div>
+
+        </div>
+        <!-- container .//  -->
+    </section>
+    <!-- ========================= SECTION CONTENT END// ========================= -->
+
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="section-footer border-top padding-y">
+        <div class="container">
+            <p class="text-center">
+                &copy T&M Group Copyright 2021 All rights reserved
+            </p>
+        </div>
+        <!-- //container -->
+    </footer>
+    <!-- ========================= FOOTER END // ========================= -->
+
+</body>
+
+</html>
