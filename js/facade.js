@@ -241,16 +241,49 @@ function SaveProduct() {
 }
 
 function UpdateProductList(categoryId) {
+
+    var categoryName = "";
+    switch (categoryId) {
+        case 1:
+            categoryName = "Appliances";
+            break;
+        case 2:
+            categoryName = "Autoparts";
+            break;
+        case 3:
+            categoryName = "Furniture";
+            break;
+        case 4:
+            categoryName = "Electronics";
+            break;
+        case 5:
+            categoryName = "Jewelries";
+            break;
+        case 6:
+            categoryName = "Beauties";
+            break;
+        case 7:
+            categoryName = "Clothes";
+            break;
+        case 8:
+            categoryName = "Health";
+            break;
+        default:
+            break;
+    }
+
+    localStorage.setItem("categoryName", categoryName);
+    localStorage.setItem("categoryId", categoryId);
+
     var options = [categoryId];
 
     function callback(tx, results) {
         var htmlCode = "";
         var itemsNumber = 0;
+        itemsNumber = results.rows.length;
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-
-            itemsNumber = results.rows.length;
 
             var imgURL = "data:image/png;base64," + row['image'];
 
@@ -322,7 +355,7 @@ function UpdatePopularProduct() {
 function UpdateNavManufacturerList() {
     function callback(tx, results) {
 
-        var htmlCode = "<a class='dropdown-item' href='page-manufacturers.html'>Manufacturers List</a>";
+        var htmlCode = "";
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
@@ -340,8 +373,9 @@ function UpdateNavManufacturerList() {
 function UpdateNavCategoryList() {
 
     function callback(tx, results) {
-        var htmlCode = "<a class='dropdown-item' href='page-categories.html'>Categories List</a>";
 
+        var htmlCode = "";
+        
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
             htmlCode += "<a class='dropdown-item' onclick='UpdateProductList(" + row['id'] + ")'>" +
