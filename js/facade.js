@@ -271,9 +271,11 @@ function UpdateProductList(categoryId) {
         default:
             break;
     }
-
+    
     localStorage.setItem("categoryName", categoryName);
     localStorage.setItem("categoryId", categoryId);
+    $('#allCategories').hide();
+    $("#categoryName").text(localStorage.getItem("categoryName"));
 
     var options = [categoryId];
 
@@ -375,7 +377,7 @@ function UpdateNavCategoryList() {
     function callback(tx, results) {
 
         var htmlCode = "";
-        
+
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
             htmlCode += "<a class='dropdown-item' onclick='UpdateProductList(" + row['id'] + ")'>" +
