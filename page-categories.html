@@ -78,7 +78,7 @@
             }
         }
         // jquery ready start
-        $(document).ready(function () {
+        $(document).ready(function() {
             // jQuery code
             if (localStorage.getItem("firstName") !== null) {
                 $(".userProfile").text(localStorage.getItem("firstName"));
@@ -142,8 +142,7 @@
                                 <span class="badge badge-pill badge-danger notify" id="ordersNumber">0</span>
                             </div>
                             <div class="widget-header icontext">
-                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border"
-                                    id="userProfile"><i class="fa fa-user"></i></a>
+                                <a href="page-profile-main.html" class="icon icon-sm rounded-circle border" id="userProfile"><i class="fa fa-user"></i></a>
                                 <div class="text">
                                     <span class="text-muted">Welcome!</span>
                                     <span class="userProfile"></span>
@@ -174,8 +173,7 @@
     <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
         <div class="container">
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
-                aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -185,12 +183,11 @@
                         <a class="nav-link" href="index.html">HOME</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle hideShop" data-toggle="dropdown" href="">SHOP BY CATEGORY</a>
+                        <a class="nav-link dropdown-toggle hideShop" data-toggle="dropdown" href="#">SHOP BY CATEGORY</a>
                         <div class="dropdown-menu" id="categoryList"></div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle hideShop" data-toggle="dropdown" href="">SHOP BY
-                            MANUFACTURER</a>
+                        <a class="nav-link dropdown-toggle hideShop" href="page-manufacturers.html">SHOP BY MANUFACTURER</a>
                         <div class="dropdown-menu" id="manufacturerList"></div>
                     </li>
                     <li class="nav-item">
@@ -231,7 +228,9 @@
                 <ol class="breadcrumb text-white">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                     <li class="breadcrumb-item" aria-current="page"><a href="page-categories.html">Shop by category</a></li>
-                    <li class="breadcrumb-item active" aria-current="page" id="categoryName"><a></a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="categoryName">
+                        <a></a>
+                    </li>
                 </ol>
             </nav>
         </div>
@@ -251,8 +250,7 @@
                             <img src="images/items/1.jpg">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(1);">Appliances</a>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(1);">Appliances</a>
                             </h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
@@ -267,8 +265,7 @@
                             <img src="images/items/2.jpg">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(2);">Autoparts</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(2);">Autoparts</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
@@ -282,8 +279,7 @@
                             <img src="images/items/3.jpg">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(3);">Furniture</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(3);">Furniture</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
@@ -297,8 +293,7 @@
                             <img src="images/items/4.jpg">
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(4);">Electronics</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(4);">Electronics</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
@@ -312,8 +307,7 @@
                             <img src="images/items/5.jpg">
                         </a>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(5);">Jewelries</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(5);">Jewelries</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
@@ -327,8 +321,7 @@
                             <img src="images/items/6.jpg">
                         </a>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(6);">Beauties</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(6);">Beauties</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
@@ -342,8 +335,7 @@
                             <img src="images/items/2.jpg">
                         </a>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(7);">Clothes</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(7);">Clothes</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
@@ -357,8 +349,7 @@
                             <img src="images/items/1.jpg">
                         </a>
                         <div class="card-body">
-                            <h4 class="card-title"><a class="categoryName" href="#"
-                                    onclick="UpdateProductList(8);">Health</a></h4>
+                            <h4 class="card-title"><a class="categoryName" href="#" onclick="UpdateProductList(8);">Health</a></h4>
                             <ul class="list-menu">
                                 <!--<li><a href="">Item 1</a></li>-->
                             </ul>
