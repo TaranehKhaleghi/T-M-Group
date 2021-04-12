@@ -270,7 +270,7 @@ function UpdateProductList(categoryId) {
             categoryName = "Clothes";
             break;
         case 8:
-            categoryName = "Health";
+            categoryName = "Books";
             break;
         default:
             break;
