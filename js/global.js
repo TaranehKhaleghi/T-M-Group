@@ -37,6 +37,7 @@ function btnMinus_click() {
 function updateAllList_show() {
     UpdatePopularProduct();
     UpdateNavManufacturerList();
+    AllManufacturers();
     UpdateNavCategoryList();
     UpdateLeftMenuCategory();
     UpdateDropdownCategory();
@@ -51,11 +52,11 @@ function updateAllList_show() {
 function init() {
     console.info("DOM is ready");
 
-      /* $('#shopByCategory').click(function() {
+    /* $('#shopByCategory').click(function() {
        window.location.replace("page-category-grid.html");
     });  
  */
-   /*  $('#shopByManufacturer').click(function() {
+    /*  $('#shopByManufacturer').click(function() {
         var accountType = localStorage.getItem('accountType');
         if (accountType !== 'Manufacturer') {
             window.location.replace("page-manufacturers.html");

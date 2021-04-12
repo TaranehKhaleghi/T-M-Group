@@ -58,11 +58,13 @@ function LogInSupplier() {
                         localStorage.setItem("password", row['password']);
                     }
                 }
+
                 if (registered === 0) {
                     window.alert("You have not registered yet!");
                 }
             }
         }
+
         SignInSupplier.selectAll(callback);
     } else {
         console.error("Log in form Validation failed.");
@@ -146,11 +148,13 @@ function LogInManufacturer() {
                         localStorage.setItem("password", row['cPassword']);
                     }
                 }
+
                 if (registered === 0) {
                     window.alert("You have not registered yet!");
                 }
             }
         }
+
         SignInManufacturer.selectAll(callback);
     } else {
         console.error("Log in form Validation failed.");
@@ -271,7 +275,7 @@ function UpdateProductList(categoryId) {
         default:
             break;
     }
-    
+
     localStorage.setItem("categoryName", categoryName);
     localStorage.setItem("categoryId", categoryId);
     $('#allCategories').hide();
@@ -361,10 +365,11 @@ function UpdateNavManufacturerList() {
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-            htmlCode += "<a class='dropdown-item' onclick='UpdateManufacturerProductList(" + row['id'] + ")'>" +
+            htmlCode += "<a class='dropdown-item' id='" + row['id'] + "' onclick='UpdateManufacturerProductList(" + row['id'] + ")'>" +
                 row['companyName'] +
                 "</a>";
         }
+
         var manufacturerList = $("#manufacturerList");
         manufacturerList = manufacturerList.html(htmlCode);
     }
@@ -393,7 +398,7 @@ function UpdateNavCategoryList() {
 
 function UpdateLeftMenuCategory() {
     function callback(tx, results) {
-        var htmlCode = "<li>" + "<a class='dropdown-item' href='page-category-grid.html'>Categories List</a>";
+        var htmlCode = "";
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
@@ -401,9 +406,11 @@ function UpdateLeftMenuCategory() {
                 row['name'] +
                 "</a>" + "</li>";
         }
+
         var categoryList = $("#categoryMenu");
         categoryList = categoryList.html(htmlCode);
     }
+
     GetCategories.selectAll(callback);
 }
 
@@ -415,11 +422,46 @@ function UpdateDropdownCategory() {
             $("#category").append("<option value='" + row['id'] + "'>" + row['name'] + "</option>");
         }
     }
+
     GetCategories.selectAll(callback);
+}
+
+function AllManufacturers() {
+
+    var htmlCode = "";
+
+    function callback(tx, results) {
+        for (var i = 0; i < results.rows.length; i++) {
+            var row = results.rows[i];
+
+            htmlCode += "<div class='col-md-3'>" +
+                "<div class='card card-category'>" +
+                "<div class='img-wrap' style='background: #ffd7d7'>" +
+                "<img src='images/manufacturers/electrolux.png'>" +
+                "</div>" +
+                "<div class='card-body'>" +
+                "<h4 class='card-title'>" + "<a class='manufacturerName' href='#' onclick='UpdateManufacturerProductList(" + row['id'] + ")'>" + row['companyName'] + "</a>" + "</h4>" +
+                "<ul class='list-menu'>" +
+                "<li>" + "<a href='#'>" + "</a>" + "</li>" +
+                "</ul>" +
+                "</div>" + "</div>" + "</div>";
+        }
+
+        var allManufacturers = $("#allManufacturers");
+        allManufacturers = allManufacturers.html(htmlCode);
+    }
+
+    SignupManufacturer.selectAll(callback)
 }
 
 function UpdateManufacturerProductList(manufacturerId) {
     var options = [manufacturerId];
+
+    var manufacturerName = document.getElementById(manufacturerId).innerHTML;
+    localStorage.setItem("manufacturerName", manufacturerName);
+    localStorage.setItem("manufacturerId", manufacturerId);
+    $('#allManufacturers').hide();
+    $("#manufacturerName").text(localStorage.getItem("manufacturerName"));
 
     function callback(tx, results) {
         var htmlCode = "";
