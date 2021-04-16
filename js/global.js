@@ -47,6 +47,7 @@ function updateAllList_show() {
     UpdateTotalOrders();
     UpdateMyAddress();
     UpdateMyOrders();
+    UpdateWishList();
 }
 
 function init() {
