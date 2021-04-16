@@ -904,23 +904,6 @@ function UpdateRecentOrders() {
     SaveOrderInfo.selectSupplier(callback, options);
 }
 
-function UpdateTotalOrders() {
-    var supplierId = localStorage.getItem("supplierId");
-    var options = [supplierId];
-    var orderNumbers = 0;
-
-    function callback(tx, results) {
-
-        if (results.rows.length !== 0) {
-            orderNumbers = results.rows.length;
-            var totalOrder = $("#totalOrders");
-            totalOrder = totalOrder.text(orderNumbers);
-        }
-    }
-
-    SaveOrderInfo.selectSupplier(callback, options);
-}
-
 function UpdateMyAddress() {
     if (localStorage.getItem("supplierId") !== null) {
         var supplierId = localStorage.getItem("supplierId");
@@ -1024,6 +1007,9 @@ function UpdateMyOrders() {
 
             var ordersNumber = $('#ordersNumber');
             ordersNumber = ordersNumber.text(ordersNum);
+
+            var totalOrders = $('#totalOrders');
+            totalOrders = totalOrders.text(ordersNum);
 
             var myOrderId = $("#orderId");
             myOrderId = myOrderId.text("Order ID: " + localStorage.getItem("supplierId") + Date.now());
@@ -1161,7 +1147,7 @@ function UpdateWishList() {
 
         for (var i = 0; i < results.rows.length; i++) {
             var row = results.rows[i];
-  
+
             var imgURL = "data:image/png;base64," + row['image'];
 
             htmlCode += "<div class='col-md-6'>" +
@@ -1172,9 +1158,9 @@ function UpdateWishList() {
                 "<figcaption class='info'>" +
                 "<a href='#' class='title'>" + row['name'] + "</a>" +
                 "<p class='price mb-2'>" + row['price'] + "</p>" +
-                "<a href='#' class='btn btn-secondary btn-sm' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" + "&nbsp;"+
+                "<a href='#' class='btn btn-secondary btn-sm' onclick='SaveOrder(" + row['id'] + ")'>" + "Add to cart" + "</a>" + "&nbsp;" +
                 "<a href='#' class='btn btn-danger btn-sm' onclick='DeleteWish(" + row['id'] + ")'>" +
-                "<span>" + "Remove from wishlist" + "</span>"+
+                "<span>" + "Remove from wishlist" + "</span>" +
                 "</a>" +
                 "</figcaption>" +
                 "</figure>" +
